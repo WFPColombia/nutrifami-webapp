@@ -213,6 +213,11 @@ h1, h2, h3, h4, h5, h6{
     height: 100vh;
 }
 
+.modal-dialog .login{
+    background-color: #3dc0fd;
+    height: 100%;
+}
+
 .login .lbox {
     background: #3dc0fd;
     max-width: 490px;
@@ -222,6 +227,13 @@ h1, h2, h3, h4, h5, h6{
     -moz-box-shadow: -1px 7px 20px -7px rgba(85, 85, 85, 0.94);
     box-shadow: -1px 7px 20px -7px rgba(85, 85, 85, 0.94);
     padding: 35px 10px;
+}
+
+.modal-dialog .login .lbox{
+    margin: 0 auto;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 .login .lbox .logo {
@@ -260,7 +272,8 @@ h1, h2, h3, h4, h5, h6{
     background: #fe26a5;
     color: #fff;
     padding: 10px;
-    text-align: left;
+    text-align: center;
+    border-radius: 10px;
 }
 
 .login .lbox form input[type="text"] {
@@ -324,6 +337,14 @@ h1, h2, h3, h4, h5, h6{
     cursor: pointer;
     letter-spacing: 3px;
 }
+
+.login .lbox .form-actions .lingresar[disabled],
+.login .lbox .form-actions .lingresar[disabled]:hover{
+    cursor: default;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 
 .login .lbox .form-actions .lingresar:hover {
     background: #fd0496;

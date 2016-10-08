@@ -20,11 +20,11 @@ nutrifamiApp.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/', {
             controller: 'LandingController',
-            templateUrl: 'views/landing.tpl.html'
+            templateUrl: 'views/landing.html'
         });
 
         $routeProvider.when('/capacitacion', {
-            controller: 'HomeController',
+            controller: 'CapacitacionController',
             templateUrl: 'views/home.tpl.html'
         });
 

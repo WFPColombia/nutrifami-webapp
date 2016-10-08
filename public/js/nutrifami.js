@@ -90,19 +90,23 @@ var nutrifami = {
                     /* Combinamos la información de usuarioActivo existente con la nueva */
                     $.extend(usuarioActivo, objServ);
 
-
                     /* Se copia la información de avance en un objeto independiente y se elimina la información de usuarioActivo*/
-                    avanceUsuario = usuarioActivo.avance[usuarioActivo.id];
+                    usuarioAvance = usuarioActivo.avance[usuarioActivo.id];
+
                     /* Se copia la informaciòn de avance de familia a un objeto independiente*/
-                    avanceFamilia = usuarioActivo.avance;
+                    usuarioFamiliaAvance = usuarioActivo.avance;
                     delete usuarioActivo["avance"];
-                    delete avanceFamilia[usuarioActivo.id];
+                    delete usuarioFamiliaAvance[usuarioActivo.id];
+
+                    /*Se copia información de familia de usuario Activo en objeto independiente*/
+                    usuarioFamilia = usuarioActivo.familia;
+                    delete usuarioActivo["familia"];
 
                     /* Se almacena usuario activo en el locaStorage para llamarlo más facilmente */
                     localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
-
-                    localStorage.setItem("avanceUsuario", JSON.stringify(avanceUsuario));
-                    localStorage.setItem("avanceFamilia", JSON.stringify(avanceFamilia));
+                    localStorage.setItem("usuarioAvance", JSON.stringify(usuarioAvance));
+                    localStorage.setItem("usuarioFamiliaAvance", JSON.stringify(usuarioFamiliaAvance));
+                    localStorage.setItem("usuarioFamilia", JSON.stringify(usuarioFamilia));
 
                     this.isloginFlag = true;
                     response.success = true;
@@ -112,13 +116,15 @@ var nutrifami = {
                     response.success = false;
                     response.message = 'Documento o Código incorrecto';
                 }
+                callback(response);
             },
             error: function () {
                 response.success = false;
                 response.message = 'Ha ocurrido un error durante la ejecución';
+                callback(response);
             }
         });
-        callback(response);
+
     },
     /*
      * nutrifami.editarUsuarioActivo(data, callback);
