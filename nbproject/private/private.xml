@@ -2,11 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
             <file>file:/Users/fats2005/Documents/proyectos/nutrifami-webapp/public/css/style.css</file>
             <file>file:/Users/fats2005/Documents/proyectos/nutrifami-webapp/public/js/controllers/landingController.js</file>
             <file>file:/Users/fats2005/Documents/proyectos/nutrifami-webapp/app_maquetacion/landing.html</file>
             <file>file:/Users/fats2005/Documents/proyectos/nutrifami-webapp/public/views/landing.tpl.html</file>
         </group>
+>>>>>>> 108e753c4b52639811f1fd5e18e57bbb9eb7d358
     </open-files>
 </project-private>

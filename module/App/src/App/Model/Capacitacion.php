@@ -107,11 +107,17 @@ class Capacitacion
         $data['cap_lecciones'] = $dataLecciones;
         $data['cap_unidadesinformacion'] = $dataUnidadesinformacion;
         
-        $file = 'var serv_capacitacionesId = '.json_encode($dataCapacitacionesId).';';
-        $file .= 'var serv_capacitaciones = '.json_encode($dataCapacitaciones).';';
-        $file .= 'var serv_modulos = '.json_encode($dataModulos).';';
-        $file .= 'var serv_lecciones = '.json_encode($dataLecciones).';';
-        $file .= 'var serv_unidades = '.json_encode($dataUnidadesinformacion).';';
+        $file = '{ ';
+        
+        $file .= '"serv_capacitacionesId" : '.json_encode($dataCapacitacionesId).', ';
+        $file .= '"serv_capacitaciones" : '.json_encode($dataCapacitaciones).', ';
+        $file .= '"serv_modulos" : '.json_encode($dataModulos).', ';
+        $file .= '"serv_lecciones" : '.json_encode($dataLecciones).', ';
+        $file .= '"serv_unidades" : '.json_encode($dataUnidadesinformacion).'';
+        
+        $file .= ' }';
+        
+        
         
         return $file;
     }
