@@ -1,4 +1,5 @@
 /nbproject/*
+/nbproject/private/*
 ._*
 .vagrant
 .~lock.*

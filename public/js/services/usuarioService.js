@@ -70,8 +70,18 @@ nutrifamiApp.factory('UsuarioService', function () {
         return JSON.parse(localStorage.getItem('usuarioFamiliaAvance'));
     };
     
+    /* 
+     * 
+     */
     service.getUsuarioFamilia = function(){
         return JSON.parse(localStorage.getItem('usuarioFamilia'));
+    };
+    
+    /* 
+     * 
+     */
+    service.setUsuarioFamilia = function(usuarioFamilia){
+        localStorage.setItem("usuarioFamilia", JSON.stringify(usuarioFamilia));
     };
 
 
