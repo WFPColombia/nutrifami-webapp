@@ -980,6 +980,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .modal-dialog .calificacion .feedback{
     color: #2f3e47;
     font-size: 13pt;
+    text-align: center;
 }
 
 .unidad .panel-body .calificacion .no-activo .btn-default,

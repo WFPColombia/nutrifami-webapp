@@ -237,12 +237,17 @@ var nutrifami = {
             callback = callback || function () {
             };
 
-            nutrifami.training.cap_capacitacionesId = serv_capacitacionesId;
-            nutrifami.training.cap_capacitaciones = serv_capacitaciones;
-            nutrifami.training.cap_modulos = serv_modulos;
-            nutrifami.training.cap_lecciones = serv_lecciones;
-            nutrifami.training.cap_unidadesinformacion = serv_unidades;
-
+            $.getJSON("js/capacitacion.JSON", function (data) {
+                nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
+                nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
+                nutrifami.training.cap_modulos = data['serv_modulos'];
+                nutrifami.training.cap_lecciones = data['serv_lecciones'];
+                nutrifami.training.cap_unidadesinformacion = data['serv_unidades'];
+            }).fail(function (jqxhr, textStatus, error) {
+                console.log(jqxhr);
+                var err = textStatus + ", " + error;
+                console.log("Request Failed: " + err);
+            });
         },
         /*
          * nutrifami.training.downloadCapacitacion(cid, callback);

@@ -1,10 +1,10 @@
-nutrifamiApp.directive('modulosInfo', function ($location) {
+nutrifamiApp.directive('moduloInfo', function ($location) {
     return {
         restrict: 'E',
         scope: {
             info: '='
         },
-        templateUrl: 'views/directives/modulosInfo.html',
+        templateUrl: 'views/directives/moduloInfo.drt.html',
         link: function ($scope, $element, $attrs) {
             $scope.cargando = false;
             $scope.totalLecciones = function () {

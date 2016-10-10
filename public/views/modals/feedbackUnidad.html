@@ -4,9 +4,11 @@
     </div>
     <div class="modal-body">
         <div>
-            <span class="mensaje" ng-show="{{data.estado === 'acierto'}}">Muy bien! Respuesta correcta</span>
-            <span class="mensaje" ng-hide="{{data.estado === 'acierto'}}">Intenta de nuevo! respuesta incorrecta</span>
-            <p class="feedback" ng-hide="{{data.estado === 'acierto'}}"> {{ data.feedback}} </p>
+            <p class="mensaje" ng-show="{{data.estado === 'acierto'}}">Muy bien! Respuesta correcta</p>
+            <p class="mensaje" ng-hide="{{data.estado === 'acierto'}}">Intenta de nuevo! respuesta incorrecta</p>
+            <p ng-repeat="fb in data.feedback" class="feedback">
+                {{fb}}
+            </p>
         </div>
         <div class="modal-footer">
             <div class="activo"> 

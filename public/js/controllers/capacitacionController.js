@@ -10,8 +10,10 @@ nutrifamiApp.controller('CapacitacionController', function ($scope, $anchorScrol
     $scope.$on('$viewContentLoaded', function () {
         bsLoadingOverlayService.stop();
     });
+    
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
     $scope.avanceUsuario = UsuarioService.getUsuarioAvance();
+    
     $scope.modulos = [];
     /* Obtenemos los ids de los modulos de la capacitación 3 */
     $scope.mids = nutrifami.training.getModulosId(3);
@@ -32,4 +34,6 @@ nutrifamiApp.controller('CapacitacionController', function ($scope, $anchorScrol
         }
         $scope.modulos.push(tempModulo);
     }
+    
+    console.log($scope.modulos);
 });

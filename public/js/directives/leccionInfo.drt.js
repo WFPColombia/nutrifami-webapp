@@ -1,4 +1,4 @@
-nutrifamiApp.directive('leccionesInfo', function () {
+nutrifamiApp.directive('leccionInfo', function () {
     return {
         restrict: 'E',
         scope: {
