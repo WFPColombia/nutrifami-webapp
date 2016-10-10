@@ -1,8 +1,11 @@
-var usuarioActivo = new Object();   /* Información del usuario logueado */
-var avanceUsuario = new Object();   /* Información de avance del usuario*/
+var usuarioActivo = new Object(); /* Información del usuario logueado */
+var usuarioAvance = new Object(); /* Información de avance del usuario*/
+var usuarioFamilia = new Object(); /* Datos de la familia del usuario logueado, incluidos miembros de la familia*/
+var usuarioFamiliaAvance = new Object(); /* Datos de avance de la familia*/
 
-/*var base_url = 'http://127.0.0.1:83/'; /* Direccion del servidor */
-var base_url = 'http://www.nutrifami.org/'; /* Direccion del servidor */
+
+
+var base_url = 'http://www.nutrifami.org/';
 
 var nutrifami = {
     /* nutrifami.usuarioActivoServerInfo */
@@ -11,8 +14,7 @@ var nutrifami = {
      * nutrifami.getSessionId(callback);
      */
     getSessionId: function (callback) {
-        callback = callback || function () {
-        };
+        callback = callback || function () {};
         var serv = base_url + "app/api/get-session-id";
         $.ajax({
             url: serv,
@@ -32,8 +34,7 @@ var nutrifami = {
      * nutrifami.buildToken(callback)
      */
     buildToken: function (callback) {
-        callback = callback || function () {
-        };
+        callback = callback || function () {};
         if (usuarioActivo.sesionId && usuarioActivo.sesionId != '' && usuarioActivo.login_documento && usuarioActivo.login_documento != '' && usuarioActivo.login_codigo && usuarioActivo.login_codigo != '') {
             var tempSid = usuarioActivo.sesionId;
             var tempLdoc = usuarioActivo.login_documento;
@@ -53,8 +54,7 @@ var nutrifami = {
     setLoginData: function (documento, codigo, callback) {
         documento = documento || '';
         codigo = codigo || '';
-        callback = callback || function () {
-        };
+        callback = callback || function () {};
         if (documento != '' && codigo != '') {
             usuarioActivo.login_documento = documento;
             usuarioActivo.login_codigo = codigo;
@@ -72,8 +72,7 @@ var nutrifami = {
      * @returns {undefined}
      */
     login: function (callback) {
-        callback = callback || function () {
-        };
+        callback = callback || function () {};
         var serv = base_url + "app/api/login?d=" + usuarioActivo.login_documento + "&c=" + usuarioActivo.login_codigo + "&t=" + usuarioActivo.token;
         response = {
             success: false,
@@ -82,7 +81,7 @@ var nutrifami = {
         $.ajax({
             url: serv,
             type: 'POST',
-            async: false,
+            async: true,
             success: function (data) {
                 var objServ = JSON.parse(data);
                 if (objServ.response === 1) {
@@ -124,7 +123,6 @@ var nutrifami = {
                 callback(response);
             }
         });
-
     },
     /*
      * nutrifami.editarUsuarioActivo(data, callback);
@@ -132,8 +130,7 @@ var nutrifami = {
      * @param {type} callback
      */
     editarUsuarioActivo: function (data, callback) {
-        callback = callback || function () {
-        };
+        callback = callback || function () {};
         //  app/api/editar-usuario?t='token'
         var serv = base_url + "app/api/editar-usuario";
         response = {
@@ -143,7 +140,7 @@ var nutrifami = {
         $.ajax({
             url: serv,
             type: 'GET',
-            async: false,
+            async: true,
             data: data,
             success: function (data) {
                 var objServ = JSON.parse(data);
@@ -154,14 +151,16 @@ var nutrifami = {
                     response.success = false;
                     response.message = 'Los datos son errados';
                 }
+                callback(response);
             },
             error: function () {
                 response.success = true;
                 response.message = 'Ha ocurrido un error durante la ejecución';
+                callback(response);
             }
         });
 
-        callback(response);
+
     },
     /*
      * nutrifami.editarUsuarioActivo(data, callback);
@@ -169,8 +168,7 @@ var nutrifami = {
      * @param {type} callback
      */
     agregarFamiliar: function (data, callback) {
-        callback = callback || function () {
-        };
+        callback = callback || function () {};
         //  app/api/agregar-familar?t='token'
         var serv = base_url + "app/api/agregar-familiar";
         response = {
@@ -180,26 +178,27 @@ var nutrifami = {
         $.ajax({
             url: serv,
             type: 'GET',
-            async: false,
+            async: true,
             data: data,
             success: function (data) {
                 var objServ = JSON.parse(data);
                 response = objServ.response;
+                callback(response);
             },
             error: function () {
                 response.success = true;
                 response.message = 'Ha ocurrido un error durante la ejecución';
+                callback(response);
             }
         });
 
-        callback(response);
+
     },
     /*
      * nutrifami.subirUsuarioActivo(callback);
      */
     subirUsuarioActivo: function (callback) {
-        callback = callback || function () {
-        };
+        callback = callback || function () {};
         console.log('subirUsuarioActivo');
         /*
          * Funcionalidad Ajax
@@ -209,8 +208,7 @@ var nutrifami = {
      * nutrifami.islogin(callback);
      */
     islogin: function (callback) {
-        callback = callback || function () {
-        };
+        callback = callback || function () {};
         return this.isloginFlag;
     },
     /*
@@ -221,11 +219,16 @@ var nutrifami = {
      */
     training: {
         cap_capacitacionesId: new Array(),
-        cap_capacitaciones: new Object(), /* this.cap_capacitacion */
-        cap_modulos: new Object(), /* this.cap_modulos */
-        cap_lecciones: new Object(), /* this.cap_lecciones */
-        cap_unidadesinformacion: new Object(), /* this.cap_unidadesinformacion */
-        cap_loadContentProgress: false, /* this.cap_loadContentProgress */
+        cap_capacitaciones: new Object(),
+        /* this.cap_capacitacion */
+        cap_modulos: new Object(),
+        /* this.cap_modulos */
+        cap_lecciones: new Object(),
+        /* this.cap_lecciones */
+        cap_unidadesinformacion: new Object(),
+        /* this.cap_unidadesinformacion */
+        cap_loadContentProgress: false,
+        /* this.cap_loadContentProgress */
 
         /*
          *  nutrifami.training.initClient(callback);
@@ -234,8 +237,7 @@ var nutrifami = {
          *  
          */
         initClient: function (callback) {
-            callback = callback || function () {
-            };
+            callback = callback || function () {};
 
             $.getJSON("js/capacitacion.JSON", function (data) {
                 nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
@@ -254,8 +256,7 @@ var nutrifami = {
          */
         downloadCapacitacion: function (cid, callback) {
             cid = cid || 0;
-            callback = callback || function () {
-            };
+            callback = callback || function () {};
 
             var serv = base_url + "app/api/get-capacitaciones?cid=" + cid;
             $.ajax({
@@ -306,8 +307,7 @@ var nutrifami = {
          */
         downloadModulo: function (mid, callback) {
             mid = mid || 0;
-            callback = callback || function () {
-            };
+            callback = callback || function () {};
 
             var serv = base_url + "app/api/get-modulo?mid=" + mid;
             $.ajax({
@@ -338,7 +338,7 @@ var nutrifami = {
                     objServ.completo = false;
                     if (typeof nutrifami.training.cap_modulos[objServ.id] === 'undefined' || nutrifami.training.cap_modulos[objServ.id] === null) {
                         nutrifami.training.cap_modulos[objServ.id] = objServ;
-                        if (typeof nutrifami.training.cap_modulos[objServ.id].imagen !== 'undefined') {/* Cargar imgagen desde s3*/
+                        if (typeof nutrifami.training.cap_modulos[objServ.id].imagen !== 'undefined') { /* Cargar imgagen desde s3*/
                             nutrifami_aws.s3.downloadFile(objServ.imagen.nombre, nutrifami.training.cap_modulos[objServ.id].imagen, 'content', 'loaded');
                         }
                         callback();
@@ -354,8 +354,7 @@ var nutrifami = {
          */
         downloadLeccion: function (lid, callback) {
             lid = lid || 0;
-            callback = callback || function () {
-            };
+            callback = callback || function () {};
 
             /* Ajax */
             var serv = base_url + "app/api/get-leccion?lid=" + lid;
@@ -390,7 +389,7 @@ var nutrifami = {
                     objServ.completo = false;
                     if (typeof nutrifami.training.cap_lecciones[objServ.id] === 'undefined' || nutrifami.training.cap_lecciones[objServ.id] === null) {
                         nutrifami.training.cap_lecciones[objServ.id] = objServ;
-                        if (typeof nutrifami.training.cap_lecciones[objServ.id].imagen !== 'undefined') {/* Cargar imgagen desde s3*/
+                        if (typeof nutrifami.training.cap_lecciones[objServ.id].imagen !== 'undefined') { /* Cargar imgagen desde s3*/
                             nutrifami_aws.s3.downloadFile(objServ.imagen.nombre, nutrifami.training.cap_lecciones[objServ.id].imagen, 'content', 'loaded');
                         }
                         callback();
@@ -407,8 +406,7 @@ var nutrifami = {
          */
         downloadUnidad: function (uid, callback) {
             uid = uid || 0;
-            callback = callback || function () {
-            };
+            callback = callback || function () {};
 
             /* Ajax */
             var serv = base_url + "app/api/get-unidadinformacion?uid=" + uid;
@@ -522,8 +520,7 @@ var nutrifami = {
         loadModulo: function (mid, all, callback) {
             mid = mid || 0;
             all = all || false;
-            callback = callback || function () {
-            };
+            callback = callback || function () {};
             callback();
             /*
              if ( all ) {
@@ -553,8 +550,7 @@ var nutrifami = {
          */
         loadLeccion: function (lid, callback) {
             lid = lid || 0;
-            callback = callback || function () {
-            };
+            callback = callback || function () {};
             callback();
             /*
              $.each(nutrifami.training.cap_lecciones[lid].unidades, function(indexuni, id_unidad) {
@@ -581,7 +577,7 @@ var nutrifami = {
         getCapacitacion: function (cid) {
             cid = cid || 3;
             if (typeof nutrifami.training.cap_capacitaciones[cid] !== 'undefined') {
-                return nutrifami.training.cap_capacitaciones[cid]
+                return nutrifami.training.cap_capacitaciones[cid];
             } else {
                 return false;
             }
@@ -648,18 +644,13 @@ var nutrifami = {
             }
         }
 
-
-
-
     },
     avance: {
         /*
          * nutrifami.avance.addAvance(data, callback);
          */
         addAvance: function (data, callback) {
-            callback = callback || function () {
-            };
-
+            callback = callback || function () {};
             var serv = base_url + "app/api/add-avance";
             response = {
                 success: false,
@@ -668,19 +659,81 @@ var nutrifami = {
             $.ajax({
                 url: serv,
                 type: 'GET',
-                async: false,
+                async: true,
                 data: data,
                 success: function (data) {
                     var objServ = JSON.parse(data);
                     response = objServ.response;
+                    callback(response);
                 },
                 error: function () {
                     response.success = true;
                     response.message = 'Ha ocurrido un error durante la ejecución';
+                    callback(response);
                 }
             });
 
-            callback(response);
+        }
+    },
+    consumo: {
+        /*
+         * nutrifami.consumo.getConsolidadoCompras(data, callback);
+         */
+        getConsolidadoCompras: function (data, callback) {
+            callback = callback || function () {};
+            var serv = base_url + "app/api/get-consolidado-compras";
+            response = {
+                success: false,
+                message: ''
+            };
+            $.ajax({
+                url: serv,
+                type: 'GET',
+                async: true,
+                data: data,
+                success: function (data) {
+                    var objServ = JSON.parse(data);
+                    response.success = true;
+                    response.data = objServ;
+                    callback(response);
+                },
+                error: function () {
+                    response.success = false;
+                    response.message = 'Ha ocurrido un error durante la ejecución';
+                    callback(response);
+                }
+            });
+
+        },
+        /*
+         * nutrifami.consumo.getProductosPuntoVenta(data, callback);
+         */
+        getProductosPuntoVenta: function (data, callback) {
+            callback = callback || function () {};
+            var serv = base_url + "app/api/get-productos-puntoventa";
+            response = {
+                success: false,
+                message: ''
+            };
+            $.ajax({
+                url: serv,
+                type: 'GET',
+                async: true,
+                data: data,
+                success: function (data) {
+                    var objServ = JSON.parse(data);
+                    response.success = true;
+                    response.data = objServ;
+                    callback(response);
+                },
+                error: function () {
+                    response.success = false;
+                    response.message = 'Ha ocurrido un error durante la ejecución';
+                    callback(response);
+                }
+            });
+
         }
     }
+
 };
