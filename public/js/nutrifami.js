@@ -90,19 +90,23 @@ var nutrifami = {
                     /* Combinamos la información de usuarioActivo existente con la nueva */
                     $.extend(usuarioActivo, objServ);
 
-
                     /* Se copia la información de avance en un objeto independiente y se elimina la información de usuarioActivo*/
-                    avanceUsuario = usuarioActivo.avance[usuarioActivo.id];
+                    usuarioAvance = usuarioActivo.avance[usuarioActivo.id];
+
                     /* Se copia la informaciòn de avance de familia a un objeto independiente*/
-                    avanceFamilia = usuarioActivo.avance;
+                    usuarioFamiliaAvance = usuarioActivo.avance;
                     delete usuarioActivo["avance"];
-                    delete avanceFamilia[usuarioActivo.id];
+                    delete usuarioFamiliaAvance[usuarioActivo.id];
+
+                    /*Se copia información de familia de usuario Activo en objeto independiente*/
+                    usuarioFamilia = usuarioActivo.familia;
+                    delete usuarioActivo["familia"];
 
                     /* Se almacena usuario activo en el locaStorage para llamarlo más facilmente */
                     localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
-
-                    localStorage.setItem("avanceUsuario", JSON.stringify(avanceUsuario));
-                    localStorage.setItem("avanceFamilia", JSON.stringify(avanceFamilia));
+                    localStorage.setItem("usuarioAvance", JSON.stringify(usuarioAvance));
+                    localStorage.setItem("usuarioFamiliaAvance", JSON.stringify(usuarioFamiliaAvance));
+                    localStorage.setItem("usuarioFamilia", JSON.stringify(usuarioFamilia));
 
                     this.isloginFlag = true;
                     response.success = true;
@@ -112,13 +116,15 @@ var nutrifami = {
                     response.success = false;
                     response.message = 'Documento o Código incorrecto';
                 }
+                callback(response);
             },
             error: function () {
                 response.success = false;
                 response.message = 'Ha ocurrido un error durante la ejecución';
+                callback(response);
             }
         });
-        callback(response);
+
     },
     /*
      * nutrifami.editarUsuarioActivo(data, callback);
@@ -231,12 +237,17 @@ var nutrifami = {
             callback = callback || function () {
             };
 
-            nutrifami.training.cap_capacitacionesId = serv_capacitacionesId;
-            nutrifami.training.cap_capacitaciones = serv_capacitaciones;
-            nutrifami.training.cap_modulos = serv_modulos;
-            nutrifami.training.cap_lecciones = serv_lecciones;
-            nutrifami.training.cap_unidadesinformacion = serv_unidades;
-
+            $.getJSON("js/capacitacion.JSON", function (data) {
+                nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
+                nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
+                nutrifami.training.cap_modulos = data['serv_modulos'];
+                nutrifami.training.cap_lecciones = data['serv_lecciones'];
+                nutrifami.training.cap_unidadesinformacion = data['serv_unidades'];
+            }).fail(function (jqxhr, textStatus, error) {
+                console.log(jqxhr);
+                var err = textStatus + ", " + error;
+                console.log("Request Failed: " + err);
+            });
         },
         /*
          * nutrifami.training.downloadCapacitacion(cid, callback);

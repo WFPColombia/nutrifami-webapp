@@ -1,7 +1,7 @@
 /*
  * Configuración de angular para la aplicación Web de nutrifami
  */
-dependencies = ['Authentication', 'ngRoute', 'ngCookies', 'ngAudio', 'bsLoadingOverlay','ui.bootstrap', 'ngAnimate'];
+dependencies = ['Authentication', 'ngRoute', 'ngCookies', 'ngAudio', 'bsLoadingOverlay', 'ui.bootstrap', 'ngAnimate'];
 'use strict';
 
 // declare modules
@@ -20,22 +20,22 @@ nutrifamiApp.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/', {
             controller: 'LandingController',
-            templateUrl: 'views/landing.tpl.html'
+            templateUrl: 'views/landing.html'
         });
 
         $routeProvider.when('/capacitacion', {
-            controller: 'HomeController',
-            templateUrl: 'views/home.tpl.html'
+            controller: 'CapacitacionController',
+            templateUrl: 'views/capacitacion.html'
         });
 
         $routeProvider.when('/m/:modulo', {
             controller: 'ModuloController',
-            templateUrl: 'views/modulo.tpl.html'
+            templateUrl: 'views/modulo.html'
         });
 
         $routeProvider.when('/m/:modulo/:leccion/:unidad', {
             controller: 'UnidadController',
-            templateUrl: 'views/unidad.tpl.html'
+            templateUrl: 'views/unidad.html'
         });
 
         $routeProvider.when('/m/:modulo/:leccion/:unidad/leccion-terminada/', {
@@ -57,32 +57,34 @@ nutrifamiApp.config(['$routeProvider', function ($routeProvider) {
     }])
 
 
-nutrifamiApp.run(['$rootScope', '$location', '$cookieStore', 'bsLoadingOverlayService',
-    function ($rootScope, $location, $cookieStore, bsLoadingOverlayService) {
-        // keep user logged in after page refresh
-        $rootScope.globals = $cookieStore.get('globals') || {};
-        
-        bsLoadingOverlayService.setGlobalConfig({
-		templateUrl: 'views/template/loading-overlay-template.html'
-	});
+nutrifamiApp.run(function ($rootScope, $location, $cookieStore, bsLoadingOverlayService) {
+    // keep user logged in after page refresh
+    $rootScope.globals = $cookieStore.get('globals') || {};
 
-        $rootScope.mensaje = {
-            estado: false,
-            texto: '',
-            tiempo: 0
-        };
-        nutrifami.getSessionId();
+    bsLoadingOverlayService.setGlobalConfig({
+        templateUrl: 'views/template/loading-overlay-template.html'
+    });
 
-        if ($rootScope.globals.currentUser) {
-            //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+    $rootScope.mensaje = {
+        estado: false,
+        texto: '',
+        tiempo: 0
+    };
+    
+    console.log("Run");
+    nutrifami.getSessionId();
+    nutrifami.training.initClient();
+    
+    if ($rootScope.globals.currentUser) {
+        //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
 
-        }
-
-        $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            // redirect to login page if not logged in
-            if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-                $location.path('/');
-            }
-        });
     }
-]);
+
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in
+        if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+            $location.path('/');
+        }
+    });
+}
+);
