@@ -1,0 +1,89 @@
+<ion-view>
+    <ion-content scroll='false'>
+        <div class='progreso'>
+            <ion-tabs class="tabs-icon-top">
+                <ion-tab title="Yo ({{usuarioActivo.nombre}})" on-select="cargarMiProgreso()">
+                    <ion-content class="has-header has-footer" overflow-scroll="true">
+                        <div class="progreso-tab">
+                            <div class="progreso-panel">
+                                <div class="progreso-puntos-experiencia">
+                                    <div class="row" ion-ripple>
+                                        <div class="col col-20">
+                                            <img width="46" src="img/badgets/badget-1.png"/>
+                                        </div>
+                                        <div class="col">
+                                            <p> {{puntos}} puntos de Experiencia <!--<button class="icon ion-volume-high"></button>--></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progreso-porcentaje">
+                                    <div class="row">
+                                        <div class="col col-center">
+                                            <div class="progress-radial progress-{{porcentaje}}">
+                                                <div class="overlay">{{porcentaje}}% <span>Aprendido</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progreso-resumen">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="img/icons/ico-progreso-nivel.png"/>
+                                            Nivel<br><span>{{nivel}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/icons/ico-progreso-leccion.png"/>
+                                            Lección<br><span>{{leccion}}</span>
+                                        </div>
+                                        <div class="col">
+                                            <img src="img/icons/ico-progreso-medallas.png"/>
+                                            Medallas<br><span>{{medallas}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="zona-segura"></div>
+                        </div>
+                        
+                    </ion-content>
+                </ion-tab>
+                <ion-tab title="Mi Familia" on-select="cargarMiFamiliaProgreso()">
+                    <ion-content class="has-header has-footer" overflow-scroll="true">
+                        <div class="progreso-tab">
+                            <div class="progreso-panel"><!--
+                                <div class="progreso-familia">
+                                    
+                                    <div class="row lider" ion-ripple>
+                                        <div class="col miembro-familia">
+                                            <p>Juan Perez </p>
+                                        </div>
+                                        <div class="col col-33 medallas">
+                                            <img width="30" src="img/badgets/badget-1.png" alt=""/>
+                                            25<br><span>Medallas</span>
+                                        </div>
+                                        <button class="icon ion-volume-high sonido"></button>
+                                    </div>
+                                </div>-->
+                                <div class="progreso-familia" ng-repeat="familiar in usuarioFamilia">
+                                    <div class="row" ion-ripple>
+                                        <div class="col miembro-familia">
+                                            <p>{{familiar.FAM_PER_NOMBRE}} {{familiar.FAM_PER_APELLIDO}} </p>
+                                        </div>
+                                        <div class="col col-33 medallas">
+                                            <img width="30" src="img/badgets/badget-1.png" alt=""/>
+                                            0<br><span>Medallas</span>
+                                        </div>
+                                        <!--<button class="icon ion-volume-high sonido"></button>-->
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="zona-segura"></div>
+                        </div>
+                        
+                    </ion-content>
+                </ion-tab>
+            </ion-tabs>
+        </div>
+    </ion-content>
+</ion-view>

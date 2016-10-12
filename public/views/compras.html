@@ -1,0 +1,67 @@
+<div class="bs-loading-container" bs-loading-overlay>
+    <ng-include src="'views/template/header.tpl.html'"></ng-include>
+    <div class="container">
+        <div class='compras'>
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Mis Compras</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="recomendados-header" ng-click="audio2.paused ? audio2.play() : audio2.pause()">
+                                <img src="img/canasta-ideal.png" alt="Canasta ideal" />
+                                <p><i class="glyphicon glyphicon-volume-up"></i> Aquí encontrará recomendaciones para que su dieta sea más variada</p>
+                            </div>
+                            <div class="recomendados-body">
+                                <uib-accordion close-others="oneAtATime">
+                                    <div ng-repeat="group in gruposAlimenticios">
+                                        <div uib-accordion-group class="panel-default" is-open="status.isFirstOpen">
+                                            <uib-accordion-heading>
+                                                <img src="img/icons/ico-compras-{{group.grupo_id}}.png" ng-hide="group.grupo_nombre === null" /> {{group.grupo_nombre !== null ? group.grupo_nombre : 'Sin categoria'}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
+                                            </uib-accordion-heading>
+                                            <p ng-repeat="item in group.productos">
+                                                {{item.nombre}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </uib-accordion>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="compras-descripcion">
+                                <p ng-click='' ng-show="noHayDatos">
+                                    No se encontraron registros para este usuario
+                                </p>
+                                <p ng-click="audio1.paused ? audio1.play() : audio1.pause()" ng-hide="noHayDatos">
+                                    <i class="glyphicon glyphicon-volume-up"></i> Aquí encontrará el resumen de sus compras del último mes
+                                </p>
+                            </div>
+                            <div class="compras-porcentajes">
+                                <div class="row" ng-repeat="grupo in consumoUltimoMes">
+                                    <div class="col-md-4">
+                                        <div class="compras-porcentaje-tipo">
+                                            <p>{{ grupo.nombre}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 compras-porcentaje-barra">
+                                        <div class="progress" go-click="/compras/{{grupo.grupo_id}}" ng-click="stopAudio()">
+                                            <div class="progress-bar grupo-{{grupo.grupo_id}}" style="width: {{grupo.porcentaje_compra}}%;"></div>
+                                            <div class="cantidad">{{grupo.porcentaje_compra}}<span>%</span></div>
+                                            <i class="glyphicon glyphicon-chevron-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer ng-include="'views/template/footer.tpl.html'"></footer>
+    </div>
+</div>

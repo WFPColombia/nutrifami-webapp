@@ -51,9 +51,20 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/editar-perfil', {
         controller: 'EditarPerfilController',
         templateUrl: 'views/editar-perfil.tpl.html'
+    });
+
+    $routeProvider.when('/sobre-nutrifami', {
+        controller: 'SobreController',
+        templateUrl: 'views/sobre.html'
+    });
+
+    $routeProvider.when('/mis-compras', {
+        controller: 'ComprasController',
+        templateUrl: 'views/compras.html'
     })
 
-    .otherwise({ redirectTo: '/' });
+
+    .otherwise({ redirectTo: '/capacitacion' });
 }])
 
 

@@ -14,7 +14,10 @@
             <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
                 <ul class="nav navbar-nav">
                     <li ng-class=" home ? 'active':''"><a ng-href="#/capacitacion">Inicio <span class="sr-only">(current)</span></a></li>
-                    <li ng-class=" informacion ? 'active':''"><a ng-href="#/perfil">Más Información</a></li>
+                    <li ng-class=" compras ? 'active':''"><a ng-href="#/mis-compras">Mis Compras</a></li>
+                    <li ng-class=" progreso ? 'active':''"><a ng-href="#/progreso">Progreso</a></li>
+                    <li ng-class=" tips ? 'active':''"><a ng-href="#/tips">Tips</a></li>
+                    <li ng-class=" sobre ? 'active':''"><a ng-href="#/sobre-nutrifami">Sobre Nutrifami</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a ng-href="#/perfil">{{ usuarioActivo.nombre | capitalize:true }}</a></li>
