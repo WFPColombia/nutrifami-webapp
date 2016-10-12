@@ -3,6 +3,7 @@ nutrifamiApp.controller('ComprasController', function($scope, ComprasService, ng
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo()
     console.log($scope.usuarioActivo);
+    $scope.compras = true;
 
 
     $scope.audio1 = ngAudio.load("audios/compras-intro.mp3");
@@ -32,8 +33,8 @@ nutrifamiApp.controller('ComprasController', function($scope, ComprasService, ng
         });
     };
 
-    //usuario.did = $scope.usuarioActivo.login_documento;
-    usuario.did = 66976632;
+    usuario.did = $scope.usuarioActivo.login_documento;
+    //usuario.did = 66976632;
 
     bsLoadingOverlayService.start();
 

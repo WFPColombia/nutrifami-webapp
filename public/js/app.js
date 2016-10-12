@@ -40,7 +40,7 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider.when('/m/:modulo/:leccion/:unidad/leccion-terminada/', {
         controller: 'LeccionTerminadaController',
-        templateUrl: 'views/leccionTerminada.tpl.html'
+        templateUrl: 'views/leccionTerminada.html'
     });
 
     $routeProvider.when('/perfil', {
@@ -61,6 +61,11 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/mis-compras', {
         controller: 'ComprasController',
         templateUrl: 'views/compras.html'
+    });
+
+    $routeProvider.when('/mi-progreso', {
+        controller: 'ProgresoController',
+        templateUrl: 'views/progreso.html'
     })
 
 

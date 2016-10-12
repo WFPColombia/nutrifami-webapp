@@ -20,7 +20,7 @@
                             <div class="recomendados-body">
                                 <uib-accordion close-others="oneAtATime">
                                     <div ng-repeat="group in gruposAlimenticios">
-                                        <div uib-accordion-group class="panel-default" is-open="status.isFirstOpen">
+                                        <div uib-accordion-group class="panel-default grupo-{{group.grupo_id}}" is-open="status.isFirstOpen">
                                             <uib-accordion-heading>
                                                 <img src="img/icons/ico-compras-{{group.grupo_id}}.png" ng-hide="group.grupo_nombre === null" /> {{group.grupo_nombre !== null ? group.grupo_nombre : 'Sin categoria'}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
                                             </uib-accordion-heading>

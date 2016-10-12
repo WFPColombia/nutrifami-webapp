@@ -1286,7 +1286,8 @@ header .navbar-default .navbar-toggle .icon-bar {
     text-align: right;
     color: #2f3e47;
     text-transform: uppercase;
-    font-family: 'Raleway-Bold', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
     font-size: 9pt;
 }
 
@@ -1313,6 +1314,10 @@ header .navbar-default .navbar-toggle .icon-bar {
     right: 10px;
 }
 
+.compras .recomendados-header {
+    cursor: pointer;
+}
+
 .compras .recomendados-header img {
     float: left;
     margin-left: 15px;
@@ -1324,9 +1329,36 @@ header .navbar-default .navbar-toggle .icon-bar {
     margin-right: 10px;
 }
 
+.compras .recomendados-body {
+    clear: both;
+    padding-top: 10px;
+}
+
+.compras .recomendados-body .panel {
+    padding: 0;
+}
+
+.compras .recomendados-body .panel-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 6px;
+    border-radius: 7px;
+    height: 48px;
+    border-width: 0px;
+    position: relative;
+    line-height: 50px;
+}
+
+.compras .recomendados-body .panel-title .glyphicon {
+    top: 14px;
+}
+
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CEREALES,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-1,
-.compras .recomendados-body .item.item-stable.grupo-1,
+.compras .panel-body .panel-default.grupo-1>.panel-heading,
 .compras-grupo header.grupo-1,
 .compras-grupo .progress-radial .overlay.grupo-1 {
     background-color: #f2df00 !important;
@@ -1335,7 +1367,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-LECHELACTEOS,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-3,
-.compras .recomendados-body .item.item-stable.grupo-3,
+.compras .panel-body .panel-default.grupo-3>.panel-heading,
 .compras-grupo header.grupo-3,
 .compras-grupo .progress-radial .overlay.grupo-3 {
     background-color: #0fa7ff;
@@ -1344,7 +1376,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CARNES,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-4,
-.compras .recomendados-body .item.item-stable.grupo-4,
+.compras .panel-body .panel-default.grupo-4>.panel-heading,
 .compras-grupo header.grupo-4,
 .compras-grupo .progress-radial .overlay.grupo-4 {
     background-color: #ff9600;
@@ -1353,7 +1385,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-VEGETALES,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-5,
-.compras .recomendados-body .item.item-stable.grupo-5,
+.compras .panel-body .panel-default.grupo-5>.panel-heading,
 .compras-grupo header.grupo-5,
 .compras-grupo .progress-radial .overlay.grupo-5 {
     background-color: #7bd462;
@@ -1362,7 +1394,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-GRASAS,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-7,
-.compras .recomendados-body .item.item-stable.grupo-7,
+.compras .panel-body .panel-default.grupo-7>.panel-heading,
 .compras-grupo header.grupo-7,
 .compras-grupo .progress-radial .overlay.grupo-7 {
     background-color: #ff037a;
@@ -1371,7 +1403,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-AZUCAR,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-8,
-.compras .recomendados-body .item.item-stable.grupo-8,
+.compras .panel-body .panel-default.grupo-8>.panel-heading,
 .compras-grupo header.grupo-8,
 .compras-grupo .progress-radial .overlay.grupo-8 {
     background-color: #d360fe;
@@ -1380,7 +1412,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CONDIMENTOS,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-9,
-.compras .recomendados-body .item.item-stable.grupo-9,
+.compras .panel-body .panel-default.grupo-9>.panel-heading,
 .compras-grupo header.grupo-9,
 .compras-grupo .progress-radial .overlay.grupo-9 {
     background-color: #bd8330;
@@ -1389,7 +1421,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-NOGRUPO,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-0,
-.compras .recomendados-body .item.item-stable.grupo-0,
+.compras .panel-body .panel-default.grupo-0>.panel-heading0,
 .compras-grupo header.grupo-0,
 .compras-grupo .progress-radial .overlay.grupo-0 {
     background-color: #000000;
@@ -1398,6 +1430,85 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 
 /* END - COMPRAS */
+
+
+/* MI PROGRESO */
+
+.progreso .panel .panel-header {
+    margin-top: 30px;
+    color: #00c97e;
+    margin-bottom: 30px;
+}
+
+.progreso .mi-progreso .progreso-puntos-experiencia p {
+    font-size: 13pt;
+    color: #ff5400;
+    font-family: 'Muli-Italic', sans-serif;
+    margin-top: 20px;
+}
+
+.progreso .mi-progreso .progreso-puntos-experiencia {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 10px;
+}
+
+.progreso .mi-progreso .progreso-porcentaje {
+    padding: 25px 0px 20px 0px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.progreso .mi-progreso .progreso-porcentaje .row {
+    margin: 0 auto;
+    width: 170px;
+}
+
+.progreso .mi-progreso .progreso-resumen {
+    color: #2f3e47;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 9pt;
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.progreso .mi-progreso .progreso-resumen img {
+    margin-right: 7px;
+    margin-top: 15px;
+}
+
+.progreso .mi-progreso .progreso-resumen span {
+    font-size: 25pt;
+    font-family: 'Muli-Italic', sans-serif;
+    position: absolute;
+    top: 18px;
+}
+
+.progreso .progreso-familia {
+    color: #2f3e47;
+    border-bottom: 1px #cccccc solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.progreso .progreso-familia .miembro-familia {
+    font-size: 11pt;
+    color: #2f3e47;
+    margin-top: 14px;
+}
+
+.progreso .progreso-familia .medallas {
+    font-size: 16pt;
+}
+
+.progreso .progreso-familia .medallas span {
+    font-size: 9pt;
+    font-family: 'Raleway-Bold', sans-serif;
+    text-transform: uppercase;
+}
+
+
+/* END - MI PROGRESO */
 
 
 /* END PERFIL Y EDITAR PERFIL */
