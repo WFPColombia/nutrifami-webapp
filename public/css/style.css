@@ -1338,6 +1338,9 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 
+/* END PERFIL Y EDITAR PERFIL */
+
+
 /*SOBRE NUTRIFAMI*/
 
 .sobre {
@@ -1610,7 +1613,62 @@ header .navbar-default .navbar-toggle .icon-bar {
 /* END - MI PROGRESO */
 
 
-/* END PERFIL Y EDITAR PERFIL */
+/* TIPS */
+
+.tips .panel .panel-header {
+    margin-top: 30px;
+    color: #00c97e;
+    margin-bottom: 30px;
+}
+
+.tips .panel .panel-header p {
+    text-align: center;
+    margin-top: 15px;
+    color: #2f3e47;
+    font-size: 14px;
+}
+
+.tips .panel .panel-body .tip {
+    height: 200px;
+    background-color: #00c97e;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-align: center;
+    border: none;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.tips .panel .panel-body .tip img {
+    margin-top: 15px;
+}
+
+.tips .panel .panel-body .tip h2 {
+    color: #ffffff;
+    padding: 0 15px;
+    margin-top: 15px;
+    font-size: 17px;
+}
+
+.tips .panel .panel-body .tip-sonido {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    width: 50px;
+    height: 50px;
+    color: #ffffff;
+    font-size: 12pt;
+    position: absolute;
+    top: -5px;
+    right: 12px;
+    z-index: 10;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+}
+
+
+/* END - TIPS */
 
 footer {
     margin-top: 7px;

@@ -66,7 +66,18 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/mi-progreso', {
         controller: 'ProgresoController',
         templateUrl: 'views/progreso.html'
+    });
+
+    $routeProvider.when('/tips', {
+        controller: 'TipsController',
+        templateUrl: 'views/tips.html'
+    });
+
+    $routeProvider.when('/tips/:modulo', {
+        controller: 'TipsModuloController',
+        templateUrl: 'views/tipsModulo.html'
     })
+
 
 
     .otherwise({ redirectTo: '/capacitacion' });
