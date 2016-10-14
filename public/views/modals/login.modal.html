@@ -1,34 +1,38 @@
 <div class="login">
-    <div class="lbox">
-        <form name="form" ng-submit="login()" role="form">
-            <div class="modal-header">
-                <div class="logo"></div>
-                <div class="text">
-                    Ingrese su número de documento de identificación y escriba el código de su tarjeta.
-                </div>
-            </div>
-            <div class="modal-body">
-
-                <div class="form-group">
-                    <input type="text" name="username" id="username" class="ldocumento" placeholder="Número de Documento" autocomplete="off" ng-model="username" required />
-                    <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Número de Documento es necesario</span>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="password" id="password" class="lcodigo" placeholder="Código" autocomplete="off" ng-model="password" required />
-                    <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Código es necesario</span>
-                </div>
-                <div ng-show="error" class="error-msj">{{error}}</div>
-            </div>
-
-            <div class="modal-footer">
-                <div class="form-actions">
-                    <button type="submit" ng-disabled="form.$invalid || dataLoading" class="lingresar"><strong>INGRESAR</strong></button>
-                    <img ng-if="dataLoading" ng-src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                </div>
-                <div class="wfp-logo">
-                    <a href="http://www.wfp.org/" target="_blank"><img ng-src="/img/wfp_750x161.png" alt="Programa Mundial de Alimentos" title="Programa Mundial de Alimentos"></a>
-                </div>
-            </div>
-        </form>
+    <div class="row logo text-center">
+        <div class="col-md-12">
+            <img src="img/logo-nutrifami.png" alt="Nutrifami" />
+        </div>
     </div>
+    <form name="form" ng-submit="login()" role="form">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="text" name="username" id="username" class="ldocumento" placeholder="Escriba su número de documento" autocomplete="off" ng-model="username" required />
+                    <div ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Número de Documento es necesario</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="text" name="password" id="password" class="lcodigo" placeholder="Escriba su código" autocomplete="off" ng-model="password" required />
+                    <div ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Código es necesario</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-actions">
+                    <button type="submit" class="btn center-block login-enviar" ng-disabled="form.$invalid" ion-ripple>Ingresar</button>
+                    <div ng-show="error" class="help-block">{{error}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row logo-wfp center-block">
+            <div class="col-md-12">
+                <img src="img/logo-wfp.png" alt="Logo Programa Mundial de Alimentos - Naciones Unidas" />
+            </div>
+        </div>
+    </form>
 </div>

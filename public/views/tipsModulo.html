@@ -1,0 +1,33 @@
+<div class="bs-loading-container" bs-loading-overlay>
+    <ng-include src="'views/template/header.tpl.html'"></ng-include>
+    <div class="container">
+        <div class='tips'>
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 ng-click="playAudio('audioTitulo')"><i class="tips-titulo-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></i> Alimentación saludabe</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <uib-accordion close-others="oneAtATime">
+                            <div ng-repeat="group in groups">
+                                <div uib-accordion-group class="panel-default" is-open="status.isFirstOpen">
+                                    <uib-accordion-heading>
+                                        <img src="img/icons/ico-compras-{{group.grupo_id}}.png" ng-hide="group.grupo_nombre === null" /> {{group.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
+                                    </uib-accordion-heading>
+                                    <p ng-repeat="item in group.items">
+                                        {{item}}
+                                    </p>
+                                </div>
+                            </div>
+                        </uib-accordion>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer ng-include="'views/template/footer.tpl.html'"></footer>
+    </div>
+</div>

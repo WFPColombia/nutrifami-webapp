@@ -40,7 +40,7 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider.when('/m/:modulo/:leccion/:unidad/leccion-terminada/', {
         controller: 'LeccionTerminadaController',
-        templateUrl: 'views/leccionTerminada.tpl.html'
+        templateUrl: 'views/leccionTerminada.html'
     });
 
     $routeProvider.when('/perfil', {
@@ -51,9 +51,36 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/editar-perfil', {
         controller: 'EditarPerfilController',
         templateUrl: 'views/editar-perfil.tpl.html'
+    });
+
+    $routeProvider.when('/sobre-nutrifami', {
+        controller: 'SobreController',
+        templateUrl: 'views/sobre.html'
+    });
+
+    $routeProvider.when('/mis-compras', {
+        controller: 'ComprasController',
+        templateUrl: 'views/compras.html'
+    });
+
+    $routeProvider.when('/mi-progreso', {
+        controller: 'ProgresoController',
+        templateUrl: 'views/progreso.html'
+    });
+
+    $routeProvider.when('/tips', {
+        controller: 'TipsController',
+        templateUrl: 'views/tips.html'
+    });
+
+    $routeProvider.when('/tips/:modulo', {
+        controller: 'TipsModuloController',
+        templateUrl: 'views/tipsModulo.html'
     })
 
-    .otherwise({ redirectTo: '/' });
+
+
+    .otherwise({ redirectTo: '/capacitacion' });
 }])
 
 
