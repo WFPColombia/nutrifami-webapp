@@ -4,7 +4,7 @@
         <div class="modulos unidad">
             <div class="panel">
                 <div class="panel-header">
-                    <div class="row"> 
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="unidad-sonido" ng-show="unidad.audio.url != ''">
                                 <a href><span ng-click='unidad.audio.audio.paused ? unidad.audio.audio.play() : unidad.audio.audio.pause()' class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
@@ -22,29 +22,25 @@
                             <div class="unidad-descripcion">
                                 <h2>{{ unidad.instruccion.texto}}</h2>
                                 <h3>{{ unidad.titulo.texto}}</h3>
-                                <!--<img ng-src="{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen === undefined}}" />-->
+                                <img ng-src="{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen === undefined}}" />
                                 <p>{{ unidad.texto}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
-
                     <!--
     * Se define el tipo de pregunta para adaptar el funcionamiento
     * id = 1 ; Contenidos
     * id = 2; Parejas
     * id = 3,4,5; Opción multiple con única respuesta, y verdadero o falso.
                     -->
-
                     <div class="row" ng-hide="unidad.tipo.id == '2'">
                         <opciones-unidad-info ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}" colspan="unidad.colspan" ng-click="validar()"></opciones-unidad-info>
                     </div>
-
                     <div class="row unidad-parejas" ng-show="unidad.tipo.id == '2'">
                         <parejas-unidad-info ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}"></parejas-unidad-info>
                     </div>
-
                     <calificar-unidad data="botonCalificar" ng-show="estadoUnidad == 'espera'"></calificar-unidad>
                     <!--<pre>{{ unidad | json : unidad}}</pre>-->
                 </div>

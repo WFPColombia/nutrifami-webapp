@@ -1150,6 +1150,24 @@ header .navbar-default .navbar-toggle .icon-bar {
     border: 3px solid #09df78;
 }
 
+.unidad-parejas .pareja-mal {
+    /*animation-name: pareja-mal-animation;
+    animation-duration: 2s;*/
+    background-color: #ff1244 !important;
+    color: #ffffff !important;
+    border-color: #ff1244 !important;
+}
+
+@keyframes pareja-mal-animation {
+    0% {}
+    25% {
+        background-color: #ff1244 !important;
+        color: #ffffff !important;
+        border-color: #ff1244 !important;
+    }
+    100% {}
+}
+
 .unidad-parejas .opciones .match .btn-default,
 .unidad-parejas .opcion-link .match {
     -webkit-filter: opacity(30%);
