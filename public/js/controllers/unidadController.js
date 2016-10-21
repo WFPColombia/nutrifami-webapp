@@ -3,6 +3,8 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
     'use strict';
 
     $anchorScroll();
+    //nutrifami.training.initClient();
+
 
     /* Overloading*/
     bsLoadingOverlayService.start();
@@ -11,75 +13,75 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
         bsLoadingOverlayService.stop();
     });
 
+
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
     $scope.estadoUnidad = 'espera';
 
-    //try {
-    $scope.unidad = CapacitacionService.getUnidad($routeParams.leccion, $routeParams.unidad);
-    $scope.unidad.numeroUnidad = $routeParams.unidad;
-    $scope.unidad.totalUnidades = CapacitacionService.getUnidadesActivas($routeParams.leccion).length;
+    try {
+        $scope.unidad = CapacitacionService.getUnidad($routeParams.leccion, $routeParams.unidad);
+        $scope.unidad.numeroUnidad = $routeParams.unidad;
+        $scope.unidad.totalUnidades = CapacitacionService.getUnidadesActivas($routeParams.leccion).length;
 
-    var tempOpciones = []; //Arreglo para almacenar las opciones
+        var tempOpciones = []; //Arreglo para almacenar las opciones
 
-    /* Validamos si la unidad actual es de parejas o de otra 
-     * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
-     * else - Si es otro tipo de unidad, desorganizamos las opciones */
-    if ($scope.unidad.tipo.id == 2) {
-        var tempOpcionesPareja = []; //Arreglo para almacenar las parejas de las opciones 
-        var tempLote1 = 0;
-        var tempLote2 = 0;
-        // Recorre todo el objeto de las opciones para crear el arreglo
-        var i = 1;
-        while (i <= Object.keys($scope.unidad.opciones).length / 2) {
-            console.log(i)
+        /* Validamos si la unidad actual es de parejas o de otra 
+         * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
+         * else - Si es otro tipo de unidad, desorganizamos las opciones */
+        if ($scope.unidad.tipo.id == 2) {
+            var tempOpcionesPareja = []; //Arreglo para almacenar las parejas de las opciones 
+            var tempLote1 = 0;
+            var tempLote2 = 0;
+            // Recorre todo el objeto de las opciones para crear el arreglo
+            var i = 1;
+            while (i <= Object.keys($scope.unidad.opciones).length / 2) {
 
-            for (var j in $scope.unidad.opciones) {
-                if ($scope.unidad.opciones[j].orden == i) {
-                    if (tempLote1 == 0) {
-                        tempLote1 = $scope.unidad.opciones[j];
-                    } else {
-                        tempLote2 = $scope.unidad.opciones[j];
+                for (var j in $scope.unidad.opciones) {
+                    if ($scope.unidad.opciones[j].orden == i) {
+                        if (tempLote1 == 0) {
+                            tempLote1 = $scope.unidad.opciones[j];
+                        } else {
+                            tempLote2 = $scope.unidad.opciones[j];
+                        }
                     }
                 }
+
+                // Si la opción tiene un texto corto se alamacena en las opciones, 
+                if (tempLote1.texto.length > tempLote2.texto.length) {
+                    tempOpciones.push(tempLote1);
+                    tempOpcionesPareja.push(tempLote2);
+
+                } else { // Si no, se almacena en la pareja
+                    tempOpciones.push(tempLote2);
+                    tempOpcionesPareja.push(tempLote1);
+
+                }
+                tempLote1 = 0;
+                tempLote2 = 0;
+                i++;
             }
 
-            // Si la opción tiene un texto corto se alamacena en las opciones, 
-            if (tempLote1.texto.length > tempLote2.texto.length) {
-                tempOpciones.push(tempLote1);
-                tempOpcionesPareja.push(tempLote2);
-
-            } else { // Si no, se almacena en la pareja
-                tempOpciones.push(tempLote2);
-                tempOpcionesPareja.push(tempLote1);
-
+            /* Se mezclan los arreglos */
+            shuffle(tempOpcionesPareja);
+            shuffle(tempOpciones);
+            $scope.unidad.opciones = tempOpcionesPareja.concat(tempOpciones); /* Se concatenan los arreglos, con las imagenes primero y las opciones despues */
+        } else {
+            for (var i in $scope.unidad.opciones) {
+                tempOpciones.push($scope.unidad.opciones[i]);
             }
-            tempLote1 = 0;
-            tempLote2 = 0;
-            i++;
+            shuffle(tempOpciones);
+            $scope.unidad.opciones = tempOpciones;
         }
 
-        /* Se mezclan los arreglos */
-        shuffle(tempOpcionesPareja);
-        shuffle(tempOpciones);
-        $scope.unidad.opciones = tempOpcionesPareja.concat(tempOpciones); /* Se concatenan los arreglos, con las imagenes primero y las opciones despues */
-    } else {
-        for (var i in $scope.unidad.opciones) {
-            tempOpciones.push($scope.unidad.opciones[i]);
+        /*Verifica si la unidad tienen audio y lo carga*/
+        if (typeof $scope.unidad.audio !== 'undefined') {
+            console.log(ngAudio.load($scope.unidad.audio.url));
+            $scope.unidad.audio.audio = ngAudio.load($scope.unidad.audio.url);
         }
-        shuffle(tempOpciones);
-        $scope.unidad.opciones = tempOpciones;
-    }
 
-    /*Verifica si la unidad tienen audio y lo carga*/
-    if (typeof $scope.unidad.audio !== 'undefined') {
-        $scope.unidad.audio.audio = ngAudio.load($scope.unidad.audio.url);
+        $scope.unidad.feedback = [];
+    } catch (err) {
+        $location.path('/capacitacion');
     }
-
-    console.log($scope.unidad);
-    $scope.unidad.feedback = [];
-    /*} catch (err) {
-     $location.path('/capacitacion');
-     }*/
 
 
     /* Obtenemos la cantidad de respuestas correctas*/
@@ -220,20 +222,32 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
                 $scope.unidad.opciones[i].evaluacion = true;
                 if ($scope.unidad.opciones[i].selected == $scope.unidad.opciones[i].correcta) {
                     respuestasAcertadas++;
-                    tempFeedbackBien.push($scope.unidad.opciones[i].feedback.texto);
+
+
+                    if (typeof $scope.unidad.opciones[i].feedback.audio !== 'undefined') {
+                        $scope.unidad.opciones[i].feedback.audio.audio = ngAudio.load($scope.unidad.opciones[i].feedback.audio.url);
+                    }
+                    tempFeedbackBien.push($scope.unidad.opciones[i].feedback);
                 } else {
                     /* Almacena la respuesta incorrecta */
-                    tempFeedbackMal.push($scope.unidad.opciones[i].feedback.texto);
+                    if (typeof $scope.unidad.opciones[i].feedback.audio !== 'undefined') {
+                        $scope.unidad.opciones[i].feedback.audio.audio = ngAudio.load($scope.unidad.opciones[i].feedback.audio.url);
+                    }
+                    tempFeedbackMal.push($scope.unidad.opciones[i].feedback);
                 }
             }
         }
         if (respuestasAcertadas === respuestasCorrectas) {
             $scope.estadoUnidad = 'acierto';
-            //$scope.unidad.feedback = tempFeedbackBien.unique();
+            $scope.unidad.feedback = filtrarFeedback(tempFeedbackBien);
         } else {
             $scope.estadoUnidad = 'fallo';
             $scope.unidad.feedback = tempFeedbackMal;
         }
+
+        console.log($scope.unidad.feedback);
+
+        $scope.unidad.feedback[0].audio.audio.play();
 
         $scope.feedback();
     };
@@ -246,8 +260,8 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
 
         var feedbackModal = $uibModal.open({
             animation: true,
-            templateUrl: 'views/modals/feedbackUnidad.html',
-            controller: 'FeedbackUnidadController',
+            templateUrl: 'views/modals/feedbackUnidad.modal.html',
+            controller: 'FeedbackUnidadModalController',
             backdrop: 'static',
             keyboard: false,
             size: 'lg',
@@ -322,13 +336,11 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
         }
     }
 
-    /*Array.prototype.unique = function (a) {
-        return function () {
-            return this.filter(a);
-        }
-    }(function (a, b, c) {
-        return c.indexOf(a, b + 1) < 0;
-    });*/
+    function filtrarFeedback(a) {
+        return a.sort().filter(function(item, pos, ary) {
+            return !pos || item != ary[pos - 1];
+        })
+    }
 });
 
 nutrifamiApp.directive('opcionesUnidadInfo', function() {
@@ -404,13 +416,5 @@ nutrifamiApp.directive('siguienteUnidad', function() {
                 $scope.$parent.irASiguienteUnidad();
             };
         }
-    };
-});
-
-
-nutrifamiApp.controller('FeedbackUnidadController', function($scope, $uibModalInstance, data) {
-    $scope.data = data;
-    $scope.clickBoton = function() {
-        $uibModalInstance.close($scope.data.estado);
     };
 });

@@ -9,6 +9,31 @@ angular.module('Authentication', []);
 
 var nutrifamiApp = angular.module('NutrifamiWeb', dependencies);
 
+
+nutrifamiApp.run(function($rootScope, $location, $cookieStore, bsLoadingOverlayService) {
+    // keep user logged in after page refresh
+    $rootScope.globals = $cookieStore.get('globals') || {};
+
+    bsLoadingOverlayService.setGlobalConfig({
+        templateUrl: 'views/template/loading-overlay-template.html'
+    });
+
+    nutrifami.getSessionId();
+    nutrifami.training.initClient();
+
+    if ($rootScope.globals.currentUser) {
+        //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+
+    }
+
+    $rootScope.$on('$locationChangeStart', function(event, next, current) {
+        // redirect to login page if not logged in
+        if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+            $location.path('/');
+        }
+    });
+});
+
 nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     'use strict';
 
@@ -82,28 +107,3 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
 
     .otherwise({ redirectTo: '/capacitacion' });
 }])
-
-
-nutrifamiApp.run(function($rootScope, $location, $cookieStore, bsLoadingOverlayService) {
-    // keep user logged in after page refresh
-    $rootScope.globals = $cookieStore.get('globals') || {};
-
-    bsLoadingOverlayService.setGlobalConfig({
-        templateUrl: 'views/template/loading-overlay-template.html'
-    });
-
-    nutrifami.getSessionId();
-    nutrifami.training.initClient();
-
-    if ($rootScope.globals.currentUser) {
-        //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-
-    }
-
-    $rootScope.$on('$locationChangeStart', function(event, next, current) {
-        // redirect to login page if not logged in
-        if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-            $location.path('/');
-        }
-    });
-});

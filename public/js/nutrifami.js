@@ -255,11 +255,9 @@ var nutrifami = {
                     nutrifami.training.cap_modulos = data['serv_modulos'];
                     nutrifami.training.cap_lecciones = data['serv_lecciones'];
                     nutrifami.training.cap_unidadesinformacion = data['serv_unidades'];
-                    console.log("Carga info ");
                 }).fail(function(jqxhr, textStatus, error) {
                     console.log(jqxhr);
                     var err = textStatus + ", " + error;
-                    console.log("Request Failed: " + err);
                 });
             }
         },

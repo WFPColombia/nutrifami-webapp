@@ -6,7 +6,7 @@
                 <div class="panel-header">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="unidad-sonido" ng-show="unidad.audio.url != ''">
+                            <div class="unidad-sonido" ng-hide="{{unidad.audio === undefined}}">
                                 <a href><span ng-click='unidad.audio.audio.paused ? unidad.audio.audio.play() : unidad.audio.audio.pause()' class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                             </div>
                         </div>

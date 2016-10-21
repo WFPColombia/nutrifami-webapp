@@ -6,13 +6,13 @@
         <div>
             <p class="mensaje" ng-show="{{data.estado === 'acierto'}}">Muy bien! Respuesta correcta</p>
             <p class="mensaje" ng-hide="{{data.estado === 'acierto'}}">Intenta de nuevo! respuesta incorrecta</p>
-            <p ng-repeat="fb in data.feedback" class="feedback">
-                {{fb}}
+            <p ng-repeat="fb in data.feedback track by $index" class="feedback">
+                {{fb.texto}}
             </p>
         </div>
         <div class="modal-footer">
-            <div class="activo"> 
-                <a href class="btn btn-default center-block" role="button" ng-click="clickBoton()">{{ data.estado == 'acierto' ? 'Continuar':'Intentar de nuevo'}}</a>
+            <div ng-class=" data.activo ? 'activo' : 'no-activo'">
+                <a href class="btn btn-default center-block bloqueado" role="button" ng-click="!data.activo || clickBoton()">{{ data.estado == 'acierto' ? 'Continuar':'Intentar de nuevo'}}</a>
             </div>
         </div>
     </div>
