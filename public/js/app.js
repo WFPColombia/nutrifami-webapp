@@ -92,13 +92,6 @@ nutrifamiApp.run(function($rootScope, $location, $cookieStore, bsLoadingOverlayS
         templateUrl: 'views/template/loading-overlay-template.html'
     });
 
-    $rootScope.mensaje = {
-        estado: false,
-        texto: '',
-        tiempo: 0
-    };
-
-    console.log("Run");
     nutrifami.getSessionId();
     nutrifami.training.initClient();
 

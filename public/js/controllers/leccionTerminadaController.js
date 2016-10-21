@@ -14,6 +14,7 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorSc
     $scope.mensaje = "Ha finalizado la leccion";
 
     $scope.leccion = nutrifami.training.getLeccion($routeParams.leccion);
+    $scope.modulo = $routeParams.modulo;
     $scope.audios = {
         'leccionCompletada': 'audios/muy-bien-leccion-completada.mp3',
         'audioPuntos': 'audios/' + $scope.leccion.finalizado.puntos + '-puntos-ganados.mp3',

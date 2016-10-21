@@ -626,9 +626,28 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .modulos .panel-body .modulo {
     margin: 0 28px 50px 28px;
-    background-color: #0dcd71;
+    background-color: #ffffff;
     border-radius: 10px;
     padding-bottom: 8px;
+    border: 1px solid #9eabb3;
+    cursor: not-allowed;
+}
+
+.modulos .panel-body .modulo.terminado,
+.modulos .panel-body .modulo.actual {
+    background-color: #ffba23;
+    cursor: pointer;
+    border: none;
+}
+
+.modulos .panel-body .modulo.actual {
+    background-color: #0dcd71;
+}
+
+.modulos .medalla {
+    position: absolute;
+    top: -15px;
+    right: 36px;
 }
 
 .modulos .panel-body .modulo > img,
@@ -651,7 +670,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .modulos .panel-body .modulo h3,
 .modulos .panel-body .modulo h4 {
-    color: #ffffff;
+    color: #0dcd71;
     text-align: center;
     font-size: 15pt;
     margin-top: 32px;
@@ -662,6 +681,14 @@ header .navbar-default .navbar-toggle .icon-bar {
     font-family: 'Raleway', sans-serif;
     font-size: 11pt;
     font-weight: bold;
+    color: #9eabb3;
+}
+
+.modulos .panel-body .modulo.actual h3,
+.modulos .panel-body .modulo.actual h4,
+.modulos .panel-body .modulo.terminado h3,
+.modulos .panel-body .modulo.terminado h4 {
+    color: #ffffff;
 }
 
 .modulos .panel-body .modulo .progress,
@@ -671,12 +698,21 @@ header .navbar-default .navbar-toggle .icon-bar {
     border-radius: 4px;
     width: auto;
     margin: 0 8px 0 8px;
-    background-color: #ffffff;
+    background-color: #f5f5f5;
     background-image: none;
+}
+
+.modulos .panel-body .modulo.actual .progress,
+.modulos .panel-body .modulo.terminado .progress {
+    background-color: #ffffff;
 }
 
 .panel-header .modulo-avance .progress {
     background-color: #f2f1f1;
+}
+
+.modulo.actual .progress {
+    background-color: #ffffff;
 }
 
 .modulos .panel-body .modulo .progress .progress-bar,
@@ -963,7 +999,7 @@ header .navbar-default .navbar-toggle .icon-bar {
     color: #2f3e47;
     text-align: center;
     font-size: 14pt;
-    width: 75%;
+    width: 90%;
 }
 
 .unidad .panel-body .opcion-con-imagen img,

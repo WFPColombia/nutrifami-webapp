@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('UnidadController', function($scope, $location, $routeParams, $anchorScroll, $uibModal, ngAudio, bsLoadingOverlayService, UsuarioService) {
+nutrifamiApp.controller('UnidadController', function($scope, $location, $routeParams, $anchorScroll, $uibModal, ngAudio, bsLoadingOverlayService, UsuarioService, CapacitacionService) {
     'use strict';
 
     $anchorScroll();
@@ -15,18 +15,9 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
     $scope.estadoUnidad = 'espera';
 
     //try {
-    $scope.uids = nutrifami.training.getUnidadesId($routeParams.leccion);
-    console.log()
-    var temp = [];
-    for (var i in $scope.uids) {
-        temp.push($scope.uids[i]);
-    }
-    $scope.unidad = nutrifami.training.getUnidad(temp[$routeParams.unidad - 1]);
-
-    console.log(temp);
-
+    $scope.unidad = CapacitacionService.getUnidad($routeParams.leccion, $routeParams.unidad);
     $scope.unidad.numeroUnidad = $routeParams.unidad;
-    $scope.unidad.totalUnidades = temp.length;
+    $scope.unidad.totalUnidades = CapacitacionService.getUnidadesActivas($routeParams.leccion).length;
 
     var tempOpciones = []; //Arreglo para almacenar las opciones
 
