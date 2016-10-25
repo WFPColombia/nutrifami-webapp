@@ -172,7 +172,7 @@ h6 {
 .landing .mis-compras p {
     color: #00a165;
     font-size: 14pt;
-    padding: 10px 170px;
+    padding: 10px 10px;
     margin-bottom: 70px;
 }
 
@@ -327,6 +327,29 @@ h6 {
     border-radius: inherit;
     -webkit-border-radius: inherit;
     -moz-border-radius: inherit;
+    position: relative;
+}
+
+.modal-dialog .login .cerrar {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.modal-dialog .login .cerrar button {
+    font-size: 30px;
+    background: #ffffff;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    color: #00c97e;
+}
+
+.modal-dialog .login .cerrar button:focus,
+.modal-dialog .login .cerrar button:active {
+    outline: 0;
 }
 
 .login .lbox {
