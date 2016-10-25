@@ -35,13 +35,37 @@
     * id = 2; Parejas
     * id = 3,4,5; Opción multiple con única respuesta, y verdadero o falso.
                     -->
-                    <div class="row" ng-hide="unidad.tipo.id == '2'">
-                        <opciones-unidad-info ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}" colspan="unidad.colspan" ng-click="validar()"></opciones-unidad-info>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="unidad-informativa" ng-show="unidad.tipo.id == 1">
+                                <p ng-click="">
+                                    <button class="glyphicon glyphicon-volume-up" aria-hidden="true"></button> {{ unidad.texto}}
+                                </p>
+                                <ul ng-repeat="opcion in unidad.opciones">
+                                    <li>
+                                        {{opcion.texto}}
+                                        <button ng-click='opcion.audio.audio.paused ? opcion.audio.aud io.play() : opcion.audio.audio.pause()' button class="glyphicon glyphicon-volume-up" aria-hidden="true">
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row unidad-parejas" ng-show="unidad.tipo.id == '2'">
+                    <div class="row unidad-parejas" ng-show="unidad.tipo.id == 2">
                         <parejas-unidad-info ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}"></parejas-unidad-info>
                     </div>
-                    <calificar-unidad data="botonCalificar" ng-show="estadoUnidad == 'espera'"></calificar-unidad>
+                    <div class="row" ng-show="unidad.tipo.id == 3 || unidad.tipo.id == 4">
+                        <opciones-unidad-info ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}" colspan="unidad.colspan" ng-click="validar()"></opciones-unidad-info>
+                    </div>
+                    <div class="row">
+                        <div class="calificacion">
+                            <div class="col-md-4 col-md-offset-8">
+                                <div ng-class=" botonCalificar ? 'activo' : 'no-activo'">
+                                    <span type="button" class="btn btn-default center-block" role="button" ng-click="calificarUnidad()" ng-disabled="!botonCalificar">{{textoBoton}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!--<pre>{{ unidad | json : unidad}}</pre>-->
                 </div>
             </div>

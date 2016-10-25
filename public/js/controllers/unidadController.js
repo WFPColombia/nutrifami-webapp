@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('UnidadController', function($scope, $location, $routeParams, $anchorScroll, $uibModal, ngAudio, bsLoadingOverlayService, UsuarioService, CapacitacionService) {
+nutrifamiApp.controller('UnidadController', function($scope, $location, $routeParams, $anchorScroll, $timeout, $uibModal, ngAudio, bsLoadingOverlayService, UsuarioService, CapacitacionService) {
     'use strict';
 
     $anchorScroll();
@@ -13,6 +13,8 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
         bsLoadingOverlayService.stop();
     });
 
+    $scope.textoBoton = 'Calificar';
+
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
     $scope.estadoUnidad = 'espera';
@@ -24,6 +26,8 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
 
         var tempOpciones = []; //Arreglo para almacenar las opciones
 
+
+        console.log($scope.unidad.tipo.id);
         /* Validamos si la unidad actual es de parejas o de otra 
          * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
          * else - Si es otro tipo de unidad, desorganizamos las opciones */
@@ -70,6 +74,14 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
             }
             shuffle(tempOpciones);
             $scope.unidad.opciones = tempOpciones;
+
+            if ($scope.unidad.tipo.id == 1) {
+                $timeout(function() {
+                    $scope.botonCalificar = true;
+                    $scope.textoBoton = 'continuar';
+                }, 10000);
+
+            }
         }
 
         /*Verifica si la unidad tienen audio y lo carga*/
@@ -212,6 +224,12 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
 
     $scope.calificarUnidad = function() {
         /* Validar si acerto o fallo*/
+
+        if ($scope.unidad.tipo.id == 1) {
+            $scope.irASiguienteUnidad();
+            return;
+        }
+
 
         var tempFeedbackBien = [];
         var tempFeedbackMal = [];
@@ -371,21 +389,6 @@ nutrifamiApp.directive('parejasUnidadInfo', function() {
         link: function($scope, $element, $attrs) {
             $scope.click = function() {
                 $scope.$parent.seleccionarPareja($scope.index);
-            };
-        }
-    };
-});
-
-nutrifamiApp.directive('calificarUnidad', function() {
-    return {
-        restrict: 'E',
-        scope: {
-            data: '='
-        },
-        templateUrl: 'views/directives/calificarUnidad.html',
-        link: function($scope, $element, $attrs) {
-            $scope.calificar = function() {
-                $scope.$parent.calificarUnidad();
             };
         }
     };

@@ -1268,6 +1268,49 @@ header .navbar-default .navbar-toggle .icon-bar {
 /* END UNIDADES */
 
 
+/* UNIDAD INFORMATIVA */
+
+.unidad .unidad-informativa {
+    background-color: #ffffff;
+    color: #2f3e47;
+    text-align: left;
+    font-size: 17pt;
+    width: 100%;
+    padding: 20px 60px;
+}
+
+.unidad .unidad-informativa p {
+    margin-bottom: 30px;
+}
+
+.unidad .unidad-informativa ul {
+    padding-left: 10px;
+}
+
+.unidad .unidad-informativa ul li {
+    list-style-position: outside;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    list-style-image: url(../img/list-unidad-informativa.png);
+}
+
+.unidad .unidad-informativa .glyphicon {
+    border: none;
+    background: none;
+    color: #09df78;
+    font-size: 24pt;
+    margin: 10px;
+}
+
+.unidad .unidad-informativa ul li .glyphicon {
+    font-size: 17pt;
+}
+
+
+/* FINAL - UNIDAD INFORMATIVA */
+
+
 /* PERFIL Y EDITAR PERFIL */
 
 .panel-body .form-group {
