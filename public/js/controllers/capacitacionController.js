@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('CapacitacionController', function($scope, $anchorScroll, bsLoadingOverlayService, UsuarioService, CapacitacionService) {
+nutrifamiApp.controller('CapacitacionController', function($scope, $anchorScroll, $location, bsLoadingOverlayService, UsuarioService, CapacitacionService) {
     'use strict';
 
     $anchorScroll();
