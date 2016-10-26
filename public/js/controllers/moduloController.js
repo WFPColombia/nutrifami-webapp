@@ -39,6 +39,8 @@ nutrifamiApp.controller('ModuloController', function($scope, $location, $routePa
 
         }
 
+        console.log($scope.lecciones);
+
         if (typeof $scope.avanceUsuario['3'] !== 'undefined' && typeof $scope.avanceUsuario['3'][$routeParams.modulo] !== 'undefined') {
             $scope.modulo.leccionesFinalizadas = Object.keys($scope.avanceUsuario['3'][$routeParams.modulo]).length;
         } else {

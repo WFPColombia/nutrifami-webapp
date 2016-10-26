@@ -27,7 +27,6 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
         var tempOpciones = []; //Arreglo para almacenar las opciones
 
 
-        console.log($scope.unidad.tipo.id);
         /* Validamos si la unidad actual es de parejas o de otra 
          * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
          * else - Si es otro tipo de unidad, desorganizamos las opciones */
@@ -86,17 +85,34 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
 
         /*Verifica si la unidad tienen audio y lo carga*/
         if (typeof $scope.unidad.audio !== 'undefined') {
-            console.log(ngAudio.load($scope.unidad.audio.url));
             $scope.unidad.audio.audio = ngAudio.load($scope.unidad.audio.url);
         }
 
+        if (typeof $scope.unidad.instruccion.audio !== 'undefined') {
+            $scope.unidad.instruccion.audio.audio = ngAudio.load($scope.unidad.instruccion.audio.url);
+
+            $scope.unidad.instruccion.audio.audio.play();
+
+            $scope.unidad.instruccion.audio.audio.complete(function() {
+                $scope.unidad.instruccion.audio.audio.stop();
+                $scope.unidad.audio.audio.play();
+                $scope.unidad.audio.audio.complete(function() {
+                    $scope.unidad.audio.audio.stop();
+                })
+            });
+
+        }
+
         $scope.unidad.feedback = [];
+
+        console.log($scope.unidad.opciones);
+
     } catch (err) {
         $location.path('/capacitacion');
     }
 
 
-    /* Obtenemos la cantidad de respuestas correctas*/
+    // Obtenemos la cantidad de respuestas correctas
     var respuestasCorrectas = 0;
     var respuestasSeleccionadas = 0;
     for (var i in $scope.unidad.opciones) {
@@ -113,6 +129,8 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
             $scope.unidad.opciones[i].audio.audio = ngAudio.load($scope.unidad.opciones[i].audio.url);
         }
     }
+
+
 
     $scope.botonCalificar = false;
 
@@ -262,8 +280,6 @@ nutrifamiApp.controller('UnidadController', function($scope, $location, $routePa
             $scope.estadoUnidad = 'fallo';
             $scope.unidad.feedback = tempFeedbackMal;
         }
-
-        console.log($scope.unidad.feedback);
 
         $scope.unidad.feedback[0].audio.audio.play();
 

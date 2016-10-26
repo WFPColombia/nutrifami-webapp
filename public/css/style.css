@@ -804,6 +804,11 @@ header .navbar-default .navbar-toggle .icon-bar {
     padding-top: 28px;
     height: 295px;
     border: solid 1px #dcdcdc;
+    text-align: center;
+}
+
+.lecciones .panel-body .leccion img {
+    width: 100px;
 }
 
 .lecciones .panel-body .leccion h3 {

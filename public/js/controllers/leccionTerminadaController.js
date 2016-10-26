@@ -1,12 +1,10 @@
 /*global angular*/
-nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorScroll, $routeParams, bsLoadingOverlayService) {
+nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorScroll, $routeParams, bsLoadingOverlayService, ngAudio) {
     'use strict';
 
     $anchorScroll();
 
-    /* Overloading*/
     bsLoadingOverlayService.start();
-    /* Se apaga cuando el todo el contenido de la vista ha sido cargado*/
     $scope.$on('$viewContentLoaded', function() {
         bsLoadingOverlayService.stop();
     });
@@ -21,28 +19,26 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorSc
         'audioFinalizado': 'assets/' + $scope.leccion.finalizado.audio.nombre,
     };
 
+    $scope.leccion.finalizado.audio.leccionCompletada = ngAudio.load('audios/muy-bien-leccion-completada.mp3');
+    $scope.leccion.finalizado.audio.audio = ngAudio.load($scope.leccion.finalizado.audio.url);
+    $scope.leccion.finalizado.audio.audioPuntos = ngAudio.load("audios/" + $scope.leccion.finalizado.puntos + "-puntos-ganados.mp3");
 
-    //AudioService.preloadSimple($scope.audios);
 
 
-    /*
-        $timeout(function() {
-            AudioService.play('leccionCompletada');
-        }, 1000);*/
+    $scope.leccion.finalizado.audio.leccionCompletada.play();
+
+    $scope.leccion.finalizado.audio.leccionCompletada.complete(function() {
+        $scope.leccion.finalizado.audio.leccionCompletada.stop();
+        $scope.leccion.finalizado.audio.audio.play();
+        $scope.leccion.finalizado.audio.audio.complete(function() {
+            $scope.leccion.finalizado.audio.audio.stop();
+        })
+    });
 
     $scope.leccionCompletada = {};
     //$scope.leccionCompletada.audio = ngAudio.load("audios/muy-bien-leccion-completada.mp3");
 
 
-
-    console.log($scope.leccion);
-
-    //$scope.leccion.finalizado.audio.audio = ngAudio.load("assets/" + $scope.leccion.finalizado.audio.nombre);
-    //$scope.leccion.finalizado.audio.audioPuntos = ngAudio.load("audios/" + $scope.leccion.finalizado.puntos + "-puntos-ganados.mp3");
-
-    $scope.playAudio = function(audio) {
-        AudioService.play(audio);
-    };
 
     $scope.continuar = function() {
         AudioService.unload($scope.audios);

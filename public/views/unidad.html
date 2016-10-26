@@ -22,7 +22,7 @@
                             <div class="unidad-descripcion">
                                 <h2>{{ unidad.instruccion.texto}}</h2>
                                 <h3>{{ unidad.titulo.texto}}</h3>
-                                <img ng-src="{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen === undefined}}" />
+                                <img ng-src="{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen === undefined || unidad.tipo.id == 2}}" />
                                 <p>{{ unidad.texto}}</p>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                 <ul ng-repeat="opcion in unidad.opciones">
                                     <li>
                                         {{opcion.texto}}
-                                        <button ng-click='opcion.audio.audio.paused ? opcion.audio.aud io.play() : opcion.audio.audio.pause()' button class="glyphicon glyphicon-volume-up" aria-hidden="true">
+                                        <button ng-click='opcion.audio.audio.paused ? opcion.audio.audio.play() : opcion.audio.audio.pause()' button class="glyphicon glyphicon-volume-up" aria-hidden="true">
                                         </button>
                                     </li>
                                 </ul>
