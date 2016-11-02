@@ -6,9 +6,7 @@
         <div>
             <p class="mensaje" ng-show="{{data.estado === 'acierto'}}">Muy bien! Respuesta correcta</p>
             <p class="mensaje" ng-hide="{{data.estado === 'acierto'}}">Intenta de nuevo! respuesta incorrecta</p>
-            <p ng-repeat="fb in data.feedback track by $index" class="feedback">
-                {{fb.texto}}
-            </p>
+            <div ng-repeat="fb in data.feedback track by $index" class="feedback" ng-bind-html="fb.texto | trust"></div>
         </div>
         <div class="modal-footer">
             <div ng-class=" data.activo ? 'activo' : 'no-activo'">

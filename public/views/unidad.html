@@ -23,7 +23,7 @@
                                 <h2>{{ unidad.instruccion.texto}}</h2>
                                 <h3>{{ unidad.titulo.texto}}</h3>
                                 <img ng-src="{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen === undefined || unidad.tipo.id == 2}}" />
-                                <p>{{ unidad.texto}}</p>
+                                <div class="unidad-informativa" ng-bind-html="unidad.texto | trust"></div>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
     * id = 2; Parejas
     * id = 3,4,5; Opción multiple con única respuesta, y verdadero o falso.
                     -->
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-xs-12">
                             <div class="unidad-informativa" ng-show="unidad.tipo.id == 1">
                                 <p ng-click="">
@@ -50,7 +50,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="row unidad-parejas" ng-show="unidad.tipo.id == 2">
                         <parejas-unidad-info ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}"></parejas-unidad-info>
                     </div>

@@ -3,12 +3,12 @@
     <div class="container">
         <div class="modulos lecciones">
             <div class="panel">
-                <div class="row"> 
+                <div class="row">
                     <div class="panel-header">
                         <div class="col-md-6">
                             <div class="modulo-descripcion">
                                 <h1>{{ modulo.titulo.texto}}</h1>
-                                <p>{{ modulo.descripcion.texto}}</p>
+                                <div ng-bind-html="modulo.descripcion.texto | trust"></div>
                             </div>
                         </div>
                         <div class="col-md-5 col-md-offset-1">

@@ -951,7 +951,8 @@ header .navbar-default .navbar-toggle .icon-bar {
     margin-top: 30px;
 }
 
-.unidad .panel-header .unidad-descripcion h3 {
+.unidad .panel-header .unidad-descripcion h3,
+.unidad .panel-header .unidad-descripcion .feedback-final p {
     font-size: 30pt;
     margin-top: 20px;
     color: #2f3e47;
@@ -1309,6 +1310,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .unidad .unidad-informativa p {
     margin-bottom: 30px;
+    padding: 0px !important;
 }
 
 .unidad .unidad-informativa ul {

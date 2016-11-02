@@ -6,7 +6,7 @@
         <div class="opcion" ng-class="[rollover,info.media !== undefined ? 'opcion-con-imagen' : '', info.selected ? 'selected' : 'no-selected']">
             <div class="caption">
                 <!--<img data-ng-src="{{info.media.url}}" alt="{{ info.titulo}}" ng-hide="{{info.media === undefined}}" />-->
-                <p>{{ info.texto}}</p>
+                <div ng-bind-html="info.texto | trust"></div>
                 <div class="boton">
                     <span class="btn btn-default center-block" role="button">Seleccionar</span>
                 </div>

@@ -24,7 +24,7 @@
                         <div class="col-md-12">
                             <div class="unidad-descripcion">
                                 <h2>¡Paso Completado!</h2>
-                                <h3>{{ leccion.finalizado.texto}} </h3>
+                                <div class="feedback-final" ng-bind-html="leccion.finalizado.texto | trust"></div>
                             </div>
                         </div>
                     </div>
