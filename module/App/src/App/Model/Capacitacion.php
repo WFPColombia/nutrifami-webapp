@@ -21,6 +21,8 @@ use App\Model\Tables\CapUnidadinformacionTable;
 use App\Model\Tables\CapUnidadinformacionTipoTable;
 use App\Model\Tables\CapUnidadinformacionXOpcionTable;
 use App\Model\Tables\CapUnidadinformacionOpcionTable;
+use App\Model\Tables\TipTipsTable;
+use App\Model\Tables\TipLeccionElementoTable;
 
     /**********************************************************
     * MODELO Module
@@ -55,6 +57,8 @@ class Capacitacion
         $dataLecciones = Array();
         $unidadesId = Array();
         $dataUnidadesinformacion = Array();
+        $tipsId = Array();
+        $dataTips = Array();
         foreach ($capacitaciones AS $capacitacion) {
             $dataCapacitaciones[$capacitacion['cap_id']] = Array('id'=> $capacitacion['cap_id']
                                                 , 'titulo'=> $capacitacion['cap_titulo']
@@ -86,8 +90,9 @@ class Capacitacion
                 $dataModulos[$elemento['id']] = $moduloData['modulo'];
             }
         }
+        
         foreach ( $leccionesId AS $lid ) {
-            $leccionData = $this->getLeccion($lid, true);
+            $leccionData = $this->getLeccion($lid, true, true);
             $dataLecciones[$lid] = $leccionData['leccion'];
             $dataLecciones[$lid]['completo'] = false;
             if (count($unidadesId) > 0) {
@@ -95,10 +100,19 @@ class Capacitacion
             }else {
                 $unidadesId = $leccionData['unidadesId'];
             }
+            if (count($tipsId) > 0) {
+                $tipsId = array_merge($tipsId, $leccionData['tipsId']);
+            }else {
+                $tipsId = $leccionData['tipsId'];
+            }
         }
         foreach ( $unidadesId AS $uid ){
             $dataUnidadesinformacion[$uid] = $this->getUnidad($uid);
             $dataUnidadesinformacion[$uid]['completo'] = false;
+        }
+        foreach ( $tipsId AS $tid ) {
+            $dataTips[$tid] = $this->getTip($tid);
+            $dataTips[$tid]['completo'] = true;
         }
         $data['cap_capacitacionesId'] = $dataCapacitacionesId;
         $dataCapacitaciones['completo'] = false;
@@ -106,6 +120,7 @@ class Capacitacion
         $data['cap_modulos'] = $dataModulos;
         $data['cap_lecciones'] = $dataLecciones;
         $data['cap_unidadesinformacion'] = $dataUnidadesinformacion;
+        $data['cap_tips'] = $dataTips;
         
         $file = '{ ';
         
@@ -113,7 +128,8 @@ class Capacitacion
         $file .= '"serv_capacitaciones" : '.json_encode($dataCapacitaciones).', ';
         $file .= '"serv_modulos" : '.json_encode($dataModulos).', ';
         $file .= '"serv_lecciones" : '.json_encode($dataLecciones).', ';
-        $file .= '"serv_unidades" : '.json_encode($dataUnidadesinformacion).'';
+        $file .= '"serv_unidades" : '.json_encode($dataUnidadesinformacion).', ';
+        $file .= '"serv_tips" : '.json_encode($dataTips).'';
         
         $file .= ' }';
         
@@ -187,10 +203,12 @@ class Capacitacion
     }
     
     
-    public function getLeccion ($lid = 0, $getUnidades = false) {
+    public function getLeccion ($lid = 0, $getUnidades = false, $getTips = false) {
         $leccionTable = new CapLeccionTable();
         $leccion = $leccionTable->getLeccion($lid);
         $data = Array();
+        $unidadesId = Array();
+        $tipsId = Array();
         if ( isset($leccion) && isset($leccion['lec_id']) ){
             $data['id'] = $leccion['lec_id']; 
             $data['titulo'] = Array('texto' => $leccion['lec_titulo'], 'audio' => Array('url'=>'https://s3.amazonaws.com/nutrifami/'.$leccion['lec_audio'], 'nombre'=>$leccion['lec_audio'], 'loaded'=>'empty')); 
@@ -206,16 +224,31 @@ class Capacitacion
                 $orderU = substr('0'.$elemento['order'], -2).substr('0'.$elemento['father'], -2);
                 $aElementos[$orderU] = $elemento['id'];
             }
-            $unidadesId = Array();
             foreach ( $aElementos AS $elemento ){ 
                  $data['unidades'][] = $elemento;
                  if ($getUnidades) {
                      $unidadesId[$elemento] = $elemento;
                  }
             }
+            $tipsObj = new TipLeccionElementoTable();
+            $tips = $tipsObj->getIdListByLeccion($leccion['lec_id']);
+            $tElementos = Array();
+            
+            foreach ( $tips as $tip ) {
+                $tElementos[$tip['id']] = $tip['id'];
+            }
+            foreach ( $tElementos AS $elemento ){ 
+                 $data['tips'][] = $elemento;
+                 if ($getTips) {
+                     $tipsId[$elemento] = $elemento;
+                 }
+            }            
+            
             $data['finalizado'] = Array('texto' => $leccion['lec_mensaje'], 'audio' => Array('url' => 'https://s3.amazonaws.com/nutrifami/'.$leccion['lec_audio_final'], 'nombre' => $leccion['lec_audio_final'], 'loaded' => 'empty'));
         }
-        if ($getUnidades) {
+        if ($getUnidades && $getTips) {
+            return Array('leccion' => $data, 'unidadesId' => $unidadesId, 'tipsId' => $tipsId );
+        }else if ($getUnidades) {
             return Array('leccion' => $data, 'unidadesId' => $unidadesId );
         }else{
             return $data;
@@ -277,6 +310,20 @@ class Capacitacion
                 }
             }
         }
+        return $data;
+    }
+    
+    
+    
+    public function getTip ( $tid = 0 ) {
+        $tipTable = new TipTipsTable();
+        $tip = $tipTable->getTip($tid);
+        $data = Array();
+        $data['id'] = $tip['tip_id'];
+        $data['texto'] = $tip['tip_texto'];
+        $data['tags'] = $tip['tip_tags'];
+        $data['activo'] = $tip['tip_activo'];
+        $data['fecha'] = $tip['tip_fecha'];
         return $data;
     }
    
