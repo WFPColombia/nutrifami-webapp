@@ -28,7 +28,7 @@ class JobsController extends AbstractActionController
         $capacitacion = new Capacitacion(); 
         $data = $capacitacion->getAll();
         
-        print_r($data); die;
+        //print_r($data); die;
         
         $jsonFile = getcwd().'/public/js/capacitacion.JSON'; 
         
