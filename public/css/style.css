@@ -946,9 +946,14 @@ header .navbar-default .navbar-toggle .icon-bar {
     box-shadow: none;
 }
 
-.unidad .panel-header .unidad-descripcion h2 {
+.unidad .panel-header .unidad-descripcion .unidad-tipo-descripcion h2 {
     font-size: 20pt;
     margin-top: 30px;
+}
+
+.unidad .panel-header .unidad-descripcion .unidad-tipo-descripcion img {
+    margin-top: 0px;
+    border: none;
 }
 
 .unidad .panel-header .unidad-descripcion h3,
@@ -963,6 +968,10 @@ header .navbar-default .navbar-toggle .icon-bar {
     margin-top: 25px;
     color: #2f3e47;
     padding: 0 100px;
+}
+
+.unidad .panel-header .unidad-descripcion a {
+    color: #09df78;
 }
 
 .unidad .panel-header .unidad-descripcion img {

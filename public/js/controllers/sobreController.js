@@ -1,8 +1,12 @@
 /*global angular*/
-nutrifamiApp.controller('SobreController', function($scope, $anchorScroll, bsLoadingOverlayService) {
+nutrifamiApp.controller('SobreController', function($scope, $anchorScroll, bsLoadingOverlayService, UsuarioService) {
     'use strict';
 
     $anchorScroll();
+
+
+    $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
+
 
     /* Overloading*/
     bsLoadingOverlayService.start();
