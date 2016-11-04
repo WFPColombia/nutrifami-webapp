@@ -101,6 +101,11 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/tips/:modulo', {
         controller: 'TipsModuloController',
         templateUrl: 'views/tipsModulo.html'
+    });
+
+    $routeProvider.when('/juego', {
+        controller: 'JuegoController',
+        templateUrl: 'views/juego.html'
     })
 
 

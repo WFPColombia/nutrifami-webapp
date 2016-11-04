@@ -37,6 +37,7 @@ h6 {
     position: fixed;
     top: 0px;
     width: 100%;
+    z-index: 10;
 }
 
 .landing header.scrolled {
@@ -515,7 +516,7 @@ header .navbar {
 
 header .navbar-brand {
     padding: 8px 35px;
-    margin-right: 60px;
+    margin-right: 10px;
 }
 
 header .navbar-default .navbar-nav > li > a,
