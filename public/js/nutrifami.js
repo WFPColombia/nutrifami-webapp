@@ -88,6 +88,7 @@ var nutrifami = {
 
                     /* Combinamos la información de usuarioActivo existente con la nueva */
                     $.extend(usuarioActivo, objServ);
+                    usuarioActivo.narrador = true;
 
                     /* Se copia la información de avance en un objeto independiente y se elimina la información de usuarioActivo*/
                     usuarioAvance = usuarioActivo.avance[usuarioActivo.id];
@@ -246,15 +247,15 @@ var nutrifami = {
                 nutrifami.training.cap_modulos = capacitacion["serv_modulos"];
                 nutrifami.training.cap_lecciones = capacitacion["serv_lecciones"];
                 nutrifami.training.cap_unidadesinformacion = capacitacion["serv_unidades"];
-                console.log("Carga para móvil");
+                nutrifami.training.cap_unidadestips = capacitacion["serv_tips"];
             } else {
-                console.log("Carga para web");
                 $.getJSON("js/capacitacion.JSON", function(data) {
                     nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
                     nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
                     nutrifami.training.cap_modulos = data['serv_modulos'];
                     nutrifami.training.cap_lecciones = data['serv_lecciones'];
                     nutrifami.training.cap_unidadesinformacion = data['serv_unidades'];
+                    nutrifami.training.cap_unidadestips = data["serv_tips"];
                 }).fail(function(jqxhr, textStatus, error) {
                     console.log(jqxhr);
                     var err = textStatus + ", " + error;
@@ -649,6 +650,16 @@ var nutrifami = {
         getUnidad: function(uid) {
             if (typeof nutrifami.training.cap_unidadesinformacion[uid] !== 'undefined') {
                 return nutrifami.training.cap_unidadesinformacion[uid];
+            } else {
+                return false;
+            }
+        },
+        /*
+         * nutrifami.training.getUnidad(uid);
+         */
+        getTips: function() {
+            if (typeof nutrifami.training.cap_unidadestips !== 'undefined') {
+                return nutrifami.training.cap_unidadestips;
             } else {
                 return false;
             }

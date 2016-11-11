@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorScroll, $routeParams, bsLoadingOverlayService, ngAudio) {
+nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorScroll, $routeParams, bsLoadingOverlayService, ngAudio, AudioService) {
     'use strict';
 
     $anchorScroll();
@@ -23,17 +23,18 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorSc
     $scope.leccion.finalizado.audio.audio = ngAudio.load($scope.leccion.finalizado.audio.url);
     $scope.leccion.finalizado.audio.audioPuntos = ngAudio.load("audios/" + $scope.leccion.finalizado.puntos + "-puntos-ganados.mp3");
 
+    if ($scope.usuarioActivo.narrador) {
+        $scope.leccion.finalizado.audio.leccionCompletada.play();
 
+        $scope.leccion.finalizado.audio.leccionCompletada.complete(function () {
+            $scope.leccion.finalizado.audio.leccionCompletada.stop();
+            $scope.leccion.finalizado.audio.audio.play();
+            $scope.leccion.finalizado.audio.audio.complete(function () {
+                $scope.leccion.finalizado.audio.audio.stop();
+            });
+        });
+    }
 
-    $scope.leccion.finalizado.audio.leccionCompletada.play();
-
-    $scope.leccion.finalizado.audio.leccionCompletada.complete(function() {
-        $scope.leccion.finalizado.audio.leccionCompletada.stop();
-        $scope.leccion.finalizado.audio.audio.play();
-        $scope.leccion.finalizado.audio.audio.complete(function() {
-            $scope.leccion.finalizado.audio.audio.stop();
-        })
-    });
 
     $scope.leccionCompletada = {};
     //$scope.leccionCompletada.audio = ngAudio.load("audios/muy-bien-leccion-completada.mp3");

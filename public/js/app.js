@@ -13,7 +13,7 @@ var nutrifamiApp = angular.module('NutrifamiWeb', dependencies);
 nutrifamiApp.run(function($rootScope, $location, $cookieStore, bsLoadingOverlayService) {
     // keep user logged in after page refresh
     $rootScope.globals = $cookieStore.get('globals') || {};
-
+    
     bsLoadingOverlayService.setGlobalConfig({
         templateUrl: 'views/template/loading-overlay-template.html'
     });

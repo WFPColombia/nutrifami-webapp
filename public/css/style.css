@@ -883,7 +883,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 /* UNIDADES */
 
 .unidad .panel-header .unidad-sonido {
-    background-color: #09df78;
+    background-color: #d200ff;
     width: 64px;
     height: 64px;
     position: absolute;
@@ -894,11 +894,20 @@ header .navbar-default .navbar-toggle .icon-bar {
     text-align: center;
     padding-top: 12px;
     font-weight: normal;
+    padding-left: 3px;
+    -webkit-box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
+-moz-box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
+box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
 }
+
 
 .unidad .panel-header .unidad-sonido a {
     color: #ffffff;
     text-decoration: none;
+}
+
+.unidad .panel-header .unidad-sonido a:focus{
+    outline: none;
 }
 
 .unidad .panel-header .leccion-avance .progress {
@@ -1169,10 +1178,43 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .calificacion .feedback,
-.modal-dialog .calificacion .feedback {
+.modal-dialog .calificacion .feedback ,
+.modal-dialog .tips .tip{
     color: #2f3e47;
     font-size: 13pt;
     text-align: center;
+}
+
+.modal-dialog .tips .modal-header{
+    text-align: center;
+    border-bottom: none;
+}
+
+.modal-dialog .tips .modal-footer{
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 10px solid #e5e5e5;
+}
+
+.modal-dialog .tips .modal-footer a{
+    color: #2f3e47;
+    font-size: 22pt;
+    text-align: center;
+    text-decoration: none;
+}
+
+.modal-dialog .tips .modal-footer a .glyphicon{
+    font-size: 40px;
+    position: relative;
+    top: 10px;
+}
+
+.modal-dialog .tips .modal-footer a .glyphicon.glyphicon-volume-off{
+    color: #ff1244;
+}
+
+.modal-dialog .tips .modal-footer a .glyphicon.glyphicon-volume-up{
+    color: #00c97e;
 }
 
 .unidad .panel-body .calificacion .no-activo .btn-default,

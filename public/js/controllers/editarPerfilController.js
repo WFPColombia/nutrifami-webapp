@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('EditarPerfilController', ['$scope', '$location', 'PerfilService', '$rootScope', '$anchorScroll', 'bsLoadingOverlayService', '$timeout', function ($scope, $location, PerfilService, $rootScope, $anchorScroll, bsLoadingOverlayService, $timeout) {
+nutrifamiApp.controller('EditarPerfilController',function ($scope, $location, PerfilService, $rootScope, $anchorScroll, bsLoadingOverlayService, $timeout, UsuarioService) {
         'use strict';
 
         $anchorScroll();
@@ -15,7 +15,7 @@ nutrifamiApp.controller('EditarPerfilController', ['$scope', '$location', 'Perfi
             }, 300);
         });
 
-        var usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+        var usuarioActivo = UsuarioService.getUsuarioActivo();
         $scope.usuarioActivo = usuarioActivo;
         $scope.usuarioActivo.generos = {
             availableOptions: [
@@ -62,7 +62,7 @@ nutrifamiApp.controller('EditarPerfilController', ['$scope', '$location', 'Perfi
             });
 
         };
-    }]);
+    });
 
 nutrifamiApp.filter('capitalize', function () {
     'use strict';
