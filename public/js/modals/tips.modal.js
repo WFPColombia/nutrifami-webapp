@@ -12,9 +12,7 @@ nutrifamiApp.controller('TipsModalController', function($scope, $uibModalInstanc
     
     $scope.toogleNarrador = function(narrador){
         
-        console.log($scope);
         $uibModalInstance.close(narrador);
-        //$scope.$parent.usuarioActivo.narrador = ;
         
     }
 });

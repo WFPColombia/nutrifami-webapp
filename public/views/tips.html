@@ -6,45 +6,27 @@
                 <div class="panel-header">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 ng-click="playAudio('audioTitulo')"><i class="tips-titulo-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></i> Consejos Saludables</h1>
+                            <h1 ng-click="audio1.paused ? audio1.play() : audio1.pause()"><i class="tips-titulo-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></i> Consejos Saludables</h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p ng-click="playAudio('audioDescripcion')"><i class="lecciones-descripcion-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></i> Encuentra consejos relacionados de cada una de las lecciones de Nutrifami.</p>
+                            <p ng-click="audio2.paused ? audio2.play() : audio2.pause()"><i class="lecciones-descripcion-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></i> Encuentra consejos relacionados de cada una de las lecciones de Nutrifami.</p>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3">
-                            <button ng-click='$parent.playAudio(leccion.titulo.audio.id)' class="tip-sonido glyphicon glyphicon-volume-up
+                        
+                        <div class="col-md-3" ng-repeat="m in modulos">
+                            
+                            <button ng-click='m.titulo.audio.audio.paused ? m.titulo.audio.audio.play() : m.titulo.audio.audio.pause()' class="tip-sonido glyphicon glyphicon-volume-up
 " aria-hidden="true"></button>
-                            <div class="tip" go-click="/tips/16" nav-direction="forward">
-                                <img ng-src="img/icons/ico-tip-1.png" />
-                                <h2>Alimentación Saludable</h2>
+                            <div class="tip" go-click="/tips/{{m.id}}" nav-direction="forward">
+                                <img ng-src="{{m.imagen.url}}" />
+                                <h2>{{m.titulo.texto}}</h2>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <button ng-click='$parent.playAudio(leccion.titulo.audio.id)' class="tip-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></button>
-                            <div class="tip" go-click="/tips/17" nav-direction="forward">
-                                <img ng-src="img/icons/ico-tip-2.png" />
-                                <h2>Combinaciones saludables</h2>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <button ng-click='$parent.playAudio(leccion.titulo.audio.id)' class="tip-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></button>
-                            <div class="tip" go-click="/tips/18" nav-direction="forward">
-                                <img ng-src="img/icons/ico-tip-3.png" />
-                                <h2>Mujeres embarazadas</h2>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <button ng-click='$parent.playAudio(leccion.titulo.audio.id)' class="tip-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></button>
-                            <div class="tip" go-click="/tips/19" nav-direction="forward">
-                                <img ng-src="img/icons/ico-tip-4.png" />
-                                <h2>Manejo de los alimentos</h2>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

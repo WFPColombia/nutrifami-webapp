@@ -6,21 +6,22 @@
                 <div class="panel-header">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 ng-click="playAudio('audioTitulo')"><i class="tips-titulo-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></i> Alimentación saludabe</h1>
+                            <h1 ng-click='modulo.titulo.audio.audio.paused ? modulo.titulo.audio.audio.play() : modulo.titulo.audio.audio.pause()'><i class="tips-titulo-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></i> {{modulo.titulo.texto}}</h1>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <uib-accordion close-others="oneAtATime">
-                            <div ng-repeat="group in groups">
+                            <div ng-repeat="group in grupos">
                                 <div uib-accordion-group class="panel-default" is-open="status.isFirstOpen">
                                     <uib-accordion-heading>
-                                        <img src="img/icons/ico-compras-{{group.grupo_id}}.png" ng-hide="group.grupo_nombre === null" /> {{group.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
+                                        {{group.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
                                     </uib-accordion-heading>
-                                    <p ng-repeat="item in group.items">
-                                        {{item}}
-                                    </p>
+                                    <div class="tip-texto" ng-repeat="item in group.items" >
+                                        <div ng-bind-html="item.texto | format | trust"></div>
+                                        <div class="compartir"> <span>Compartir tip con:</span> <a href="#"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a> </div>
+                                    </div>
                                 </div>
                             </div>
                         </uib-accordion>

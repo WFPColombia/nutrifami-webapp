@@ -896,8 +896,8 @@ header .navbar-default .navbar-toggle .icon-bar {
     font-weight: normal;
     padding-left: 3px;
     -webkit-box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
--moz-box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
-box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
+    -moz-box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
+    box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
 }
 
 
@@ -1802,11 +1802,16 @@ box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
     margin-bottom: 30px;
 }
 
+.tips .panel .panel-header h1{
+    cursor: pointer;
+}
+
 .tips .panel .panel-header p {
     text-align: center;
     margin-top: 15px;
     color: #2f3e47;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .tips .panel .panel-body .tip {
@@ -1823,6 +1828,7 @@ box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
 
 .tips .panel .panel-body .tip img {
     margin-top: 15px;
+    width: 46%;
 }
 
 .tips .panel .panel-body .tip h2 {
@@ -1831,6 +1837,43 @@ box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
     margin-top: 15px;
     font-size: 17px;
 }
+
+.tips .panel .panel-body .tip-texto p {
+    margin: 35px 15px;
+    width: 70%;
+    
+    
+}
+
+.tips .panel .panel-body .tip-texto{
+    position: relative;
+    border-top: 5px solid #00c97e;
+
+}
+
+.tips .panel .panel-body a.accordion-toggle:active, 
+.tips .panel .panel-body a.accordion-toggle:focus {
+    outline: none;
+}
+
+.tips .panel .panel-body  span.ng-binding.ng-scope {
+    font-size: 25px;
+}
+
+.tips .panel .panel-body .tip-texto .compartir{
+    position: absolute;
+    top: 25px;
+    right: 50px;
+}
+
+.tips .panel .panel-body .tip-texto .compartir span{
+    font-size: 13px;
+    margin-right: 10px;
+    color: #ff5400;
+}
+
+
+
 
 .tips .panel .panel-body .tip-sonido {
     background-color: rgba(0, 0, 0, 0);
@@ -1846,6 +1889,10 @@ box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
+}
+.tips .panel .panel-body .tip-sonido:focus,
+.tips .panel .panel-body .tip-sonido:active{
+    outline: none;
 }
 
 

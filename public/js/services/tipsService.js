@@ -5,7 +5,7 @@ nutrifamiApp.factory('TipsService', function () {
      * 
      * @returns {Array|Object}
      * 
-     * UsuarioService.getTipsByLeccion()
+     * TipsService.getTipsByLeccion()
      *  
      */
     service.getTipsByLeccion = function (leccion) {
