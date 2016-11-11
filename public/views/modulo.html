@@ -8,7 +8,7 @@
                         <div class="col-md-6">
                             <div class="modulo-descripcion">
                                 <h1>{{ modulo.titulo.texto}}</h1>
-                                <div ng-bind-html="modulo.descripcion.texto | trust"></div>
+                                <div ng-bind-html="modulo.descripcion.texto | format | trust"></div>
                             </div>
                         </div>
                         <div class="col-md-5 col-md-offset-1">

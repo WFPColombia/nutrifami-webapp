@@ -3,3 +3,14 @@ nutrifamiApp.filter("trust", ['$sce', function($sce) {
         return $sce.trustAsHtml(htmlCode);
     }
 }]);
+
+nutrifamiApp.filter('format', function() {
+    return function(input) {
+        input = input || '';
+        if (input.slice(0, 3) != '<p>') {
+            input = "<p>" + input + "</p>";
+
+        }
+        return input;
+    };
+})
