@@ -1,8 +1,7 @@
-nutrifamiApp.controller('ComprasController', function($scope, ComprasService, ngAudio, bsLoadingOverlayService, UsuarioService) {
+nutrifamiApp.controller('ComprasController', function($scope, $timeout, $uibModal, ComprasService, ngAudio, bsLoadingOverlayService, UsuarioService) {
     'use strict';
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo()
-    console.log($scope.usuarioActivo);
     $scope.compras = true;
 
 
@@ -16,25 +15,48 @@ nutrifamiApp.controller('ComprasController', function($scope, ComprasService, ng
         'pid': 0
     };
 
+    $scope.consumoUltimoMes = [{
+        'nombre': "Cereales, raíces, tubérculos y plátanos.",
+        'porcentaje_compra': 0,
+    }, {
+        'nombre': "Carnes, huevos y leguminosas secas.",
+        'porcentaje_compra': 0
+
+    }, {
+        'nombre': "Leches y otros productos lácteos.",
+        'porcentaje_compra': 0
+    }, {
+        'nombre': "Frutas y verduras.",
+        'porcentaje_compra': 0
+    }, {
+        'nombre': "Grasas.",
+        'porcentaje_compra': 0
+    }, {
+        'nombre': "Azucar.",
+        'porcentaje_compra': 0
+    }];
+
+
     var cargarRecomendados = function() {
 
-        console.log("CargarR");
         bsLoadingOverlayService.start();
 
         ComprasService.getProductosPuntoVenta(puntoVenta, function(response) {
             if (response.success) {
                 $scope.gruposAlimenticios = response.data;
-                console.log($scope.gruposAlimenticios);
             } else {
                 console.log(response.message);
             }
             bsLoadingOverlayService.stop();
+            $timeout(function() {
+                $scope.animar = true;
+            }, 1500)
 
         });
     };
 
-    usuario.did = $scope.usuarioActivo.login_documento;
-    //usuario.did = 66976632;
+    //usuario.did = $scope.usuarioActivo.login_documento;
+    usuario.did = '1006330568';
 
     bsLoadingOverlayService.start();
 
@@ -42,20 +64,52 @@ nutrifamiApp.controller('ComprasController', function($scope, ComprasService, ng
         $scope.noHayDatos = false;
         if (response.success) {
             $scope.consumoUltimoMes = response.data;
+
             puntoVenta['pid'] = response.puntoVenta;
             cargarRecomendados();
         } else {
             $scope.noHayDatos = true;
-            console.log(response.message);
+            //console.log(response.message);
         }
 
         bsLoadingOverlayService.stop();
     });
 
+    $scope.verGrupo = function(id) {
+
+        var data = $scope.consumoUltimoMes[id - 1];
+
+        $uibModal.open({
+            animation: true,
+            templateUrl: 'views/modals/comprasGrupo.modal.html',
+            controller: 'ComprasGrupoModalController',
+            keyboard: false,
+            size: 'lg',
+            resolve: {
+                data: function() {
+                    return data;
+                }
+            }
+        });
+
+        //Animar durante unos segundos el gif de la carita
 
 
 
+        $uibModal.open({
+            animation: true,
+            templateUrl: 'views/modals/animacionCompras.modal.html',
+            controller: 'AnimacionComprasModalController',
+            keyboard: false,
+            size: 'lg',
+            resolve: {
+                data: function() {
+                    return data;
+                }
+            }
+        });
 
+    }
 
 
 });

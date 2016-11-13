@@ -13,26 +13,6 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="recomendados-header" ng-click="audio2.paused ? audio2.play() : audio2.pause()">
-                                <img src="img/canasta-ideal.png" alt="Canasta ideal" />
-                                <p><i class="glyphicon glyphicon-volume-up"></i> Aquí encontrará recomendaciones para que su dieta sea más variada</p>
-                            </div>
-                            <div class="recomendados-body">
-                                <uib-accordion close-others="oneAtATime">
-                                    <div ng-repeat="group in gruposAlimenticios">
-                                        <div uib-accordion-group class="panel-default grupo-{{group.grupo_id}}" is-open="status.isFirstOpen">
-                                            <uib-accordion-heading>
-                                                <img src="img/icons/ico-compras-{{group.grupo_id}}.png" ng-hide="group.grupo_nombre === null" /> {{group.grupo_nombre !== null ? group.grupo_nombre : 'Sin categoria'}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
-                                            </uib-accordion-heading>
-                                            <p ng-repeat="item in group.productos">
-                                                {{item.nombre}}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </uib-accordion>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="compras-descripcion">
                                 <p ng-click='' ng-show="noHayDatos">
                                     No se encontraron registros para este usuario
@@ -42,6 +22,15 @@
                                 </p>
                             </div>
                             <div class="compras-porcentajes">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <div class="compras-ideal"></div>
+                                        <div class="compras-ideal-max"></div>
+                                        <div class="compras-ideal-min"></div>
+                                        <div class="compra-ideal-convencion">Compra
+                                            <br>Ideal</div>
+                                    </div>
+                                </div>
                                 <div class="row" ng-repeat="grupo in consumoUltimoMes">
                                     <div class="col-md-4">
                                         <div class="compras-porcentaje-tipo">
@@ -49,13 +38,32 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 compras-porcentaje-barra">
-                                        <div class="progress" go-click="/compras/{{grupo.grupo_id}}" ng-click="stopAudio()">
-                                            <div class="progress-bar grupo-{{grupo.grupo_id}}" style="width: {{grupo.porcentaje_compra}}%;"></div>
-                                            <div class="cantidad">{{grupo.porcentaje_compra}}<span>%</span></div>
+                                        <div class="progress" ng-click="verGrupo(grupo.grupo_id)">
+                                            <div class="progress-bar grupo-{{grupo.grupo_id}}" style="width: {{animar ?  grupo.porcentaje_visual: '0'}}%;"></div>
                                             <i class="glyphicon glyphicon-chevron-right" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="recomendados-header" ng-click="audio2.paused ? audio2.play() : audio2.pause()">
+                                <img src="img/canasta-ideal.png" alt="Canasta ideal" />
+                                <p><i class="glyphicon glyphicon-volume-up"></i> Aquí encontrará recomendaciones para que su dieta sea más variada</p>
+                            </div>
+                            <div class="recomendados-body">
+                                <uib-accordion close-others="oneAtATime">
+                                    <div ng-repeat="group in gruposAlimenticios">
+                                        <div uib-accordion-group class="panel-default grupo-{{group.grupo_id}}" is-open="status.open">
+                                            <uib-accordion-heading>
+                                                <img src="img/icons/ico-compras-{{group.grupo_id}}.png" ng-hide="group.nombre === null" /> {{group.nombre !== null ? group.nombre : 'Sin categoria'}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                            </uib-accordion-heading>
+                                            <p ng-repeat="item in group.productos">
+                                                {{item.nombre}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </uib-accordion>
                             </div>
                         </div>
                     </div>

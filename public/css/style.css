@@ -895,18 +895,17 @@ header .navbar-default .navbar-toggle .icon-bar {
     padding-top: 12px;
     font-weight: normal;
     padding-left: 3px;
-    -webkit-box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
-    -moz-box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
-    box-shadow: 0px 0px 50px 0px rgba(210,0,255,0.6);
+    -webkit-box-shadow: 0px 0px 50px 0px rgba(210, 0, 255, 0.6);
+    -moz-box-shadow: 0px 0px 50px 0px rgba(210, 0, 255, 0.6);
+    box-shadow: 0px 0px 50px 0px rgba(210, 0, 255, 0.6);
 }
-
 
 .unidad .panel-header .unidad-sonido a {
     color: #ffffff;
     text-decoration: none;
 }
 
-.unidad .panel-header .unidad-sonido a:focus{
+.unidad .panel-header .unidad-sonido a:focus {
     outline: none;
 }
 
@@ -1178,42 +1177,42 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .calificacion .feedback,
-.modal-dialog .calificacion .feedback ,
-.modal-dialog .tips .tip{
+.modal-dialog .calificacion .feedback,
+.modal-dialog .tips .tip {
     color: #2f3e47;
     font-size: 13pt;
     text-align: center;
 }
 
-.modal-dialog .tips .modal-header{
+.modal-dialog .tips .modal-header {
     text-align: center;
     border-bottom: none;
 }
 
-.modal-dialog .tips .modal-footer{
+.modal-dialog .tips .modal-footer {
     margin-top: 35px;
     padding-top: 30px;
     border-top: 10px solid #e5e5e5;
 }
 
-.modal-dialog .tips .modal-footer a{
+.modal-dialog .tips .modal-footer a {
     color: #2f3e47;
     font-size: 22pt;
     text-align: center;
     text-decoration: none;
 }
 
-.modal-dialog .tips .modal-footer a .glyphicon{
+.modal-dialog .tips .modal-footer a .glyphicon {
     font-size: 40px;
     position: relative;
     top: 10px;
 }
 
-.modal-dialog .tips .modal-footer a .glyphicon.glyphicon-volume-off{
+.modal-dialog .tips .modal-footer a .glyphicon.glyphicon-volume-off {
     color: #ff1244;
 }
 
-.modal-dialog .tips .modal-footer a .glyphicon.glyphicon-volume-up{
+.modal-dialog .tips .modal-footer a .glyphicon.glyphicon-volume-up {
     color: #00c97e;
 }
 
@@ -1562,7 +1561,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-descripcion {
     text-align: center;
     cursor: pointer;
-    margin-bottom: 30px;
+    margin-bottom: 90px;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-tipo p {
@@ -1572,13 +1571,49 @@ header .navbar-default .navbar-toggle .icon-bar {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     font-size: 9pt;
+    position: relative;
+}
+
+.compras .compras-porcentajes .compras-ideal,
+.compras .compras-porcentajes .compras-ideal-min,
+.compras .compras-porcentajes .compras-ideal-max {
+    border-left: 2px solid;
+    height: 520px;
+    position: absolute;
+    right: calc(20% + 15px);
+    z-index: 1;
+    top: -25px;
+}
+
+.compras .compras-porcentajes .compras-ideal-max {
+    border-left: 1px dotted;
+    right: calc(10% + 15px);
+}
+
+.compras .compras-porcentajes .compras-ideal-min {
+    border-left: 1px dotted;
+    right: calc(30% + 15px);
+}
+
+.compras .compras-porcentajes .compra-ideal-convencion {
+    position: absolute;
+    top: -55px;
+    right: calc(20% - 12px);
+    text-align: center;
+    line-height: 1em;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress {
     background-color: #efefef;
-    height: 62px;
+    height: 64px;
     position: relative;
     cursor: pointer;
+    border-bottom: 2px solid #dcdcdc;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .progress-bar {
+    -webkit-transition: width 2s ease;
+    transition: width 2s ease;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .cantidad {
@@ -1614,11 +1649,18 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .compras .recomendados-body {
     clear: both;
-    padding-top: 10px;
+    padding-top: 6px;
 }
 
 .compras .recomendados-body .panel {
     padding: 0;
+    margin-top: 20px;
+}
+
+.compras .recomendados-body .panel-heading {
+    padding: 4px 15px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
 }
 
 .compras .recomendados-body .panel-title {
@@ -1635,60 +1677,140 @@ header .navbar-default .navbar-toggle .icon-bar {
     line-height: 50px;
 }
 
+.compras .recomendados-body .panel-default>.panel-heading {
+    text-align: left;
+}
+
+.compras .recomendados-body .panel-title a:focus {
+    outline: none;
+}
+
 .compras .recomendados-body .panel-title .glyphicon {
-    top: 14px;
+    font-size: 24pt;
+    color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.compras .recomendados-body .panel-collapse .panel-body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.compras .recomendados-body .panel-collapse p {
+    background-color: #ffffff;
+    padding: 15px;
+    margin: 0;
+}
+
+.compras .recomendados-body .panel-collapse p:nth-child(even) {
+    background-color: #f6f5f5;
+}
+
+.modal-dialog .compras-grupo .modal-header {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Muli', sans-serif;
+    position: relative;
+}
+
+.modal-dialog .compras-grupo .modal-header .titulo {
+    height: 64px;
+    border-bottom: rgba(255, 255, 255, 0.4) 1px solid;
+}
+
+.modal-dialog .compras-grupo .modal-header .titulo a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 21PX;
+    font-size: 15pt;
+    color: #ffffff;
+}
+
+.modal-dialog .compras-grupo .modal-header .titulo h1 {
+    margin-top: 15px;
+    font-size: 15pt;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.modal-dialog .compras-grupo .modal-header .sub-header {
+    padding-top: 17px;
+}
+
+.modal-dialog .compras-grupo .modal-header .sub-header .total-compra {
+    text-align: center;
+    font-size: 18pt;
+    border-right: rgba(255, 255, 255, 0.4) 1px solid;
+    padding-bottom: 0px;
+}
+
+.modal-dialog .compras-grupo .modal-header .sub-header .total-compra span {
+    font-size: 15pt;
+}
+
+.modal-dialog .compras-grupo .modal-header .sub-header .total-compra .valor {
+    margin-bottom: 0px;
+}
+
+.modal-dialog .compras-grupo .modal-header .sub-header .estado {
+    text-align: center;
+    border-left: rgba(255, 255, 255, 0.4) 1px solid;
+    padding-bottom: 0px;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CEREALES,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-1,
 .compras .panel-body .panel-default.grupo-1>.panel-heading,
-.compras-grupo header.grupo-1,
+.modal-dialog .compras-grupo .modal-header.grupo-1,
 .compras-grupo .progress-radial .overlay.grupo-1 {
     background-color: #f2df00 !important;
+    background-image: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CARNES,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-2,
+.compras .panel-body .panel-default.grupo-2>.panel-heading,
+.modal-dialog .compras-grupo .modal-header.grupo-2,
+.compras-grupo .progress-radial .overlay.grupo-2 {
+    background-color: #ff9600;
     background-image: none;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-LECHELACTEOS,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-3,
 .compras .panel-body .panel-default.grupo-3>.panel-heading,
-.compras-grupo header.grupo-3,
+.modal-dialog .compras-grupo .modal-header.grupo-3,
 .compras-grupo .progress-radial .overlay.grupo-3 {
     background-color: #0fa7ff;
     background-image: none;
 }
 
-.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CARNES,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-VEGETALES,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-4,
 .compras .panel-body .panel-default.grupo-4>.panel-heading,
-.compras-grupo header.grupo-4,
+.modal-dialog .compras-grupo .modal-header.grupo-4,
 .compras-grupo .progress-radial .overlay.grupo-4 {
-    background-color: #ff9600;
-    background-image: none;
-}
-
-.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-VEGETALES,
-.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-5,
-.compras .panel-body .panel-default.grupo-5>.panel-heading,
-.compras-grupo header.grupo-5,
-.compras-grupo .progress-radial .overlay.grupo-5 {
     background-color: #7bd462;
     background-image: none;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-GRASAS,
-.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-7,
-.compras .panel-body .panel-default.grupo-7>.panel-heading,
-.compras-grupo header.grupo-7,
-.compras-grupo .progress-radial .overlay.grupo-7 {
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-5,
+.compras .panel-body .panel-default.grupo-5>.panel-heading,
+.modal-dialog .compras-grupo .modal-header.grupo-5,
+.compras-grupo .progress-radial .overlay.grupo-5 {
     background-color: #ff037a;
     background-image: none;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-AZUCAR,
-.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-8,
-.compras .panel-body .panel-default.grupo-8>.panel-heading,
-.compras-grupo header.grupo-8,
-.compras-grupo .progress-radial .overlay.grupo-8 {
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-6,
+.compras .panel-body .panel-default.grupo-6>.panel-heading,
+.modal-dialog .compras-grupo .modal-header.grupo-6,
+.compras-grupo .progress-radial .overlay.grupo-6 {
     background-color: #d360fe;
     background-image: none;
 }
@@ -1696,7 +1818,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CONDIMENTOS,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-9,
 .compras .panel-body .panel-default.grupo-9>.panel-heading,
-.compras-grupo header.grupo-9,
+.modal-dialog .compras-grupo .modal-header.grupo-9,
 .compras-grupo .progress-radial .overlay.grupo-9 {
     background-color: #bd8330;
     background-image: none;
@@ -1705,10 +1827,127 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-NOGRUPO,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-0,
 .compras .panel-body .panel-default.grupo-0>.panel-heading0,
-.compras-grupo header.grupo-0,
+.modal-dialog .compras-grupo .modal-header.grupo-0,
 .compras-grupo .progress-radial .overlay.grupo-0 {
     background-color: #000000;
     background-image: none;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-grupo-descripcion {
+    margin-top: 35px;
+    font-size: 13pt;
+    color: #2f3e47;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-grupo-descripcion p {
+    cursor: pointer;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-grupo-descripcion i {
+    color: #2f3e47;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-resumen {
+    color: #2f3e47;
+    font-size: 12pt;
+    font-family: 'Muli', sans-serif;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-resumen .nombre-producto {
+    margin-bottom: 25px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-resumen .precio {
+    text-align: right;
+    font-size: 13pt;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-resumen .totales {
+    border-top: 1px solid #7f7f7f;
+    font-size: 17pt;
+    padding-top: 15px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal {
+    margin-top: 55px;
+    -webkit-box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion {
+    line-height: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 0.09s all linear;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion.ng-hide {
+    line-height: 0px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion.ng-hide-add,
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion.ng-hide-remove {
+    display: block !important;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item {
+    border: none;
+    background-color: #f6f5f5;
+    color: #2f3e47;
+    padding: 7px;
+    font-size: 12pt;
+    padding-left: 27px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item img {
+    float: left;
+    margin-right: 20px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item h3 {
+    font-size: 16px;
+    color: #2f3e47;
+    font-family: 'Muli', sans-serif;
+    padding-top: 10px;
+    margin-top: 12px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item h3 .icon {
+    font-size: 10pt;
+    color: #4d6675;
+    position: relative;
+    top: -5px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item h4 {
+    color: #00c97e;
+    text-transform: uppercase;
+    font-size: 9pt;
+    font-family: 'Raleway-Bold', sans-serif;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item.item-stable {
+    background-color: #ffffff;
+    position: relative;
+    border: none;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item.item-stable>.icon {
+    font-size: 14pt;
+    color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 43px;
+    right: 16px;
 }
 
 
@@ -1802,7 +2041,7 @@ header .navbar-default .navbar-toggle .icon-bar {
     margin-bottom: 30px;
 }
 
-.tips .panel .panel-header h1{
+.tips .panel .panel-header h1 {
     cursor: pointer;
 }
 
@@ -1841,39 +2080,33 @@ header .navbar-default .navbar-toggle .icon-bar {
 .tips .panel .panel-body .tip-texto p {
     margin: 35px 15px;
     width: 70%;
-    
-    
 }
 
-.tips .panel .panel-body .tip-texto{
+.tips .panel .panel-body .tip-texto {
     position: relative;
     border-top: 5px solid #00c97e;
-
 }
 
-.tips .panel .panel-body a.accordion-toggle:active, 
+.tips .panel .panel-body a.accordion-toggle:active,
 .tips .panel .panel-body a.accordion-toggle:focus {
     outline: none;
 }
 
-.tips .panel .panel-body  span.ng-binding.ng-scope {
+.tips .panel .panel-body span.ng-binding.ng-scope {
     font-size: 25px;
 }
 
-.tips .panel .panel-body .tip-texto .compartir{
+.tips .panel .panel-body .tip-texto .compartir {
     position: absolute;
     top: 25px;
     right: 50px;
 }
 
-.tips .panel .panel-body .tip-texto .compartir span{
+.tips .panel .panel-body .tip-texto .compartir span {
     font-size: 13px;
     margin-right: 10px;
     color: #ff5400;
 }
-
-
-
 
 .tips .panel .panel-body .tip-sonido {
     background-color: rgba(0, 0, 0, 0);
@@ -1890,8 +2123,9 @@ header .navbar-default .navbar-toggle .icon-bar {
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
 }
+
 .tips .panel .panel-body .tip-sonido:focus,
-.tips .panel .panel-body .tip-sonido:active{
+.tips .panel .panel-body .tip-sonido:active {
     outline: none;
 }
 

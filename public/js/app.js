@@ -13,7 +13,7 @@ var nutrifamiApp = angular.module('NutrifamiWeb', dependencies);
 nutrifamiApp.run(function($rootScope, $location, $cookieStore, bsLoadingOverlayService) {
     // keep user logged in after page refresh
     $rootScope.globals = $cookieStore.get('globals') || {};
-    
+
     bsLoadingOverlayService.setGlobalConfig({
         templateUrl: 'views/template/loading-overlay-template.html'
     });
@@ -86,6 +86,11 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/mis-compras', {
         controller: 'ComprasController',
         templateUrl: 'views/compras.html'
+    });
+
+    $routeProvider.when('/mis-compras/:grupo', {
+        controller: 'ComprasGrupoController',
+        templateUrl: 'views/comprasGrupo.html'
     });
 
     $routeProvider.when('/mi-progreso', {
