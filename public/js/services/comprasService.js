@@ -12,7 +12,6 @@ nutrifamiApp.factory('ComprasService', ['$http', '$cookieStore', '$rootScope', '
         service.getConsolidadoCompras = function(usuario, callback) {
             var misCompras = JSON.parse(localStorage.getItem('misCompras'));
 
-
             if (misCompras === null) {
                 nutrifami.consumo.getConsolidadoCompras(usuario, function(response) {
                     localStorage.setItem("misCompras", JSON.stringify(response.data));
@@ -177,6 +176,8 @@ nutrifamiApp.factory('ComprasService', ['$http', '$cookieStore', '$rootScope', '
                 'carita': 'triste'
             }];
 
+            console.log(myObj);
+
 
             indice = 0;
 
@@ -185,13 +186,28 @@ nutrifamiApp.factory('ComprasService', ['$http', '$cookieStore', '$rootScope', '
                 if (typeof myObj.grupo[i] !== 'undefined') {
                     if (i == 4) {
                         grupos[1].porcentaje_compra = grupos[1].porcentaje_compra + parseFloat(myObj.grupo[i].porcentaje_compra);
+                        grupos[1].compra = grupos[1].compra.concat(myObj.grupo[i].compra);
                     } else if (i == 6) {
-                        grupos[4].porcentaje_compra = grupos[4].porcentaje_compra + parseFloat(myObj.grupo[i].porcentaje_compra);
+                        grupos[3].porcentaje_compra = grupos[3].porcentaje_compra + parseFloat(myObj.grupo[i].porcentaje_compra);
+                        grupos[3].compra = grupos[3].compra.concat(myObj.grupo[i].compra);
+
                     } else {
                         grupos[indice].porcentaje_compra = parseFloat(myObj.grupo[i].porcentaje_compra);
+                        grupos[indice].compra = myObj.grupo[i].compra;
                         indice++;
                     }
                 }
+            }
+
+            //Calcular totales:
+
+
+            for (var i in grupos) {
+                var totalCompra = 0;
+                for (var j in grupos[i].compra) {
+                    totalCompra = totalCompra + parseInt(grupos[i].compra[j].total);
+                }
+                grupos[i].totalCompra = totalCompra;
             }
             return (grupos);
         }
@@ -233,18 +249,13 @@ nutrifamiApp.factory('ComprasService', ['$http', '$cookieStore', '$rootScope', '
                     if (i == 4) {
                         ordenados[1].productos = ordenados[1].productos.concat(myObj[i].productos);
                     } else if (i == 6) {
-                        ordenados[4].productos = ordenados[4].productos.concat(myObj[i].productos);
+                        ordenados[3].productos = ordenados[3].productos.concat(myObj[i].productos);
                     } else {
                         ordenados[indice].productos = myObj[i].productos;
-
-
                         indice++;
                     }
                 }
             }
-
-            console.log(ordenados);
-
 
             for (var i in ordenados) {
                 ordenados[i].productos = eliminarRepitidos(ordenados[i].productos, "codigo");

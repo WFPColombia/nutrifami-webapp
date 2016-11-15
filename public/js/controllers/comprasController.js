@@ -1,4 +1,4 @@
-nutrifamiApp.controller('ComprasController', function($scope, $timeout, $uibModal, ComprasService, ngAudio, bsLoadingOverlayService, UsuarioService) {
+nutrifamiApp.controller('ComprasController', function($scope, $timeout, $location, $uibModal, ComprasService, ngAudio, bsLoadingOverlayService, UsuarioService) {
     'use strict';
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo()
@@ -36,6 +36,23 @@ nutrifamiApp.controller('ComprasController', function($scope, $timeout, $uibModa
         'porcentaje_compra': 0
     }];
 
+    $scope.negarAcceso = function() {
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'views/modals/negarAccesoCompras.modal.html',
+            controller: 'negarAccesoComprasModalController',
+            keyboard: false,
+            size: 'lg',
+            backdrop: 'static',
+
+        });
+
+        modalInstance.result.then(function() {
+            $location.path('/capacitacion');
+        });
+    };
+
 
     var cargarRecomendados = function() {
 
@@ -55,8 +72,8 @@ nutrifamiApp.controller('ComprasController', function($scope, $timeout, $uibModa
         });
     };
 
-    //usuario.did = $scope.usuarioActivo.login_documento;
-    usuario.did = '1006330568';
+    usuario.did = $scope.usuarioActivo.login_documento;
+    //usuario.did = '1006330568';
 
     bsLoadingOverlayService.start();
 
@@ -65,10 +82,13 @@ nutrifamiApp.controller('ComprasController', function($scope, $timeout, $uibModa
         if (response.success) {
             $scope.consumoUltimoMes = response.data;
 
+            console.log($scope.consumoUltimoMes);
+
             puntoVenta['pid'] = response.puntoVenta;
             cargarRecomendados();
         } else {
             $scope.noHayDatos = true;
+            $scope.negarAcceso();
             //console.log(response.message);
         }
 
@@ -92,9 +112,6 @@ nutrifamiApp.controller('ComprasController', function($scope, $timeout, $uibModa
             }
         });
 
-        //Animar durante unos segundos el gif de la carita
-
-
 
         $uibModal.open({
             animation: true,
@@ -110,6 +127,8 @@ nutrifamiApp.controller('ComprasController', function($scope, $timeout, $uibModa
         });
 
     }
+
+
 
 
 });

@@ -30,6 +30,8 @@ var nutrifami = {
             }
         });
     },
+
+    //Modificacion
     /*
      * nutrifami.buildToken(callback)
      */
