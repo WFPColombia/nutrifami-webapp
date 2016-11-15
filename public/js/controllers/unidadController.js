@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $location, $routeParams, $anchorScroll, $timeout, $uibModal, ngAudio, bsLoadingOverlayService, UsuarioService, CapacitacionService) {
+nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $location, $routeParams, $anchorScroll, $timeout, $uibModal, ngAudio, bsLoadingOverlayService, UsuarioService, CapacitacionService) {
     'use strict';
 
     $anchorScroll();
@@ -9,7 +9,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
     /* Overloading*/
     bsLoadingOverlayService.start();
     /* Se apaga cuando el todo el contenido de la vista ha sido cargado*/
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         bsLoadingOverlayService.stop();
     });
 
@@ -20,104 +20,110 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
     $scope.estadoUnidad = 'espera';
 
     try {
-    $scope.unidad = CapacitacionService.getUnidad($routeParams.leccion, $routeParams.unidad);
-    $scope.unidad.numeroUnidad = $routeParams.unidad;
-    $scope.unidad.totalUnidades = CapacitacionService.getUnidadesActivas($routeParams.leccion).length;
+        $scope.unidad = CapacitacionService.getUnidad($routeParams.leccion, $routeParams.unidad);
+        $scope.unidad.numeroUnidad = $routeParams.unidad;
+        $scope.unidad.totalUnidades = CapacitacionService.getUnidadesActivas($routeParams.leccion).length;
 
-    var tempOpciones = []; //Arreglo para almacenar las opciones
+        var tempOpciones = []; //Arreglo para almacenar las opciones
 
-    //Limpiamos el objeto de las opciones que no se deben mostrar
-    for (var i in $scope.unidad.opciones) {
-        if ($scope.unidad.opciones[i].visible == 0) {
-            delete $scope.unidad.opciones[i];
+        //Limpiamos el objeto de las opciones que no se deben mostrar
+        for (var i in $scope.unidad.opciones) {
+            if ($scope.unidad.opciones[i].visible == 0) {
+                delete $scope.unidad.opciones[i];
+            }
         }
-    }
 
-    /* Validamos si la unidad actual es de parejas o de otra 
-     * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
-     * else - Si es otro tipo de unidad, desorganizamos las opciones */
-    if ($scope.unidad.tipo.id == 2) {
-        var tempOpcionesPareja = []; //Arreglo para almacenar las parejas de las opciones 
-        var tempLote1 = 0;
-        var tempLote2 = 0;
+        /* Validamos si la unidad actual es de parejas o de otra 
+         * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
+         * else - Si es otro tipo de unidad, desorganizamos las opciones */
+        if ($scope.unidad.tipo.id == 2) {
+            var tempOpcionesPareja = []; //Arreglo para almacenar las parejas de las opciones 
+            var tempLote1 = 0;
+            var tempLote2 = 0;
 
-        // Recorre todo el objeto de las opciones para crear el arreglo
-        var i = 1;
-        while (i <= Object.keys($scope.unidad.opciones).length / 2) {
+            // Recorre todo el objeto de las opciones para crear el arreglo
+            var i = 1;
+            var cantidadParejas = Object.keys($scope.unidad.opciones).length / 2;
+            $scope.cantidadParejas = cantidadParejas;
+            while (i <= cantidadParejas) {
 
-            for (var j in $scope.unidad.opciones) {
-                if ($scope.unidad.opciones[j].orden == i) {
-                    if (tempLote1 == 0) {
-                        tempLote1 = $scope.unidad.opciones[j];
-                    } else {
-                        tempLote2 = $scope.unidad.opciones[j];
+                for (var j in $scope.unidad.opciones) {
+                    if ($scope.unidad.opciones[j].orden == i) {
+                        if (tempLote1 == 0) {
+                            tempLote1 = $scope.unidad.opciones[j];
+                        } else {
+                            tempLote2 = $scope.unidad.opciones[j];
+                        }
                     }
                 }
+
+
+
+                // Si la opción tiene un texto corto se alamacena en las opciones, 
+                if (tempLote1.texto.length > tempLote2.texto.length) {
+                    tempOpciones.push(tempLote1);
+                    tempOpcionesPareja.push(tempLote2);
+
+                } else { // Si no, se almacena en la pareja
+                    tempOpciones.push(tempLote2);
+                    tempOpcionesPareja.push(tempLote1);
+
+                }
+                tempLote1 = 0;
+                tempLote2 = 0;
+                i++;
             }
 
+            /* Se mezclan los arreglos */
+            shuffle(tempOpcionesPareja);
+            shuffle(tempOpciones);
+            $scope.unidad.opciones = tempOpcionesPareja.concat(tempOpciones); /* Se concatenan los arreglos, con las imagenes primero y las opciones despues */
+        } else {
+            for (var i in $scope.unidad.opciones) {
+                tempOpciones.push($scope.unidad.opciones[i]);
+            }
+            shuffle(tempOpciones);
+            $scope.unidad.opciones = tempOpciones;
 
-
-            // Si la opción tiene un texto corto se alamacena en las opciones, 
-            if (tempLote1.texto.length > tempLote2.texto.length) {
-                tempOpciones.push(tempLote1);
-                tempOpcionesPareja.push(tempLote2);
-
-            } else { // Si no, se almacena en la pareja
-                tempOpciones.push(tempLote2);
-                tempOpcionesPareja.push(tempLote1);
+            if ($scope.unidad.tipo.id == 1) {
+                $timeout(function() {
+                    $scope.botonCalificar = true;
+                    $scope.textoBoton = 'continuar';
+                }, 10000);
 
             }
-            tempLote1 = 0;
-            tempLote2 = 0;
-            i++;
         }
 
-        /* Se mezclan los arreglos */
-        shuffle(tempOpcionesPareja);
-        shuffle(tempOpciones);
-        $scope.unidad.opciones = tempOpcionesPareja.concat(tempOpciones); /* Se concatenan los arreglos, con las imagenes primero y las opciones despues */
-    } else {
-        for (var i in $scope.unidad.opciones) {
-            tempOpciones.push($scope.unidad.opciones[i]);
+
+
+        /*Verifica si la unidad tienen audio y lo carga*/
+        if (typeof $scope.unidad.audio !== 'undefined') {
+            $scope.unidad.audio.audio = ngAudio.load($scope.unidad.audio.url);
         }
-        shuffle(tempOpciones);
-        $scope.unidad.opciones = tempOpciones;
 
-        if ($scope.unidad.tipo.id == 1) {
-            $timeout(function () {
-                $scope.botonCalificar = true;
-                $scope.textoBoton = 'continuar';
-            }, 10000);
+        if (typeof $scope.unidad.instruccion.audio !== 'undefined') {
+            $scope.unidad.instruccion.audio.audio = ngAudio.load($scope.unidad.instruccion.audio.url);
 
-        }
-    }
-
-    /*Verifica si la unidad tienen audio y lo carga*/
-    if (typeof $scope.unidad.audio !== 'undefined') {
-        $scope.unidad.audio.audio = ngAudio.load($scope.unidad.audio.url);
-    }
-
-    if (typeof $scope.unidad.instruccion.audio !== 'undefined') {
-        $scope.unidad.instruccion.audio.audio = ngAudio.load($scope.unidad.instruccion.audio.url);
-
-        if ($scope.usuarioActivo.narrador) {
-            $scope.unidad.instruccion.audio.audio.play();
-            $scope.unidad.instruccion.audio.audio.complete(function () {
-                $scope.unidad.instruccion.audio.audio.stop();
-                $scope.unidad.audio.audio.play();
-                $scope.unidad.audio.audio.complete(function () {
-                    $scope.unidad.audio.audio.stop();
+            if ($scope.usuarioActivo.narrador) {
+                $scope.unidad.instruccion.audio.audio.play();
+                $scope.unidad.instruccion.audio.audio.complete(function() {
+                    $scope.unidad.instruccion.audio.audio.stop();
+                    $scope.unidad.audio.audio.play();
+                    $scope.unidad.audio.audio.complete(function() {
+                        $scope.unidad.audio.audio.stop();
+                    });
                 });
-            });
-         }
+            }
 
-    }
+        }
 
-    $scope.unidad.feedback = [];
+        $scope.unidad.feedback = [];
+
+        console.log($scope.unidad)
 
     } catch (err) {
-     $location.path('/capacitacion');
-     }
+        $location.path('/capacitacion');
+    }
 
 
     // Obtenemos la cantidad de respuestas correctas
@@ -142,7 +148,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
 
     $scope.botonCalificar = false;
 
-    $scope.seleccionarOpcion = function (index) {
+    $scope.seleccionarOpcion = function(index) {
         if ($scope.unidad.opciones[index].selected) {
             $scope.unidad.opciones[index].selected = false;
             respuestasSeleccionadas--;
@@ -177,7 +183,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
     var pareja2Pos = 0;
     var parejasCorrectas = 0;
 
-    $scope.seleccionarPareja = function (index) {
+    $scope.seleccionarPareja = function(index) {
         /* Verifica si es una opcion que no ha hecho match para poderla seleccionar*/
         if (!$scope.unidad.opciones[index].match) {
 
@@ -248,7 +254,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
         }
     };
 
-    $scope.calificarUnidad = function () {
+    $scope.calificarUnidad = function() {
         /* Validar si acerto o fallo*/
 
         if ($scope.unidad.tipo.id == 1) {
@@ -283,12 +289,12 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
         }
         if (respuestasAcertadas === respuestasCorrectas) {
             $scope.estadoUnidad = 'acierto';
-            $scope.unidad.feedback = filtrarFeedback(tempFeedbackBien);
+            $scope.unidad.feedback = eliminarRepitidos(tempFeedbackBien, 'texto');
         } else {
             $scope.estadoUnidad = 'fallo';
-            $scope.unidad.feedback = tempFeedbackMal;
+            $scope.unidad.feedback = eliminarRepitidos(tempFeedbackMal, 'texto');;
         }
-        
+
         if ($scope.usuarioActivo.narrador) {
             $scope.unidad.feedback[0].audio.audio.play();
         }
@@ -296,7 +302,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
         $scope.feedback();
     };
 
-    $scope.feedback = function () {
+    $scope.feedback = function() {
         var data = {
             estado: $scope.estadoUnidad,
             feedback: $scope.unidad.feedback
@@ -310,13 +316,13 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
             keyboard: false,
             size: 'lg',
             resolve: {
-                data: function () {
+                data: function() {
                     return data;
                 }
             }
         });
 
-        feedbackModal.result.then(function (estado) {
+        feedbackModal.result.then(function(estado) {
             if (estado === 'acierto') {
                 $scope.irASiguienteUnidad();
             } else {
@@ -325,7 +331,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
         });
     };
 
-    $scope.irASiguienteUnidad = function () {
+    $scope.irASiguienteUnidad = function() {
         $scope.siguienteUnidad = parseInt($routeParams.unidad) + 1;
         if ($scope.siguienteUnidad > $scope.unidad.totalUnidades) {
             var usuarioAvance = UsuarioService.getUsuarioAvance();
@@ -345,7 +351,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
                 'lec_id': $routeParams.leccion
             };
 
-            UsuarioService.setUsuarioAvance(usuarioAvance, data, function (response) {
+            UsuarioService.setUsuarioAvance(usuarioAvance, data, function(response) {
                 if (response.success) {
                     $location.path('/m/' + $routeParams.modulo + "/" + $routeParams.leccion + "/" + $routeParams.unidad + "/leccion-terminada");
                 }
@@ -356,7 +362,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
         }
     };
 
-    $scope.reiniciarUnidad = function () {
+    $scope.reiniciarUnidad = function() {
         for (var i in $scope.unidad.opciones) {
             $scope.unidad.opciones[i].selected = false;
             $scope.unidad.opciones[i].evaluacion = false;
@@ -366,7 +372,7 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
         $scope.botonCalificar = false;
     };
 
-    $scope.verTips = function () {
+    $scope.verTips = function() {
         var data = {
             leccion: $routeParams.leccion,
             narrador: $scope.usuarioActivo.narrador
@@ -379,17 +385,17 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
             keyboard: false,
             size: 'lg',
             resolve: {
-                data: function () {
+                data: function() {
                     return data;
                 }
             }
         });
 
-        tipsModal.result.then(function (narrador) {
+        tipsModal.result.then(function(narrador) {
             $scope.usuarioActivo.narrador = narrador;
         });
     };
-    
+
     /**
      * Shuffles array in place.
      * @param {Array} a items The array containing the items.
@@ -404,14 +410,33 @@ nutrifamiApp.controller('UnidadController', function ($scope, $rootScope, $locat
         }
     }
 
-    function filtrarFeedback(a) {
-        return a.sort().filter(function (item, pos, ary) {
-            return !pos || item != ary[pos - 1];
-        })
+    function eliminarRepitidos(myList, reference) {
+        myList.sort(dynamicSort(reference));
+
+        var tempList = [];
+        tempList.push(myList[0]);
+        for (var i = 1; i < myList.length; i++) {
+            if (myList[i][reference] != myList[i - 1][reference]) {
+                tempList.push(myList[i]);
+            }
+        }
+        return tempList
+    }
+
+    function dynamicSort(property) {
+        var sortOrder = 1;
+        if (property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+        return function(a, b) {
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result * sortOrder;
+        }
     }
 });
 
-nutrifamiApp.directive('opcionesUnidadInfo', function () {
+nutrifamiApp.directive('opcionesUnidadInfo', function() {
     return {
         restrict: 'E',
         scope: {
@@ -420,15 +445,15 @@ nutrifamiApp.directive('opcionesUnidadInfo', function () {
             index: '@'
         },
         templateUrl: 'views/directives/opcionesUnidadInfo.html',
-        link: function ($scope, $element, $attrs) {
-            $scope.click = function () {
+        link: function($scope, $element, $attrs) {
+            $scope.click = function() {
                 $scope.$parent.seleccionarOpcion($scope.index);
             };
         }
     };
 });
 
-nutrifamiApp.directive('parejasUnidadInfo', function () {
+nutrifamiApp.directive('parejasUnidadInfo', function() {
     return {
         restrict: 'E',
         scope: {
@@ -436,36 +461,36 @@ nutrifamiApp.directive('parejasUnidadInfo', function () {
             index: '@'
         },
         templateUrl: 'views/directives/parejasUnidadInfo.html',
-        link: function ($scope, $element, $attrs) {
-            $scope.click = function () {
+        link: function($scope, $element, $attrs) {
+            $scope.click = function() {
                 $scope.$parent.seleccionarPareja($scope.index);
             };
         }
     };
 });
 
-nutrifamiApp.directive('reiniciarUnidad', function () {
+nutrifamiApp.directive('reiniciarUnidad', function() {
     return {
         restrict: 'E',
         scope: {
             feedback: '='
         },
         templateUrl: 'views/directives/reiniciarUnidad.html',
-        link: function ($scope, $element, $attrs) {
-            $scope.reiniciar = function () {
+        link: function($scope, $element, $attrs) {
+            $scope.reiniciar = function() {
                 $scope.$parent.reiniciarUnidad();
             };
         }
     };
 });
 
-nutrifamiApp.directive('siguienteUnidad', function () {
+nutrifamiApp.directive('siguienteUnidad', function() {
     return {
         restrict: 'E',
         scope: {},
         templateUrl: 'views/directives/siguienteUnidad.html',
-        link: function ($scope, $element, $attrs) {
-            $scope.siguienteUnidad = function () {
+        link: function($scope, $element, $attrs) {
+            $scope.siguienteUnidad = function() {
                 $scope.$parent.irASiguienteUnidad();
             };
         }

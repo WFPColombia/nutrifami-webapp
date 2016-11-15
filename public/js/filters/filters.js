@@ -14,3 +14,12 @@ nutrifamiApp.filter('format', function() {
         return input;
     };
 })
+
+
+nutrifamiApp.filter('stripHTML', function() {
+    return function(input) {
+        input = input || '';
+        input.replace(/<(?:.|\n)*?>/gm, '');
+        return input;
+    };
+})

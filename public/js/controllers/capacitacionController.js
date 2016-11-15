@@ -13,9 +13,7 @@ nutrifamiApp.controller('CapacitacionController', function($scope, $anchorScroll
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
     $scope.usuarioAvance = UsuarioService.getUsuarioAvance();
-    
-    console.log($scope.usuarioActivo);
-    
+
     $scope.modulos = [];
     // Obtenemos los ids de los modulos de la capacitación 3
 

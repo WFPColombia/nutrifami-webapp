@@ -56,7 +56,7 @@
                                     <div ng-repeat="group in gruposAlimenticios">
                                         <div uib-accordion-group class="panel-default grupo-{{group.grupo_id}}" is-open="status.open">
                                             <uib-accordion-heading>
-                                                <img src="img/icons/ico-compras-{{group.grupo_id}}.png" ng-hide="group.nombre === null" /> {{group.nombre !== null ? group.nombre : 'Sin categoria'}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                                <img src="img/icons/ico-compras-{{group.grupo_id}}.png" ng-hide="group.nombre === null" /> {{group.nombre !== null ? group.nombre : 'Sin categoria'}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
                                             </uib-accordion-heading>
                                             <p ng-repeat="item in group.productos">
                                                 {{item.nombre}}

@@ -519,6 +519,11 @@ header .navbar-brand {
     margin-right: 10px;
 }
 
+header .navbar-brand img {
+    height: 28px;
+    margin-top: 5px;
+}
+
 header .navbar-default .navbar-nav > li > a,
 header .navbar-default .navbar-nav > li > a:hover {
     color: #ffffff;
@@ -632,7 +637,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 /* MODULOS */
 
 .modulos .panel .panel-header {
-    margin-top: 50px;
+    margin-top: 30px;
     color: #3dc0fd;
 }
 
@@ -970,6 +975,7 @@ header .navbar-default .navbar-toggle .icon-bar {
     font-size: 30pt;
     margin-top: 20px;
     color: #2f3e47;
+    padding: 0 30px;
 }
 
 .unidad .panel-header .unidad-descripcion p {
@@ -1004,6 +1010,25 @@ header .navbar-default .navbar-toggle .icon-bar {
     border-radius: 10px;
     min-height: 295px;
     border: solid 1px #dcdcdc;
+}
+
+.unidad .panel-body .col-md-2 {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.unidad .panel-body .col-md-2 .opcion {
+    margin: 0 0 50px 0;
+    min-height: 200px;
+    border: solid 1px #dcdcdc;
+}
+
+.unidad .panel-body .col-md-2 .opcion p {
+    font-size: 12pt;
+}
+
+.unidad .panel-body .opcion.sin-texto {
+    min-height: 0px;
 }
 
 .unidad .panel-body .opcion-con-imagen .opcion {
@@ -1055,9 +1080,22 @@ header .navbar-default .navbar-toggle .icon-bar {
     border-radius: 7px 7px 0 0;
 }
 
-.unidad .panel-body .opcion-con-imagen p,
 .unidad .panel-body .pareja-con-imagen p {
     margin-top: 35px;
+}
+
+.unidad .panel-body .opcion-con-imagen p {
+    margin-top: 20px;
+    margin-bottom: 75px;
+}
+
+.unidad .panel-body .opcion.pareja-sin-imagen {
+    min-height: 160px;
+}
+
+.unidad .panel-body .opcion.pareja-sin-imagen p {
+    margin: 25px auto 0 auto;
+    font-weight: bold;
 }
 
 .unidad .panel-body .opcion .boton {
@@ -1238,10 +1276,6 @@ header .navbar-default .navbar-toggle .icon-bar {
 .modal-dialog .calificacion .activo .intentar-nuevo {
     font-size: 10pt;
     letter-spacing: 3px;
-}
-
-.unidad .panel-body .unidad-parejas {
-    margin-bottom: 100px;
 }
 
 .unidad .panel-body .pareja-con-imagen {
@@ -2035,6 +2069,16 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 /* TIPS */
 
+.tips .panel-group .panel {
+    border-radius: 0px;
+    border: none;
+    border-top: 2px solid #dcdcdc;
+    border-bottom: 2px solid #dcdcdc;
+    font-size: 12pt;
+    margin-top: 0px;
+    position: relative;
+}
+
 .tips .panel .panel-header {
     margin-top: 30px;
     color: #00c97e;
@@ -2077,16 +2121,6 @@ header .navbar-default .navbar-toggle .icon-bar {
     font-size: 17px;
 }
 
-.tips .panel .panel-body .tip-texto p {
-    margin: 35px 15px;
-    width: 70%;
-}
-
-.tips .panel .panel-body .tip-texto {
-    position: relative;
-    border-top: 5px solid #00c97e;
-}
-
 .tips .panel .panel-body a.accordion-toggle:active,
 .tips .panel .panel-body a.accordion-toggle:focus {
     outline: none;
@@ -2127,6 +2161,42 @@ header .navbar-default .navbar-toggle .icon-bar {
 .tips .panel .panel-body .tip-sonido:focus,
 .tips .panel .panel-body .tip-sonido:active {
     outline: none;
+}
+
+.tips .panel-title .glyphicon {
+    font-size: 24pt;
+    color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 33px;
+    right: 30px;
+}
+
+.tips .panel-default>.panel-heading+.panel-collapse .panel-body {
+    border-top-color: #ffffff;
+    margin-top: 15px;
+    padding: 0px;
+}
+
+.tips .panel-collapse p {
+    padding: 30px;
+    margin: 0;
+    width: 70%;
+}
+
+
+/*.tips .panel .panel-body .tip-texto p {
+    margin: 35px 15px;
+    width: 70%;
+}*/
+
+.tips .panel .panel-body .tip-texto {
+    border-top: 1px solid #dcdcdc;
+    position: relative;
+    background-color: #ffffff;
+}
+
+.tips .panel .panel-body .tip-texto:nth-child(even) {
+    background-color: #f6f5f5;
 }
 
 

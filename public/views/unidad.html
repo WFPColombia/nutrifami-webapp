@@ -6,7 +6,7 @@
                 <div class="panel-header">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="unidad-sonido" >
+                            <div class="unidad-sonido">
                                 <a href ng-click='verTips()'><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                             </div>
                         </div>
@@ -26,8 +26,8 @@
                                     </h2>
                                 </div>
                                 <h3>{{ unidad.titulo.texto}} <a href ng-click='unidad.audio.audio.paused ? unidad.audio.audio.play() : unidad.audio.audio.pause()'><span  class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a></h3>
-                                <img ng-src="{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen === undefined || unidad.tipo.id == 2}}" />
-                                <div class="unidad-informativa" ng-bind-html="unidad.texto | trust"></div>
+                                <img ng-src="{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen.nombre == ''}}" />
+                                <div class="unidad-informativa" ng-bind-html="unidad.texto | trust" ng-hide="unidad.texto =='' "></div>
                             </div>
                         </div>
                     </div>

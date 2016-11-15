@@ -14,13 +14,19 @@
                     <div class="row">
                         <uib-accordion close-others="oneAtATime">
                             <div ng-repeat="group in grupos">
-                                <div uib-accordion-group class="panel-default" is-open="status.isFirstOpen">
+                                <div uib-accordion-group class="panel-default" is-open="status.open">
                                     <uib-accordion-heading>
-                                        {{group.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 'glyphicon-chevron-right': !status.isCustomHeaderOpen}"></i>
+                                        {{group.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
                                     </uib-accordion-heading>
-                                    <div class="tip-texto" ng-repeat="item in group.items" >
+                                    <div class="tip-texto" ng-repeat="item in group.items">
                                         <div ng-bind-html="item.texto | format | trust"></div>
-                                        <div class="compartir"> <span>Compartir tip con:</span> <a href="#"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a> </div>
+                                        <div class="compartir"> <span>Compartir:</span>
+                                            <a href socialshare socialshare-provider="facebook" socialshare-tittle="Consejo saludable Nutrifami" socialshare-text="{{item.texto | stripHTML }}" socialshare-url="http://www.nutrifami.org" socialshare-description="{{item.texto | stripHTML }}" socialshare-media="http://nutrifami.org/img/landing-aprende.png">
+                                                <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
+                                            <a href socialshare socialshare-provider="twitter" socialshare-text="{{item.texto | stripHTML }}" socialshare-hashtags="ConsejoNutrifami" socialshare-url="nutrifami.org">
+                                                <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorScroll, $routeParams, bsLoadingOverlayService, ngAudio, AudioService) {
+nutrifamiApp.controller('LeccionTerminadaController', function($scope, $location, $anchorScroll, $routeParams, bsLoadingOverlayService, ngAudio, UsuarioService) {
     'use strict';
 
     $anchorScroll();
@@ -9,30 +9,38 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorSc
         bsLoadingOverlayService.stop();
     });
 
+    $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
+
     $scope.mensaje = "Ha finalizado la leccion";
 
-    $scope.leccion = nutrifami.training.getLeccion($routeParams.leccion);
-    $scope.modulo = $routeParams.modulo;
-    $scope.audios = {
-        'leccionCompletada': 'audios/muy-bien-leccion-completada.mp3',
-        'audioPuntos': 'audios/' + $scope.leccion.finalizado.puntos + '-puntos-ganados.mp3',
-        'audioFinalizado': 'assets/' + $scope.leccion.finalizado.audio.nombre,
-    };
+    try {
 
-    $scope.leccion.finalizado.audio.leccionCompletada = ngAudio.load('audios/muy-bien-leccion-completada.mp3');
-    $scope.leccion.finalizado.audio.audio = ngAudio.load($scope.leccion.finalizado.audio.url);
-    $scope.leccion.finalizado.audio.audioPuntos = ngAudio.load("audios/" + $scope.leccion.finalizado.puntos + "-puntos-ganados.mp3");
+        $scope.leccion = nutrifami.training.getLeccion($routeParams.leccion);
+        $scope.modulo = $routeParams.modulo;
+        $scope.audios = {
+            'leccionCompletada': 'audios/muy-bien-leccion-completada.mp3',
+            'audioPuntos': 'audios/' + $scope.leccion.finalizado.puntos + '-puntos-ganados.mp3',
+            'audioFinalizado': 'assets/' + $scope.leccion.finalizado.audio.nombre,
+        };
 
-    if ($scope.usuarioActivo.narrador) {
-        $scope.leccion.finalizado.audio.leccionCompletada.play();
+        $scope.leccion.finalizado.audio.leccionCompletada = ngAudio.load('audios/muy-bien-leccion-completada.mp3');
+        $scope.leccion.finalizado.audio.audio = ngAudio.load($scope.leccion.finalizado.audio.url);
+        //$scope.leccion.finalizado.audio.audioPuntos = ngAudio.load("audios/" + $scope.leccion.finalizado.puntos + "-puntos-ganados.mp3");
 
-        $scope.leccion.finalizado.audio.leccionCompletada.complete(function () {
-            $scope.leccion.finalizado.audio.leccionCompletada.stop();
-            $scope.leccion.finalizado.audio.audio.play();
-            $scope.leccion.finalizado.audio.audio.complete(function () {
-                $scope.leccion.finalizado.audio.audio.stop();
+        if ($scope.usuarioActivo.narrador) {
+            $scope.leccion.finalizado.audio.leccionCompletada.play();
+
+            $scope.leccion.finalizado.audio.leccionCompletada.complete(function() {
+                $scope.leccion.finalizado.audio.leccionCompletada.stop();
+                $scope.leccion.finalizado.audio.audio.play();
+                $scope.leccion.finalizado.audio.audio.complete(function() {
+                    $scope.leccion.finalizado.audio.audio.stop();
+                });
             });
-        });
+        }
+
+    } catch (err) {
+        $location.path('/capacitacion');
     }
 
 
@@ -42,7 +50,6 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $anchorSc
 
 
     $scope.continuar = function() {
-        AudioService.unload($scope.audios);
         $location.path("/app/capacitacion/" + $stateParams.modulo);
     };
 
