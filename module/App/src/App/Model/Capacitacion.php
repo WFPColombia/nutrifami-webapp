@@ -296,6 +296,7 @@ class Capacitacion
                               'id' => $opcionInfo['uni_inf_opc_id']
                             , 'correcta' => $opcion['uni_inf_x_opc_correcta']
                             , 'orden' => $opcion['uni_inf_x_opc_orden']
+                            , 'columna' => $opcion['uni_inf_opc_column']
                             , 'fecha' => $opcion['uni_inf_x_opc_fecha']
                             , 'visible' => $opcion['uni_inf_x_opc_visible']
                             , 'texto' => $opcionInfo['uni_inf_opc_texto']
