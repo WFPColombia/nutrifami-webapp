@@ -1,0 +1,36 @@
+<div class="registro">
+    <div class="cerrar">
+        <button class="glyphicon glyphicon-remove" ng-click="cancel()"></button>
+    </div>
+    <div class="row logo text-center">
+        <div class="col-md-12">
+            <h1>Regístrate</h1>
+        </div>
+    </div>
+    <form name="form" ng-submit="registro()" role="form">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="text" name="nombre" id="nombre" class="nombre" placeholder="Escriba su nombre completo" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_NOMBRE" required />
+                    <div ng-show="form.nombre.$dirty && form.nombre.$error.required" class="help-block">Nombre es necesario</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="text" name="documento" id="documento" class="documento" placeholder="Escriba su número de documento" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_DOCUMENTO" required />
+                    <div ng-show="form.documento.$dirty && form.documento.$error.required" class="help-block">Documento es necesario</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-actions">
+                    <button type="submit" class="btn center-block login-enviar" ng-disabled="form.$invalid" ion-ripple>Ingresar</button>
+                    <div ng-show="error" class="help-block">{{error}}</div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

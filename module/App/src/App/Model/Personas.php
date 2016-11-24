@@ -118,6 +118,47 @@ class Personas {
         return $response;
     }
 
+    public function addPersona($params) {
+        
+        $dataDoc = array(
+            'FAM_PER_DOCUMENTO' => $params['FAM_PER_DOCUMENTO']
+        );
+
+        /* Validamos si el usuario ya existe, retornamos 0 para que el frontend muestre el mensaje */
+        if ($this->personaTable->getPersona($dataDoc) != false) {
+            $response = array(
+                'success' => false,
+                'message' => 'Error! - El documento ya existe'
+            );
+            return $response;
+        }
+
+        $data = array(
+            'FAM_PER_DOCUMENTO' => $params['FAM_PER_DOCUMENTO'],
+            'FAM_PER_NOMBRE' => $params['FAM_PER_NOMBRE'],
+        );
+
+
+        /* Insertarmos el usuario en la base de datos y enviamos respuesta. */
+        if ($this->personaTable->insertPersona($data) == 1) {
+
+            
+
+            $response = array(
+                'success' => true,
+                'message' => 'El usuario fue agregado con éxito'
+            );
+            return $response;
+        }
+
+        /* Si algo falla en el if anterior, enviamos mensaje de error */
+        $response = array(
+            'success' => false,
+            'message' => 'Error! - Los datos no fueron guardados'
+        );
+        return $response;
+    }
+
     public function getFamilia($id = '') {
         return $this->personaTable->getFamilia($id);
     }

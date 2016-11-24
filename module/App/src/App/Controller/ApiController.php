@@ -116,6 +116,20 @@ ini_set('memory_limit', '-1');
         return $viewModel;
     }
 
+    public function agregarUsuarioAction() {
+        $params = $this->params()->fromQuery();
+
+        $personasObj = new Personas();
+        $data = $personasObj->addPersona($params);
+        $response = array();
+        $response['response'] = $data;
+
+        echo json_encode($response);
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(true);
+        return $viewModel;
+    }
+
     public function getFamiliaAction() {
         header('Access-Control-Allow-Origin: *');
         $params = $this->params()->fromQuery();

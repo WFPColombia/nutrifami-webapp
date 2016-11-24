@@ -58,18 +58,18 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
     };
 
     $scope.modalRegistro = function() {
-        console.log("Abrir Login");
+        console.log("Abrir Registro");
 
-        var loginModal = $uibModal.open({
+        var registroModal = $uibModal.open({
             animation: true,
-            templateUrl: 'views/modals/login.modal.html',
-            controller: 'LoginModalController',
+            templateUrl: 'views/modals/registro.modal.html',
+            controller: 'registroModalController',
             backdrop: 'static',
             keyboard: false,
             size: 'lg'
         });
 
-        loginModal.result.then(function(estado) {
+        registroModal.result.then(function(estado) {
             /*$scope.dataLoading = true;
             AuthenticationService.Login($scope.username, $scope.password, function (response) {
                 if (response.success) {

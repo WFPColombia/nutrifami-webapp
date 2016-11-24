@@ -248,7 +248,8 @@ h6 {
     margin-bottom: 40px;
 }*/
 
-.login form .form-group input {
+.login form .form-group input,
+.registro form .form-group input {
     background-color: #13b377;
     color: #ffffff;
     font-size: 15pt;
@@ -270,7 +271,7 @@ h6 {
     background-position: 0px 0px;
 }*/
 
-.login form .form-group .lcodigo {
+.registro form .form-group .lcodigo {
     background-image: url(../img/icons/ico-codigo.png);
     background-repeat: no-repeat;
     background-position: 0px 0px;
@@ -279,31 +280,39 @@ h6 {
 
 .login form .form-group textarea:focus,
 .login form .form-group input:focus,
-.login form button:focus {
+.login form button:focus,
+.registro form .form-group textarea:focus,
+.registro form .form-group input:focus,
+.registro form button:focus {
     outline: none;
 }
 
-.login form .form-group input::-webkit-input-placeholder {
+.login form .form-group input::-webkit-input-placeholder,
+.registro form .form-group input::-webkit-input-placeholder {
     color: #ffffff;
 }
 
-.login form .form-group input::-moz-placeholder {
+.login form .form-group input::-moz-placeholder,
+.registro form .form-group input::-moz-placeholder {
     color: #ffffff;
     opacity: 1;
 }
 
-.login form .form-group input:-ms-input-placeholder {
+.login form .form-group input:-ms-input-placeholder,
+.registro form .form-group input::-moz-placeholder {
     color: #ffffff;
 }
 
-.login .help-block {
+.login .help-block,
+.registro .help-block {
     text-align: center;
     color: #d200ff;
     margin-top: 5px;
     font-size: 9pt;
 }
 
-.login .login-enviar {
+.login .login-enviar,
+.registro .login-enviar {
     font-family: 'Muli', sans-serif;
     font-weight: bold;
     background-color: #ffb716;
@@ -316,13 +325,16 @@ h6 {
     color: #ffffff;
 }
 
-.login .btn-default[disabled] {
+.login .btn-default[disabled],
+.registro .btn-default[disabled] {
     color: rgba(255, 255, 255, 0.5);
     border-color: rgba(255, 255, 255, 0.5);
 }
 
 .login .btn-default:focus,
-.login .btn-default:active {
+.login .btn-default:active,
+.registro .btn-default:focus,
+.registro .btn-default:active {
     outline: 0;
 }
 
@@ -344,13 +356,15 @@ h6 {
     position: relative;
 }
 
-.modal-dialog .login .cerrar {
+.modal-dialog .login .cerrar,
+.modal-dialog .registro .cerrar {
     position: absolute;
     right: -10px;
     top: -10px;
 }
 
-.modal-dialog .login .cerrar button {
+.modal-dialog .login .cerrar button,
+.modal-dialog .registro .cerrar button {
     font-size: 30px;
     background: #ffffff;
     text-align: center;
@@ -362,7 +376,9 @@ h6 {
 }
 
 .modal-dialog .login .cerrar button:focus,
-.modal-dialog .login .cerrar button:active {
+.modal-dialog .login .cerrar button:active,
+.modal-dialog .registro .cerrar button:focus,
+.modal-dialog .registro .cerrar button:active {
     outline: 0;
 }
 
