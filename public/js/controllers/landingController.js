@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('LandingController', function ($scope, $location, $anchorScroll, $uibModal, $window, $document, bsLoadingOverlayService, anchorSmoothScrollService, AuthenticationService) {
+nutrifamiApp.controller('LandingController', function($scope, $location, $anchorScroll, $uibModal, $window, $document, bsLoadingOverlayService, anchorSmoothScrollService, AuthenticationService) {
     'use strict';
 
     $anchorScroll();
@@ -7,7 +7,7 @@ nutrifamiApp.controller('LandingController', function ($scope, $location, $ancho
     /* Overloading*/
     bsLoadingOverlayService.start();
     /* Se apaga cuando el todo el contenido de la vista ha sido cargado*/
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         bsLoadingOverlayService.stop();
     });
 
@@ -16,7 +16,7 @@ nutrifamiApp.controller('LandingController', function ($scope, $location, $ancho
 
     $scope.scrolled = false;
 
-    $document.on('scroll', function () {
+    $document.on('scroll', function() {
         // do your things like logging the Y-axis
         if ($window.scrollY > 775) {
             if (!$scope.scrolled) {
@@ -31,18 +31,33 @@ nutrifamiApp.controller('LandingController', function ($scope, $location, $ancho
         }
 
         // or pass this to the scope
-        $scope.$apply(function () {
+        $scope.$apply(function() {
             $scope.pixelsScrolled = $window.scrollY;
         });
     });
 
-    $scope.gotoElement = function (eID) {
+    $scope.login = function() {
+        console.log("Click");
+        $scope.dataLoading = true;
+        AuthenticationService.Login($scope.username, 'no-pass', function(response) {
+            console.log(response);
+            if (response.success) {
+                AuthenticationService.SetCredentials($scope.username, $scope.password, response.message);
+                $location.path('/capacitacion');
+            } else {
+                $scope.error = response.message;
+                $scope.dataLoading = false;
+            }
+        });
+    };
+
+    $scope.gotoElement = function(eID) {
         $location.hash('bottom');
 
         anchorSmoothScrollService.scrollTo(eID);
     };
 
-    $scope.modalLogin = function () {
+    $scope.modalRegistro = function() {
         console.log("Abrir Login");
 
         var loginModal = $uibModal.open({
@@ -54,7 +69,7 @@ nutrifamiApp.controller('LandingController', function ($scope, $location, $ancho
             size: 'lg'
         });
 
-        loginModal.result.then(function (estado) {
+        loginModal.result.then(function(estado) {
             /*$scope.dataLoading = true;
             AuthenticationService.Login($scope.username, $scope.password, function (response) {
                 if (response.success) {

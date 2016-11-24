@@ -41,7 +41,7 @@ h6 {
 }
 
 .landing header.scrolled {
-    background-color: #75a8fe;
+    background-color: #00c97e;
     animation-name: headerscrolled;
     animation-duration: 1s;
     z-index: 10;
@@ -55,7 +55,7 @@ h6 {
         background-color: rgba(0, 0, 0, 0);
     }
     to {
-        background-color: #75a8fe;
+        background-color: #00c97e;
     }
 }
 
@@ -87,7 +87,7 @@ h6 {
 
 .landing .hero {
     padding-top: 45px;
-    background-color: #75a8fe;
+    background-color: #00c97e;
     background-image: url('../img/landing-hero-bg.png');
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -99,7 +99,7 @@ h6 {
 .landing .hero .descripcion {
     text-align: center;
     clear: both;
-    margin-top: 65px;
+    margin-top: 120px;
 }
 
 .landing .hero .descripcion h1 {
@@ -112,69 +112,83 @@ h6 {
     margin-bottom: 70px;
 }
 
-.landing .mi-perfil,
+.landing .acceder,
 .landing .aprende,
-.landing .mis-compras {
+.landing .mi-perfil {
     position: relative;
     text-align: center;
     margin-top: 95px;
     margin-bottom: 100px;
 }
 
-.landing .mi-perfil .navegador,
+.landing .acceder .navegador,
 .landing .aprende .navegador,
-.landing .mis-compras .navegador {
+.landing .mi-perfil .navegador {
     position: absolute;
     left: 0px;
     top: 50%;
 }
 
-.landing .mi-perfil .navegador li,
+.landing .acceder .navegador li,
 .landing .aprende .navegador li,
-.landing .mis-compras .navegador li {
+.landing .mi-perfil .navegador li {
     list-style: none;
 }
 
-.landing .mi-perfil .navegador a,
+.landing .acceder .navegador a,
 .landing .aprende .navegador a,
-.landing .mis-compras .navegador a {
+.landing .mi-perfil .navegador a {
     color: rgba(0, 201, 126, 0.2);
     font-size: 31px;
     line-height: 20px;
     text-decoration: none;
 }
 
-.landing .mi-perfil .navegador a.active,
+.landing .acceder .navegador a.active,
 .landing .aprende .navegador a.active,
-.landing .mis-compras .navegador a.active {
+.landing .mi-perfil .navegador a.active {
     color: rgba(0, 201, 126, 1);
 }
 
-.landing .mi-perfil h4,
+.landing .acceder h4,
 .landing .aprende h4,
-.landing .mis-compras h4 {
+.landing .mi-perfil h4 {
     color: #004d30;
     font-size: 10pt;
     text-transform: uppercase;
     margin-bottom: 5px;
 }
 
-.landing .mi-perfil h2,
+.landing .acceder h2,
 .landing .aprende h2,
-.landing .mis-compras h2 {
+.landing .mi-perfil h2 {
     margin-top: 10px;
     margin-bottom: 25px;
     color: #00a165;
     font-size: 30pt;
 }
 
-.landing .mi-perfil p,
+.landing .acceder p,
 .landing .aprende p,
-.landing .mis-compras p {
-    color: #00a165;
+.landing .mi-perfil p {
+    color: #4d4d4d;
     font-size: 14pt;
     padding: 10px 10px;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
+}
+
+.landing .acceder img,
+.landing .aprende img,
+.landing .mi-perfil img {
+    margin-bottom: 40px;
+}
+
+.landing .contenido-slider h3 {
+    font-size: 14pt;
+}
+
+.landing .contenido-slider p {
+    font-size: 10pt;
 }
 
 .landing footer {
@@ -221,39 +235,40 @@ h6 {
 
 /* END - LANDING*/
 
-.login {
+
+/*.login {
     background-color: #1863dc;
     height: 100vh;
-}
+}*/
 
-.login .logo {
+
+/*.login .logo {
     margin-top: 40px;
     text-align: center;
     margin-bottom: 40px;
-}
+}*/
 
 .login form .form-group input {
-    font-family: Avenir;
-    font-weight: lighter;
+    background-color: #13b377;
     color: #ffffff;
-    background-color: #00c97e;
-    font-size: 13pt;
+    font-size: 15pt;
+    font-family: 'Muli-Light', sans-serif;
     width: 100%;
-    height: 40px;
+    height: 70px;
     border: none;
-    border-bottom: 1px solid #80e4bf;
+    border-radius: 18px;
     box-shadow: none;
     padding-bottom: 5px;
     margin-top: 27px;
-    padding-left: 55px;
-    font-family: 'Muli-Light', sans-serif;
+    text-align: center;
 }
 
-.login form .form-group .ldocumento {
+
+/*.login form .form-group .ldocumento {
     background-image: url(../img/icons/ico-documento.png);
     background-repeat: no-repeat;
     background-position: 0px 0px;
-}
+}*/
 
 .login form .form-group .lcodigo {
     background-image: url(../img/icons/ico-codigo.png);
@@ -269,18 +284,15 @@ h6 {
 }
 
 .login form .form-group input::-webkit-input-placeholder {
-    /* WebKit, Blink, Edge */
     color: #ffffff;
 }
 
 .login form .form-group input::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
     color: #ffffff;
     opacity: 1;
 }
 
 .login form .form-group input:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
     color: #ffffff;
 }
 
@@ -293,14 +305,15 @@ h6 {
 
 .login .login-enviar {
     font-family: 'Muli', sans-serif;
-    background-color: #00c97e;
-    height: 58px;
+    font-weight: bold;
+    background-color: #ffb716;
+    height: 70px;
     width: 100%;
-    border: solid 3px #ffffff;
-    border-radius: 29px;
+    border: none;
+    border-radius: 30px;
     font-size: 16pt;
+    margin-top: 35px;
     color: #ffffff;
-    margin-top: 68px;
 }
 
 .login .btn-default[disabled] {

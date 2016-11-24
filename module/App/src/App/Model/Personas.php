@@ -42,8 +42,8 @@ class Personas {
          * Generar y comparar token
          */
         $data = array(
-            'FAM_PER_DOCUMENTO' => $cedula,
-            'FAM_PER_CODIGO' => $codigo
+            'FAM_PER_DOCUMENTO' => $cedula
+            //'FAM_PER_CODIGO' => $codigo
         );
         return $this->personaTable->getPersona($data);
     }
