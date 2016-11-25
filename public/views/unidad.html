@@ -58,7 +58,7 @@
                     <div class="row unidad-parejas" ng-show="unidad.tipo.id == 2">
                         <parejas-unidad-info ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}"></parejas-unidad-info>
                     </div>
-                    <div class="row" ng-show="unidad.tipo.id == 3 || unidad.tipo.id == 4">
+                    <div class="row" ng-show="unidad.tipo.id == 3 || unidad.tipo.id == 4 || unidad.tipo.id == 5">
                         <opciones-unidad-info ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}" colspan="unidad.colspan" ng-click="validar()"></opciones-unidad-info>
                     </div>
                     <div class="row">

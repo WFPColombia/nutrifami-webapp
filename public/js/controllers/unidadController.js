@@ -33,6 +33,8 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
             }
         }
 
+        console.log($scope.unidad);
+
         /* Validamos si la unidad actual es de parejas o de otra 
          * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
          * else - Si es otro tipo de unidad, desorganizamos las opciones */
@@ -42,36 +44,15 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
             var tempLote2 = 0;
 
             // Recorre todo el objeto de las opciones para crear el arreglo
-            var i = 1;
             var cantidadParejas = Object.keys($scope.unidad.opciones).length / 2;
             $scope.cantidadParejas = cantidadParejas;
-            while (i <= cantidadParejas) {
 
-                for (var j in $scope.unidad.opciones) {
-                    if ($scope.unidad.opciones[j].orden == i) {
-                        if (tempLote1 == 0) {
-                            tempLote1 = $scope.unidad.opciones[j];
-                        } else {
-                            tempLote2 = $scope.unidad.opciones[j];
-                        }
-                    }
+            for (var j in $scope.unidad.opciones) {
+                if ($scope.unidad.opciones[j].columna == 1) {
+                    tempOpcionesPareja.push($scope.unidad.opciones[j]);
+                } else {
+                    tempOpciones.push($scope.unidad.opciones[j]);
                 }
-
-
-
-                // Si la opción tiene un texto corto se alamacena en las opciones, 
-                if (tempLote1.texto.length > tempLote2.texto.length) {
-                    tempOpciones.push(tempLote1);
-                    tempOpcionesPareja.push(tempLote2);
-
-                } else { // Si no, se almacena en la pareja
-                    tempOpciones.push(tempLote2);
-                    tempOpcionesPareja.push(tempLote1);
-
-                }
-                tempLote1 = 0;
-                tempLote2 = 0;
-                i++;
             }
 
             /* Se mezclan los arreglos */

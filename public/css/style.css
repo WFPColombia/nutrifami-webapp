@@ -1119,12 +1119,17 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .opcion {
-    margin: 0 10px 15px 10px;
     background-color: #ffffff;
+    border: solid 1px #dcdcdc;
     border-radius: 10px;
     height: 150px;
-    border: solid 1px #dcdcdc;
+    margin: 0 10px 15px 10px;
+    overflow: hidden;
     position: relative;
+}
+
+.unidad .panel-body .col-md-4 .opcion.pareja-con-imagen {
+    height: 200px;
 }
 
 .unidad .panel-body .col-md-2 {
@@ -1151,7 +1156,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .col-md-3 .opcion {
-    margin: 0 0 50px 0;
+    margin: 0 0 15px 0;
 }
 
 .unidad .panel-body .opcion-con-imagen .sonido,
@@ -1163,10 +1168,15 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .sonido {
-    top: 0px;
+    top: -12px;
 }
 
 .unidad .panel-body .col-md-4 .sonido {
+    top: -11px;
+    right: 25px;
+}
+
+.unidad .panel-body .col-md-6 .sonido {
     top: -11px;
     right: 25px;
 }
@@ -1193,15 +1203,32 @@ header .navbar-default .navbar-toggle .icon-bar {
 .unidad .panel-body .pareja-con-imagen img {
     width: 100%;
     border-radius: 7px 7px 0 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .unidad .panel-body .pareja-con-imagen p {
-    margin-top: 35px;
+    position: absolute;
+    color: #ffffff;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
 }
 
 .unidad .panel-body .opcion-con-imagen p {
-    margin-top: 20px;
-    margin-bottom: 75px;
+    position: absolute;
+    color: #ffffff;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
 }
 
 .unidad .panel-body .opcion.pareja-sin-imagen {
@@ -1230,19 +1257,17 @@ header .navbar-default .navbar-toggle .icon-bar {
     font-size: 12pt;
     height: 40px;
     left: 5%;
-    letter-spacing: 5px;
     margin: 0px;
-    padding-left: 49px;
     padding-top: 9px;
     position: absolute;
     width: 90%;
 }
 
 .unidad .panel-body .col-md-3 .opcion .btn-default {
-    width: 200px;
+    width: 90%;
     letter-spacing: 5px;
-    padding-left: 18px;
-    padding-top: 13px;
+    padding-left: 34px;
+    padding-top: 10px;
     border: 1px solid #dcdcdc;
 }
 
@@ -1274,7 +1299,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .unidad .panel-body .opcion .sticker {
     width: 100%;
     position: absolute;
-    bottom: 95px;
+    bottom: 25px;
     left: 0px;
 }
 
@@ -1398,10 +1423,6 @@ header .navbar-default .navbar-toggle .icon-bar {
 .modal-dialog .calificacion .activo .intentar-nuevo {
     font-size: 10pt;
     letter-spacing: 3px;
-}
-
-.unidad .panel-body .pareja-con-imagen {
-    min-height: 280px;
 }
 
 .unidad-parejas .opciones .pareja .btn-default {
