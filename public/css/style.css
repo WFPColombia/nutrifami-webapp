@@ -719,7 +719,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .panel .boton-flotante .glyphicon {
     color: #09df78;
-    margin-left: 17px;
+    margin-left: 10px;
 }
 
 .panel .panel-header {
@@ -1655,6 +1655,11 @@ header .navbar-default .navbar-toggle .icon-bar {
     padding: 17px 57px;
     font-size: 12pt;
     margin-bottom: 10px;
+}
+
+.panel-body .btn-default:active,
+.panel-body .btn-default:focus {
+    outline: none;
 }
 
 .panel-body .form-group .form-control[disabled],

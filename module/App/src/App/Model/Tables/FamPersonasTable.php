@@ -77,8 +77,8 @@ class FamPersonasTable extends AbstractTableGateway {
         );
 
         $dataPersona = array(
-            'FAM_PER_DOCUMENTO' => $params['login_documento'],
-            'FAM_PER_CODIGO' => $params['login_codigo']
+            'FAM_PER_DOCUMENTO' => $params['login_documento']
+            /*'FAM_PER_CODIGO' => $params['login_codigo']*/
         );
         
         if ($this->getPersona($dataPersona)) {
