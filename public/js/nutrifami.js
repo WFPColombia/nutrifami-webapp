@@ -5,7 +5,7 @@ var usuarioFamiliaAvance = new Object(); /* Datos de avance de la familia*/
 
 
 
-var base_url = 'http://dev.nutrifami.org/';
+var base_url = 'http://www.nutrifami.org/';
 
 var nutrifami = {
     /* nutrifami.usuarioActivoServerInfo */

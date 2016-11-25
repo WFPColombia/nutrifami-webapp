@@ -774,6 +774,8 @@ header .navbar-default .navbar-toggle .icon-bar {
     padding-bottom: 8px;
     border: 1px solid #9eabb3;
     cursor: not-allowed;
+    height: 452px;
+    position: relative;
 }
 
 .modulos .panel-body .modulo.terminado,
@@ -811,8 +813,7 @@ header .navbar-default .navbar-toggle .icon-bar {
     text-decoration: none;
 }
 
-.modulos .panel-body .modulo h3,
-.modulos .panel-body .modulo h4 {
+.modulos .panel-body .modulo h3 {
     color: #0dcd71;
     text-align: center;
     font-size: 15pt;
@@ -821,10 +822,14 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .modulos .panel-body .modulo h4 {
+    text-align: center;
     font-family: 'Raleway', sans-serif;
     font-size: 11pt;
     font-weight: bold;
     color: #9eabb3;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
 }
 
 .modulos .panel-body .modulo.actual h3,
@@ -834,13 +839,24 @@ header .navbar-default .navbar-toggle .icon-bar {
     color: #ffffff;
 }
 
-.modulos .panel-body .modulo .progress,
+.modulos .panel-body .modulo .progress {
+    height: 11px;
+    margin-bottom: 0px;
+    border-radius: 4px;
+    width: 94%;
+    margin: 0 3%;
+    background-color: #f5f5f5;
+    background-image: none;
+    position: absolute;
+    bottom: 10px;
+}
+
 .panel-header .modulo-avance .progress {
     height: 11px;
     margin-bottom: 0px;
     border-radius: 4px;
-    width: auto;
-    margin: 0 8px 0 8px;
+    width: 94%;
+    margin: 0 3%;
     background-color: #f5f5f5;
     background-image: none;
 }
