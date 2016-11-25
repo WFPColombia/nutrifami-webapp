@@ -242,14 +242,106 @@ h6 {
 }*/
 
 
-/*.login .logo {
-    margin-top: 40px;
-    text-align: center;
-    margin-bottom: 40px;
-}*/
+/*  REGISTRO */
 
-.login form .form-group input,
+.registro .logo h1 {
+    color: #4d4d4d;
+    font-family: 26pt;
+    margin-top: 80px;
+    margin-bottom: 70px;
+}
+
 .registro form .form-group input {
+    background-color: #ffffff;
+    color: #4d4d4d;
+    font-size: 15pt;
+    font-family: 'Muli-Light', sans-serif;
+    width: 80%;
+    height: 65px;
+    border: 2px solid #00c97e;
+    border-radius: 18px;
+    box-shadow: none;
+    padding-bottom: 5px;
+    text-align: center;
+    margin-left: 10%;
+}
+
+.registro form .form-group input::-webkit-input-placeholder {
+    color: #4d4d4d;
+}
+
+.registro form .form-group input::-moz-placeholder {
+    color: #4d4d4d;
+    opacity: 1;
+}
+
+.registro form .form-group input::-moz-placeholder {
+    color: #4d4d4d;
+}
+
+.registro .help-block {
+    text-align: left;
+    color: #ff3b3b;
+    margin-top: 5px;
+    margin-left: 10%;
+    font-size: 10pt;
+}
+
+.registro .form-actions .help-block {
+    text-align: center;
+}
+
+.registro .login-enviar {
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    background-color: #00c97e;
+    height: 70px;
+    width: 80%;
+    border: none;
+    border-radius: 30px;
+    font-size: 16pt;
+    margin-top: 5px;
+    color: #ffffff;
+    margin-left: 10%;
+    text-transform: uppercase;
+}
+
+.registro .row p {
+    color: #4d4d4d;
+    font-family: 'Muli', sans-serif;
+    font-size: 14pt;
+    margin: 35px 10% 100px 10%;
+    width: 80%;
+    text-align: center;
+}
+
+.registro .cerrar {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 10;
+}
+
+.registro .cerrar button {
+    font-size: 27px;
+    text-align: center;
+    border: none;
+    color: #2f3e47;
+    background-color: #ffffff;
+}
+
+.registro .cerrar button:focus,
+.registro .cerrar button:active {
+    outline: 0;
+}
+
+
+/*  FINAL - REGISTRO*/
+
+
+/* LOGIN*/
+
+.login form .form-group input {
     background-color: #13b377;
     color: #ffffff;
     font-size: 15pt;
@@ -287,32 +379,27 @@ h6 {
     outline: none;
 }
 
-.login form .form-group input::-webkit-input-placeholder,
-.registro form .form-group input::-webkit-input-placeholder {
+.login form .form-group input::-webkit-input-placeholder {
     color: #ffffff;
 }
 
-.login form .form-group input::-moz-placeholder,
-.registro form .form-group input::-moz-placeholder {
+.login form .form-group input::-moz-placeholder {
     color: #ffffff;
     opacity: 1;
 }
 
-.login form .form-group input:-ms-input-placeholder,
-.registro form .form-group input::-moz-placeholder {
+.login form .form-group input:-ms-input-placeholder {
     color: #ffffff;
 }
 
-.login .help-block,
-.registro .help-block {
+.login .help-block {
     text-align: center;
     color: #d200ff;
     margin-top: 5px;
     font-size: 9pt;
 }
 
-.login .login-enviar,
-.registro .login-enviar {
+.login .login-enviar {
     font-family: 'Muli', sans-serif;
     font-weight: bold;
     background-color: #ffb716;
@@ -356,15 +443,13 @@ h6 {
     position: relative;
 }
 
-.modal-dialog .login .cerrar,
-.modal-dialog .registro .cerrar {
+.modal-dialog .login .cerrar {
     position: absolute;
     right: -10px;
     top: -10px;
 }
 
-.modal-dialog .login .cerrar button,
-.modal-dialog .registro .cerrar button {
+.modal-dialog .login .cerrar button {
     font-size: 30px;
     background: #ffffff;
     text-align: center;
@@ -377,8 +462,7 @@ h6 {
 
 .modal-dialog .login .cerrar button:focus,
 .modal-dialog .login .cerrar button:active,
-.modal-dialog .registro .cerrar button:focus,
-.modal-dialog .registro .cerrar button:active {
+{
     outline: 0;
 }
 
@@ -589,7 +673,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 /*  PANELES GENERALES */
 
 .breadcrumb {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 0px;
 }
 
@@ -598,7 +682,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .panel {
-    margin-top: 15px;
+    margin-top: 5px;
     border: solid 1px #dcdcdc;
     background-color: #ffffff;
     border-radius: 4px;
@@ -666,12 +750,13 @@ header .navbar-default .navbar-toggle .icon-bar {
 /* MODULOS */
 
 .modulos .panel .panel-header {
-    margin-top: 30px;
+    margin-top: 20px;
     color: #3dc0fd;
 }
 
 .modulos .panel-body {
     margin-top: 10px;
+    padding-top: 0px;
 }
 
 .panel .panel-body .alert {
@@ -921,7 +1006,7 @@ header .navbar-default .navbar-toggle .icon-bar {
     width: 64px;
     height: 64px;
     position: absolute;
-    top: -25px;
+    top: -5px;
     right: 35px;
     border-radius: 32px;
     font-size: 27pt;
@@ -990,8 +1075,8 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-header .unidad-descripcion .unidad-tipo-descripcion h2 {
-    font-size: 20pt;
-    margin-top: 30px;
+    font-size: 16pt;
+    margin-top: 20px;
 }
 
 .unidad .panel-header .unidad-descripcion .unidad-tipo-descripcion img {
@@ -1001,8 +1086,8 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .unidad .panel-header .unidad-descripcion h3,
 .unidad .panel-header .unidad-descripcion .feedback-final p {
-    font-size: 30pt;
-    margin-top: 20px;
+    font-size: 26pt;
+    margin-top: 10px;
     color: #2f3e47;
     padding: 0 30px;
 }
@@ -1019,10 +1104,10 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-header .unidad-descripcion img {
-    margin-top: 10px;
+    margin-top: 0px;
     border: 1px solid #dcdcdc;
     border-radius: 10px;
-    max-width: 100%;
+    max-width: 85%;
 }
 
 .unidad .panel-body a.opcion-link {
@@ -1034,11 +1119,12 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .opcion {
-    margin: 0 28px 50px 28px;
+    margin: 0 10px 15px 10px;
     background-color: #ffffff;
     border-radius: 10px;
-    min-height: 295px;
+    height: 150px;
     border: solid 1px #dcdcdc;
+    position: relative;
 }
 
 .unidad .panel-body .col-md-2 {
@@ -1081,8 +1167,8 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .col-md-4 .sonido {
-    top: 0px;
-    right: 50px;
+    top: -11px;
+    right: 25px;
 }
 
 .unidad .panel-body .opcion-con-imagen .sonido .glyphicon,
@@ -1096,10 +1182,10 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .opcion p {
-    margin: 63px auto 0 auto;
+    margin: 15px auto 0 auto;
     color: #2f3e47;
     text-align: center;
-    font-size: 14pt;
+    font-size: 12pt;
     width: 90%;
 }
 
@@ -1135,14 +1221,21 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .unidad .panel-body .opcion .btn-default {
-    font-family: 'Raleway', sans-serif;
     background-color: #ffffff;
-    color: #09df78;
-    width: 250px;
-    letter-spacing: 5px;
-    padding-left: 49px;
     border: 1px solid #dcdcdc;
+    bottom: -46px;
     box-shadow: none;
+    color: #09df78;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12pt;
+    height: 40px;
+    left: 5%;
+    letter-spacing: 5px;
+    margin: 0px;
+    padding-left: 49px;
+    padding-top: 9px;
+    position: absolute;
+    width: 90%;
 }
 
 .unidad .panel-body .col-md-3 .opcion .btn-default {

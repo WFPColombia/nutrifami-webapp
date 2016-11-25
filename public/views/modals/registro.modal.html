@@ -11,16 +11,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
+                    <div ng-show="form.nombre.$dirty && form.nombre.$error.required" class="help-block">* Debe escribir su nombre completo para hacer el registro</div>
                     <input type="text" name="nombre" id="nombre" class="nombre" placeholder="Escriba su nombre completo" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_NOMBRE" required />
-                    <div ng-show="form.nombre.$dirty && form.nombre.$error.required" class="help-block">Nombre es necesario</div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
+                    <div ng-show="form.documento.$dirty && form.documento.$error.required" class="help-block">* El documento es necesario para hacer el registro</div>
                     <input type="text" name="documento" id="documento" class="documento" placeholder="Escriba su número de documento" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_DOCUMENTO" required />
-                    <div ng-show="form.documento.$dirty && form.documento.$error.required" class="help-block">Documento es necesario</div>
                 </div>
             </div>
         </div>
@@ -30,6 +30,11 @@
                     <button type="submit" class="btn center-block login-enviar" ng-disabled="form.$invalid" ion-ripple>Ingresar</button>
                     <div ng-show="error" class="help-block">{{error}}</div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>Recuerda que tu número de documento es el ingreso a la plataforma de Nutrifami</p>
             </div>
         </div>
     </form>

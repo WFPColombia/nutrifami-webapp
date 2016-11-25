@@ -38,15 +38,17 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
 
     $scope.login = function() {
         console.log("Click");
-        $scope.dataLoading = true;
+        bsLoadingOverlayService.start();
         AuthenticationService.Login($scope.username, 'no-pass', function(response) {
             console.log(response);
             if (response.success) {
                 AuthenticationService.SetCredentials($scope.username, $scope.password, response.message);
                 $location.path('/capacitacion');
+                bsLoadingOverlayService.stop();
+
             } else {
                 $scope.error = response.message;
-                $scope.dataLoading = false;
+                bsLoadingOverlayService.stop();
             }
         });
     };
@@ -70,16 +72,7 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
         });
 
         registroModal.result.then(function(estado) {
-            /*$scope.dataLoading = true;
-            AuthenticationService.Login($scope.username, $scope.password, function (response) {
-                if (response.success) {
-                    AuthenticationService.SetCredentials($scope.username, $scope.password, response.message);
-                    $location.path('/capacitacion');
-                } else {
-                    $scope.error = response.message;
-                    $scope.dataLoading = false;
-                }
-            });*/
+
         });
 
     };
