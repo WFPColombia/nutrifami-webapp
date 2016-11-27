@@ -56,10 +56,7 @@ nutrifamiApp.controller('EditarPerfilController', function($scope, $location, Pe
                     success: true
                 };
                 UsuarioService.setUsuarioActivo(usuarioActivo, function(response) {});
-                bsLoadingOverlayService.stop();
-                //$location.path('/perfil');
             } else {
-                bsLoadingOverlayService.stop();
 
                 $scope.mensaje = {
                     estado: true,
@@ -67,9 +64,15 @@ nutrifamiApp.controller('EditarPerfilController', function($scope, $location, Pe
                     success: true
 
                 };
-
-                console.log(response);
             }
+
+            bsLoadingOverlayService.stop();
+
+
+            $timeout(function() {
+                $scope.mensaje.estado = false;
+            }, 10000);
+
 
         });
 

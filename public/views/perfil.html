@@ -12,7 +12,6 @@
                         <h1>Mi información</h1>
                     </div>
                     <div class="panel-body">
-                        <div ng-show="mensaje.estado" class="alert alert-success" role="alert">{{mensaje.texto}}</div>
                         <form>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
@@ -107,7 +106,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-perfil">
                     <div class="boton-flotante">
-                        <a class="btn btn-default" href role="button" ng-click="porInscribir.open = !porInscribir.open">Agregar<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                        <a class="btn btn-default" href role="button" ng-click="porInscribir = !porInscribir">Agregar<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                     </div>
                     <div class="panel-header">
                         <img ng-src="../img/ico-familia.png">
@@ -115,6 +114,7 @@
                         <h3>{{ usuarioActivo.totalMiembrosPorInscribir}} familiares por inscribir</h3>
                     </div>
                     <div class="panel-body">
+                        <div ng-show="mensajeFam.estado" class="alert" ng-class=" mensajeFam.success ? 'alert-success': 'alert-danger'" role="alert">{{mensajeFam.message}}</div>
                         <div class="col-md-12">
                             <div ng-hide="usuarioActivo.totalMiembrosPorInscribir === 0">
                                 <div class="miembros-header">
@@ -123,10 +123,10 @@
                                     <div class="col-md-4 col-sm-4 col-xs-4">Editar info</div>
                                 </div>
                                 <uib-accordion close-others="true">
-                                    <div uib-accordion-group class="panel-first" is-open="porInscribir.open">
+                                    <div uib-accordion-group class="panel-first" is-open="porInscribir">
                                         <agregar-familiar></agregar-familiar>
                                     </div>
-                                    <div uib-accordion-group class="panel-default" ng-repeat="miembro in usuarioActivo.miembrosPorRango" ng-hide="miembro.cantidad === 0">
+                                    <div uib-accordion-group class="panel-default" ng-repeat="miembro in usuarioActivo.miembrosPorRango track by $index" ng-hide="miembro.cantidad === 0" is-open="miembro.open">
                                         <uib-accordion-heading>
                                             <div class="col-md-4 col-sm-4 col-xs-4">{{miembro.cantidad}}</div>
                                             <div class="col-md-4 col-sm-4 col-xs-4">{{miembro.rango}}</div>
@@ -140,7 +140,7 @@
                     </div>
                     <div class="panel-header">
                         <h1>Mi familia</h1>
-                        <h3>{{ usuarioFamilia.totalMiembrosInscritos}} familiares inscritos</h3>
+                        <h3>{{ usuarioActivo.totalMiembrosInscritos}} familiares inscritos</h3>
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12">
@@ -156,7 +156,7 @@
                                     <div uib-accordion-group class="panel-first" is-open="status.open">
                                         <!--<agregar-familiar></agregar-familiar>-->
                                     </div>
-                                    <div uib-accordion-group class="panel-default" ng-repeat="familiar in usuarioFamilia" ng-hide="miembro.cantidad === 0">
+                                    <div uib-accordion-group class="panel-default" ng-repeat="familiar in usuarioFamilia track by $index" ng-hide="miembro.cantidad === 0">
                                         <uib-accordion-heading>
                                             <div class="col-md-3 col-sm-3 col-xs-3">{{familiar.FAM_PER_NOMBRE}} {{familiar.FAM_PER_APELLIDO}}</div>
                                             <div class="col-md-3 col-sm-3 col-xs-3">{{familiar.FAM_PER_PARENTESCO}}</div>

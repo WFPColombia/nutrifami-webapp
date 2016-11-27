@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('PerfilController', function ($scope, $anchorScroll, PerfilService, bsLoadingOverlayService, $uibModal, $route, UsuarioService) {
+nutrifamiApp.controller('PerfilController', function($scope, $anchorScroll, $uibModal, $route, $timeout, PerfilService, bsLoadingOverlayService, UsuarioService) {
     'use strict';
 
     $anchorScroll();
@@ -7,7 +7,7 @@ nutrifamiApp.controller('PerfilController', function ($scope, $anchorScroll, Per
     /* Overloading*/
     bsLoadingOverlayService.start();
     /* Se apaga cuando el todo el contenido de la vista ha sido cargado*/
-    $scope.$on('$viewContentLoaded', function () {
+    $scope.$on('$viewContentLoaded', function() {
         bsLoadingOverlayService.stop();
     });
 
@@ -17,70 +17,62 @@ nutrifamiApp.controller('PerfilController', function ($scope, $anchorScroll, Per
     /* Creamos un arreglo para mostrar los miembros de la familia de forma dinamica */
 
     $scope.usuarioActivo.miembrosPorRango = [{
-            rango: '0 a 2 años',
-            cantidad: parseInt($scope.usuarioActivo.rango_0a2),
-            rango_alias: '0a2'
-        }, {
-            rango: '2 a 5 años',
-            cantidad: parseInt($scope.usuarioActivo.rango_2a5),
-            rango_alias: '2a5'
-        }, {
-            rango: '6 a 17 años',
-            cantidad: parseInt($scope.usuarioActivo.rango_6a17),
-            rango_alias: '6a17'
-        }, {
-            rango: '18 a 60 años',
-            cantidad: parseInt($scope.usuarioActivo.rango_18a60),
-            rango_alias: '18a60'
-        }, {
-            rango: '60 0 más años',
-            cantidad: parseInt($scope.usuarioActivo.rango_60mas),
-            rango_alias: '60mas'
-        }];
+        rango: '0 a 2 años',
+        cantidad: parseInt($scope.usuarioActivo.rango_0a2),
+        rango_alias: '0a2',
+        open: false
+    }, {
+        rango: '2 a 5 años',
+        cantidad: parseInt($scope.usuarioActivo.rango_2a5),
+        rango_alias: '2a5',
+        open: false
+    }, {
+        rango: '6 a 17 años',
+        cantidad: parseInt($scope.usuarioActivo.rango_6a17),
+        rango_alias: '6a17',
+        open: false
+    }, {
+        rango: '18 a 60 años',
+        cantidad: parseInt($scope.usuarioActivo.rango_18a60),
+        rango_alias: '18a60',
+        open: false
+    }, {
+        rango: '60 0 más años',
+        cantidad: parseInt($scope.usuarioActivo.rango_60mas),
+        rango_alias: '60mas',
+        open: false
+    }];
+
+    $scope.mensajeFam = {
+        message: '',
+        success: true,
+        estado: false
+    }
+
+    $scope.porInscribir = false;
 
     $scope.usuarioActivo.totalMiembrosPorInscribir = 0;
     for (var i in $scope.usuarioActivo.miembrosPorRango) {
         $scope.usuarioActivo.totalMiembrosPorInscribir = $scope.usuarioActivo.totalMiembrosPorInscribir + $scope.usuarioActivo.miembrosPorRango[i].cantidad;
     }
 
-    $scope.usuarioFamilia.totalMiembrosInscritos = $scope.usuarioFamilia.length;
-    $scope.agregarFamiliar = function (familiar, index) {
-         bsLoadingOverlayService.start();
-        PerfilService.agregarFamiliar(familiar, function (response) {
+    $scope.usuarioActivo.totalMiembrosInscritos = $scope.usuarioFamilia.length;
 
-            if (response.success) {
-                /* Restarle el familiar agregado al rango */
-                if (familiar.rango !== false) {
-                    $scope.usuarioActivo.miembrosPorRango[index].cantidad--;
-                    $scope.usuarioActivo['rango_' + familiar.rango] = familiar.cantidad;
-                }
-                $scope.usuarioFamilia.totalMiembrosInscritos++;
-                $scope.usuarioFamilia.push(familiar);
-                UsuarioService.setUsuarioFamilia($scope.usuarioFamilia);
-                bsLoadingOverlayService.stop();
-            }
-            var feedbackModal = $uibModal.open({
-                animation: true,
-                templateUrl: 'views/modals/actualizacionUsuario.html',
-                controller: 'ActualizarUsuarioModalController',
-                backdrop: 'static',
-                keyboard: false,
-                size: 'lg',
-                resolve: {
-                    data: function () {
-                        return response;
-                    }
-                }
-            });
-            feedbackModal.result.then(function (estado) {
-                $route.reload();
-            });
+    $scope.actualizarInfo = function(mensajeFam) {
+        $scope.mensajeFam = mensajeFam;
+        UsuarioService.setUsuarioFamilia($scope.usuarioFamilia);
+        UsuarioService.setUsuarioActivo(usuarioActivo, function(response) {});
+        $scope.porInscribir = false;
 
-        });
-    };
+
+        $timeout(function() {
+            $scope.mensajeFam.estado = false;
+        }, 10000);
+    }
+
 });
 
-nutrifamiApp.directive('agregarFamiliar', function () {
+nutrifamiApp.directive('agregarFamiliar', function(bsLoadingOverlayService, PerfilService, UsuarioService) {
     return {
         restrict: 'E',
         scope: {
@@ -88,22 +80,24 @@ nutrifamiApp.directive('agregarFamiliar', function () {
             index: '@',
         },
         templateUrl: 'views/directives/agregarFamiliar.html',
-        link: function ($scope, $element, $attrs) {
+        link: function($scope, $element, $attrs) {
             $scope.familiar = {};
             $scope.familiar.FAM_PER_NOMBRE = '';
             $scope.familiar.FAM_PER_APELLIDO = '';
             $scope.familiar.birthdate = new Date();
             $scope.familiar.parentescos = {
                 availableOptions: [
-                    {id: 'hijo', name: 'Hijo'},
-                    {id: 'conyuge', name: 'Conyuge'},
-                    {id: 'padre', name: 'Padre'},
-                    {id: 'otros', name: 'Otros'}
+                    { id: 'hijo', name: 'Hijo' },
+                    { id: 'conyuge', name: 'Conyuge' },
+                    { id: 'padre', name: 'Padre' },
+                    { id: 'otros', name: 'Otros' }
                 ]
             };
-            $scope.update = function () {
-                var familiar = $scope.familiar;
-                var tempMonth = familiar.birthdate.getMonth() + 1;
+
+            $scope.update = function() {
+                var familiar = Object.assign({}, $scope.familiar);
+                var tempMonth = $scope.familiar.birthdate.getMonth() + 1;
+                var tempDay = $scope.familiar.birthdate.getDate();
                 if (tempMonth < 10) {
                     tempMonth = "0" + tempMonth;
                 }
@@ -125,15 +119,45 @@ nutrifamiApp.directive('agregarFamiliar', function () {
 
                 delete familiar["parentescos"];
 
-                $scope.$parent.agregarFamiliar(familiar, $scope.index);
+                bsLoadingOverlayService.start();
+                PerfilService.agregarFamiliar(familiar, function(response) {
+
+                    if (response.success) {
+                        /* Restarle el familiar agregado al rango */
+
+                        if (familiar.rango != false) {
+                            $scope.$parent.usuarioActivo.miembrosPorRango[$scope.index].cantidad--;
+                            $scope.$parent.usuarioActivo['rango_' + familiar.rango] = familiar.cantidad;
+                            $scope.$parent.usuarioActivo.totalMiembrosPorInscribir--;
+
+                        }
+                        $scope.$parent.usuarioActivo.totalMiembrosInscritos++;
+                        $scope.$parent.usuarioFamilia.push(familiar);
+                        bsLoadingOverlayService.stop();
+                    }
+
+                    var mensajeFam = response
+                    mensajeFam.estado = true;
+
+                    $scope.familiar.FAM_PER_NOMBRE = '';
+                    $scope.familiar.FAM_PER_APELLIDO = '';
+                    $scope.familiar.FAM_PER_DOCUMENTO = '';
+                    $scope.familiar.FAM_PER_EMAIL = '';
+
+
+                    if (familiar.rango != false) {
+                        $scope.miembro.open = false;
+
+                    }
+
+                    $scope.$parent.actualizarInfo(mensajeFam);
+
+
+
+
+
+                });
             };
         }
-    };
-});
-
-nutrifamiApp.controller('ActualizarUsuarioModalController', function ($scope, $uibModalInstance, data) {
-    $scope.data = data;
-    $scope.clickBoton = function () {
-        $uibModalInstance.close();
     };
 });
