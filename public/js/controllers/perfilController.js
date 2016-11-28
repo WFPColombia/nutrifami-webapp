@@ -61,7 +61,7 @@ nutrifamiApp.controller('PerfilController', function($scope, $anchorScroll, $uib
     $scope.actualizarInfo = function(mensajeFam) {
         $scope.mensajeFam = mensajeFam;
         UsuarioService.setUsuarioFamilia($scope.usuarioFamilia);
-        UsuarioService.setUsuarioActivo(usuarioActivo, function(response) {});
+        UsuarioService.setUsuarioActivo($scope.usuarioActivo, function(response) {});
         $scope.porInscribir = false;
 
 
@@ -133,8 +133,10 @@ nutrifamiApp.directive('agregarFamiliar', function(bsLoadingOverlayService, Perf
                         }
                         $scope.$parent.usuarioActivo.totalMiembrosInscritos++;
                         $scope.$parent.usuarioFamilia.push(familiar);
-                        bsLoadingOverlayService.stop();
                     }
+
+                    bsLoadingOverlayService.stop();
+
 
                     var mensajeFam = response
                     mensajeFam.estado = true;
