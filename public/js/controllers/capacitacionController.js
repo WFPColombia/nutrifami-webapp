@@ -27,7 +27,9 @@ nutrifamiApp.controller('CapacitacionController', function($scope, $anchorScroll
 
             tempModulo.avance = {};
             tempModulo.avance.finalizado = false;
-            tempModulo.disponible = false;
+            //tempModulo.disponible = false;
+            tempModulo.disponible = true;
+
 
 
             if (tempModulo.activo == '1') {
