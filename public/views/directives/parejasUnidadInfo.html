@@ -2,7 +2,7 @@
     <span class="btn btn-default" role="button" ng-click="click()">{{info.texto}}</span>
 </div> -->
 <div class="col-xs-12 col-sm-6" ng-class="$parent.unidad.opciones.length == 6 ?  'col-md-4' : 'col-md-3'">
-    <div class="sonido" ng-show="info.audio.url != ''">
+    <div class="sonido" ng-hide="info.audio.nombre == ''">
         <a href><span ng-click='info.audio.audio.paused ? info.audio.audio.play() : info.audio.audio.pause()'class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
     </div>
     <div class="opcion-link" ng-class="info.match? '':'opcion-link-pointer'" ng-mouseover="rollover = 'rollover'" ng-mouseout="rollover=''" ng-click="click()">

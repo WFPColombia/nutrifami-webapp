@@ -22,10 +22,10 @@
                             <div class="unidad-descripcion">
                                 <div class="unidad-tipo-descripcion">
                                     <h2><img ng-src="img/icons/{{unidad.tipo.icono}}" /> {{ unidad.instruccion.texto}}
-                                        <a href ng-click='unidad.instruccion.audio.audio.paused ? unidad.instruccion.audio.audio.play() : unidad.instruccion.audio.audio.pause()' ><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
+                                        <a ng-hide="{{unidad.instruccion.audio.nombre == ''}}" href ng-click='unidad.instruccion.audio.audio.paused ? unidad.instruccion.audio.audio.play() : unidad.instruccion.audio.audio.pause()' ><span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a>
                                     </h2>
                                 </div>
-                                <h3>{{ unidad.titulo.texto}} <a href ng-click='unidad.audio.audio.paused ? unidad.audio.audio.play() : unidad.audio.audio.pause()'><span  class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a></h3>
+                                <h3>{{ unidad.titulo.texto}} <a href ng-hide="{{ unidad.audio.nombre == ''}}" ng-click='unidad.audio.audio.paused ? unidad.audio.audio.play() : unidad.audio.audio.pause()'><span  class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></a></h3>
                                 <img ng-src="{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen.nombre == ''}}" />
                                 <div class="unidad-informativa" ng-bind-html="unidad.texto | trust" ng-hide="unidad.texto =='' "></div>
                             </div>

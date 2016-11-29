@@ -956,10 +956,11 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .lecciones .panel-body .leccion h4 {
-    margin-top: 52px;
+    margin-top: 25px;
     color: #2f3e47;
     text-align: center;
     font-size: 15pt;
+    padding: 0 10px;
 }
 
 .lecciones .panel-body .leccion .boton {
