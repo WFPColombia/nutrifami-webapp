@@ -279,7 +279,8 @@ var nutrifami = {
                 nutrifami.training.cap_unidadestips = capacitacion["serv_tips"];
                 callback();
             } else {
-                $.getJSON("js/capacitacion.JSON", function(data) {
+                var ran = Math.floor((Math.random() * 100) + 1);
+                $.getJSON("js/capacitacion.JSON?" + ran, function(data) {
                     nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
                     nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
                     nutrifami.training.cap_modulos = data['serv_modulos'];
