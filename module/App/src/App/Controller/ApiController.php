@@ -97,7 +97,7 @@ class ApiController extends AbstractActionController {
     }
 
     public function agregarFamiliarAction() {
-ini_set('memory_limit', '-1');
+        ini_set('memory_limit', '-1');
         header('Access-Control-Allow-Origin: *');
         $params = $this->params()->fromQuery();
 
@@ -117,6 +117,8 @@ ini_set('memory_limit', '-1');
     }
 
     public function agregarUsuarioAction() {
+        ini_set('memory_limit', '-1');
+        header('Access-Control-Allow-Origin: *');
         $params = $this->params()->fromQuery();
 
         $personasObj = new Personas();

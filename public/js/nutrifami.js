@@ -277,6 +277,7 @@ var nutrifami = {
                 nutrifami.training.cap_lecciones = capacitacion["serv_lecciones"];
                 nutrifami.training.cap_unidadesinformacion = capacitacion["serv_unidades"];
                 nutrifami.training.cap_unidadestips = capacitacion["serv_tips"];
+                callback();
             } else {
                 $.getJSON("js/capacitacion.JSON", function(data) {
                     nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
@@ -285,6 +286,7 @@ var nutrifami = {
                     nutrifami.training.cap_lecciones = data['serv_lecciones'];
                     nutrifami.training.cap_unidadesinformacion = data['serv_unidades'];
                     nutrifami.training.cap_unidadestips = data["serv_tips"];
+                    callback();
                 }).fail(function(jqxhr, textStatus, error) {
                     console.log(jqxhr);
                     var err = textStatus + ", " + error;
