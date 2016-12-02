@@ -36,6 +36,11 @@ class JobsController extends AbstractActionController
         
         //echo $data;
         
+        $versionCapacitacion = Array();
+        $versionCapacitacion['Capacitacion'] = Array('Archivo'=>'capacitacion.JSON', 'ID'=>date('YmdHis'));
+        $versionFile = getcwd().'/public/js/version.JSON'; 
+        file_put_contents($versionFile, $versionCapacitacion);
+        
         $viewModel = new ViewModel();
         $viewModel->setTerminal(true);
         return $viewModel;
