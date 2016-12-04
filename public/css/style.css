@@ -1751,16 +1751,50 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 /* COMPRAS */
 
+.compras .panel {
+    margin-top: 40px;
+}
+
 .compras .panel .panel-header {
-    margin-top: 30px;
+    margin-top: 50px;
     color: #00c97e;
     margin-bottom: 30px;
 }
 
-.compras .compras-descripcion {
+.compras .panel .panel-header h1 {
+    margin: 0;
+}
+
+.compras .panel .panel-body {
+    padding: 0px;
+}
+
+.compras .panel .panel-body h3 {
+    padding: 0px;
+    color: #2f3e47;
+    font-size: 20px;
+    font-family: 'Muli-Light', sans-serif;
     text-align: center;
-    cursor: pointer;
-    margin-bottom: 90px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+.compras .panel .panel-body p {
+    padding: 0px;
+    color: #2f3e47;
+    font-size: 16px;
+    font-family: 'Muli-Light', sans-serif;
+    text-align: center;
+}
+
+.compras .compras-descripcion {
+    margin-top: 30px;
+    margin-bottom: 4 0px;
+}
+
+.compras .btn {
+    background-color: #00c97e;
+    margin-bottom: 30px;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-tipo p {

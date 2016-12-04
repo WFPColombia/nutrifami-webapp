@@ -1,0 +1,52 @@
+<div class="bs-loading-container" bs-loading-overlay>
+    <ng-include src="'views/template/header.tpl.html'"></ng-include>
+    <div class="container">
+        <div class='compras'>
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Mis Compras</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="compras-descripcion">
+                                <p ng-click="audio1.paused ? audio1.play() : audio1.pause()" ng-hide="noHayDatos">
+                                    <i class="glyphicon glyphicon-volume-up"></i> Aquí encontrará el resumen de sus compras del último mes
+                                </p>
+                            </div>
+                            <div class="compras-porcentajes">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <div class="compras-ideal"></div>
+                                        <div class="compras-ideal-max"></div>
+                                        <div class="compras-ideal-min"></div>
+                                        <div class="compra-ideal-convencion">Compra
+                                            <br>Ideal</div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-repeat="grupo in consumoUltimoMes">
+                                    <div class="col-md-4">
+                                        <div class="compras-porcentaje-tipo">
+                                            <p>{{ grupo.nombre}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 compras-porcentaje-barra">
+                                        <div class="progress" ng-click="verGrupo(grupo.grupo_id)">
+                                            <div class="progress-bar grupo-{{grupo.grupo_id}}" style="width: {{animar ?  grupo.porcentaje_visual: '0'}}%;"></div>
+                                            <i class="glyphicon glyphicon-chevron-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer ng-include="'views/template/footer.tpl.html'"></footer>
+    </div>
+</div>

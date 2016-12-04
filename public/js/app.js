@@ -84,13 +84,18 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     });
 
     $routeProvider.when('/mis-compras', {
-        controller: 'ComprasController',
-        templateUrl: 'views/compras.html'
+        controller: 'misComprasController',
+        templateUrl: 'views/misCompras.html'
+    });
+
+    $routeProvider.when('/mis-compras/intro', {
+        controller: 'misComprasIntroController',
+        templateUrl: 'views/misComprasIntro.html'
     });
 
     $routeProvider.when('/mis-compras/:grupo', {
-        controller: 'ComprasGrupoController',
-        templateUrl: 'views/comprasGrupo.html'
+        controller: 'misComprasGrupoController',
+        templateUrl: 'views/misComprasGrupo.html'
     });
 
     $routeProvider.when('/mi-progreso', {

@@ -1,4 +1,4 @@
-nutrifamiApp.controller('ComprasController', function($scope, $timeout, $location, $uibModal, ComprasService, ngAudio, bsLoadingOverlayService, UsuarioService) {
+nutrifamiApp.controller('misComprasGrupoController', function($scope, $timeout, $location, $uibModal, ComprasService, ngAudio, bsLoadingOverlayService, UsuarioService) {
     'use strict';
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo()
