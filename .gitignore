@@ -1,6 +1,7 @@
 /nbproject/*
 /nbproject/private/*
 /public/js/capacitacion.JSON
+/public/js/version.JSON
 ._*
 .vagrant
 .~lock.*
