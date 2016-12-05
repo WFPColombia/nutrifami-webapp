@@ -7,6 +7,7 @@ nutrifamiApp.directive('goClick', function($location, $timeout) {
         });
 
         element.bind('click', function() {
+            console.log("click");
             scope.$apply(function() {
                 $location.path(path);
             });

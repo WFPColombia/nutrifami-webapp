@@ -192,38 +192,39 @@ h6 {
 }
 
 .landing footer {
-    height: 410px;
     text-align: center;
     padding: 0px;
     background: url('../img/landing-footer-bg.png') #00c97e no-repeat;
     color: #ffffff;
     margin: 0px;
-    background-position: 65% 63%;
+    background-position: 80% 50%;
 }
 
 .landing footer h2 {
-    margin-top: 110px;
+    margin-top: 80px;
     font-size: 30pt;
 }
 
 .landing footer .btn-primary {
-    padding: 0 65px;
-    line-height: 55px;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    border: 1px solid #ffffff;
     border-radius: 27px;
     -moz-border-radius: 27px;
     -webkit-border-radius: 27px;
-    border: 1px solid #ffffff;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 15pt;
     color: #ffffff;
+    font-size: 15pt;
+    line-height: 55px;
+    margin-bottom: 80px;
     margin-top: 27px;
-    background-image: none;
+    padding: 0 65px;
 }
 
 .landing footer .logo {
-    margin-top: 115px;
-    line-height: 19px;
     font-size: 8px;
+    line-height: 19px;
+    margin-bottom: 20px;
+    margin-top: 60px;
 }
 
 .landing footer .logo img {
@@ -628,7 +629,7 @@ header .navbar {
 }
 
 header .navbar-brand {
-    padding: 8px 35px;
+    padding: 8px 20px;
     margin-right: 10px;
 }
 
@@ -640,7 +641,7 @@ header .navbar-brand img {
 header .navbar-default .navbar-nav > li > a,
 header .navbar-default .navbar-nav > li > a:hover {
     color: #ffffff;
-    padding: 20px;
+    padding: 20px 15px;
 }
 
 header .navbar-default .navbar-nav > .active > a,
@@ -667,6 +668,10 @@ header .navbar-default .navbar-toggle {
 
 header .navbar-default .navbar-toggle .icon-bar {
     background-color: #fff;
+}
+
+header .navbar-default .tooltip {
+    /*background-color: red;*/
 }
 
 
@@ -1726,6 +1731,10 @@ header .navbar-default .navbar-toggle .icon-bar {
     text-align: center;
 }
 
+.sobre .nf-logo {
+    margin-bottom: 20px;
+}
+
 .sobre .nf-logo img {
     margin-top: 50px;
     margin-bottom: 5px;
@@ -1733,7 +1742,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 
 .sobre .descripcion p {
     font-size: 14pt;
-    margin-top: 35pt;
+    margin-top: 15pt;
     padding: 0 35px;
 }
 
@@ -1752,7 +1761,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 /* COMPRAS */
 
 .compras .panel {
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .compras .panel .panel-header {
@@ -1787,27 +1796,29 @@ header .navbar-default .navbar-toggle .icon-bar {
     text-align: center;
 }
 
-.compras .compras-descripcion {
-    margin-top: 30px;
-    margin-bottom: 4 0px;
+.compras .compras-descripcion p {
+    color: #2f3e47;
+    font-family: 'Muli', sans-serif;
+    font-size: 16pt;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.compras .btn {
+.compras .compras-descripcion .glyphicon {
+    color: #00c97e;
+    font-size: 20pt;
+    margin-left: 20px;
+}
+
+.compras .compras-descripcion .btn {
     background-color: #00c97e;
+    letter-spacing: 3px;
     margin-bottom: 30px;
 }
 
-.compras .compras-porcentajes .compras-porcentaje-tipo p {
-    text-align: right;
-    color: #2f3e47;
-    text-transform: uppercase;
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    font-size: 9pt;
-    position: relative;
-}
 
-.compras .compras-porcentajes .compras-ideal,
+/*.compras .compras-porcentajes .compras-ideal,
 .compras .compras-porcentajes .compras-ideal-min,
 .compras .compras-porcentajes .compras-ideal-max {
     border-left: 2px solid;
@@ -1834,170 +1845,182 @@ header .navbar-default .navbar-toggle .icon-bar {
     right: calc(20% - 12px);
     text-align: center;
     line-height: 1em;
+}*/
+
+.compras-porcentajes {
+    height: 44px;
+    margin-bottom: 40px;
+}
+
+.compras .compras-porcentajes .col-md-3 {
+    padding: 0;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-tipo img {
+    float: left;
+    margin-right: 10px;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-tipo p {
+    color: #2f3e47;
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-top: 10px;
+    position: relative;
+    text-align: left;
+    text-transform: uppercase;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress {
     background-color: #efefef;
-    height: 64px;
-    position: relative;
+    background-image: none;
+    border-radius: 10px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
     cursor: pointer;
-    border-bottom: 2px solid #dcdcdc;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    width: 97%;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .progress-bar {
     -webkit-transition: width 2s ease;
     transition: width 2s ease;
+    box-shadow: none;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .cantidad {
     text-align: right;
-    font-size: 19pt;
+    font-size: 25pt;
     position: absolute;
-    top: 14px;
+    top: 4px;
     right: 50px;
 }
 
-.compras .compras-porcentajes .compras-porcentaje-barra .progress .glyphicon {
-    font-size: 24pt;
-    color: rgba(0, 0, 0, 0.3);
+.compras .compras-porcentajes .compras-porcentaje-barra {
+    position: relative;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .fa {
+    color: #98999a;
+    cursor: pointer;
+    font-size: 27pt;
     position: absolute;
-    top: 14px;
-    right: 10px;
+    right: 0px;
+    top: 3px;
 }
 
 .compras .recomendados-header {
     cursor: pointer;
 }
 
-.compras .recomendados-header img {
-    float: left;
-    margin-left: 15px;
-    margin-right: 10px;
-}
-
-.compras .recomendados-header p {
-    text-align: right;
-    margin-right: 10px;
-}
-
-.compras .recomendados-body {
-    clear: both;
-    padding-top: 6px;
-}
-
-.compras .recomendados-body .panel {
-    padding: 0;
+.compras-grupo .compras-grupo-titulo {
+    border-radius: 5px;
+    height: 80px;
     margin-top: 20px;
+    width: 100%;
 }
 
-.compras .recomendados-body .panel-heading {
-    padding: 4px 15px;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
+.compras-grupo .compras-grupo-titulo img {
+    margin-right: 10px;
 }
 
-.compras .recomendados-body .panel-title {
-    font-size: 14px;
-    text-transform: uppercase;
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    color: #ffffff;
-    margin-top: 6px;
-    border-radius: 7px;
-    height: 48px;
-    border-width: 0px;
-    position: relative;
-    line-height: 50px;
-}
-
-.compras .recomendados-body .panel-default>.panel-heading {
-    text-align: left;
-}
-
-.compras .recomendados-body .panel-title a:focus {
-    outline: none;
-}
-
-.compras .recomendados-body .panel-title .glyphicon {
-    font-size: 24pt;
-    color: rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 5px;
-    right: 10px;
-}
-
-.compras .recomendados-body .panel-collapse .panel-body {
-    margin: 0px;
-    padding: 0px;
-}
-
-.compras .recomendados-body .panel-collapse p {
-    background-color: #ffffff;
-    padding: 15px;
-    margin: 0;
-}
-
-.compras .recomendados-body .panel-collapse p:nth-child(even) {
-    background-color: #f6f5f5;
-}
-
-.modal-dialog .compras-grupo .modal-header {
-    color: #ffffff;
-    text-align: center;
+.compras-grupo .compras-grupo-titulo h1 {
     font-family: 'Muli', sans-serif;
-    position: relative;
-}
-
-.modal-dialog .compras-grupo .modal-header .titulo {
-    height: 64px;
-    border-bottom: rgba(255, 255, 255, 0.4) 1px solid;
-}
-
-.modal-dialog .compras-grupo .modal-header .titulo a {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 21PX;
     font-size: 15pt;
     color: #ffffff;
-}
-
-.modal-dialog .compras-grupo .modal-header .titulo h1 {
-    margin-top: 15px;
-    font-size: 15pt;
-    color: #ffffff;
-    text-transform: uppercase;
-}
-
-.modal-dialog .compras-grupo .modal-header .sub-header {
-    padding-top: 17px;
-}
-
-.modal-dialog .compras-grupo .modal-header .sub-header .total-compra {
     text-align: center;
-    font-size: 18pt;
-    border-right: rgba(255, 255, 255, 0.4) 1px solid;
-    padding-bottom: 0px;
 }
 
-.modal-dialog .compras-grupo .modal-header .sub-header .total-compra span {
-    font-size: 15pt;
+.compras-grupo .panel {
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-top: 25px;
+    min-height: 600px;
 }
 
-.modal-dialog .compras-grupo .modal-header .sub-header .total-compra .valor {
-    margin-bottom: 0px;
+.compras-grupo .compras-grupo-ultimo-mes img {
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
-.modal-dialog .compras-grupo .modal-header .sub-header .estado {
+.compras-grupo .compras-grupo-ultimo-mes h2 {
+    color: #2f3e47;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 14pt;
     text-align: center;
-    border-left: rgba(255, 255, 255, 0.4) 1px solid;
-    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes .compras-resumen {
+    color: #2f3e47;
+    font-size: 11pt;
+    font-family: 'Muli', sans-serif;
+    padding-left: 60px;
+    padding-right: 60px;
+    text-transform: lowercase;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes .compras-resumen .nombre-producto {
+    margin-bottom: 25px;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes .compras-resumen .precio {
+    text-align: right;
+    font-size: 13pt;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes .compras-resumen .totales {
+    border-top: 1px solid #2f3e47;
+    font-size: 17pt;
+    padding-top: 35px;
+    margin-bottom: 30px;
+}
+
+.compras-grupo .compras-grupo-recomendacion {
+    padding: 30px 60px;
+}
+
+.compras-grupo .compras-grupo-recomendacion img {
+    float: left;
+    margin-right: 15px;
+}
+
+.compras-grupo .compras-grupo-recomendacion h2 {
+    color: #2f3e47;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 14pt;
+    margin-top: 10px;
+}
+
+.compras-grupo .compras-grupo-recomendacion h2 span {
+    color: #00c97e;
+}
+
+.compras-grupo .compras-grupo-recomendacion p {
+    margin-top: 35px;
+    font-size: 11pt;
+}
+
+.compras-grupo .compras-grupo-nombre-recomendado {
+    background-color: #f5f4f4;
+    font-size: 11pt;
+    padding: 15px 60px;
+    text-transform: lowercase;
+}
+
+.compras-grupo .compras-grupo-nombre-recomendado:nth-child(odd) {
+    background-color: #ffffff;
 }
 
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CEREALES,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-1,
 .compras .panel-body .panel-default.grupo-1>.panel-heading,
-.modal-dialog .compras-grupo .modal-header.grupo-1,
+.compras-grupo .compras-grupo-titulo.grupo-1,
 .compras-grupo .progress-radial .overlay.grupo-1 {
     background-color: #f2df00 !important;
     background-image: none;
@@ -2006,7 +2029,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CARNES,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-2,
 .compras .panel-body .panel-default.grupo-2>.panel-heading,
-.modal-dialog .compras-grupo .modal-header.grupo-2,
+.compras-grupo .compras-grupo-titulo.grupo-2,
 .compras-grupo .progress-radial .overlay.grupo-2 {
     background-color: #ff9600;
     background-image: none;
@@ -2015,7 +2038,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-LECHELACTEOS,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-3,
 .compras .panel-body .panel-default.grupo-3>.panel-heading,
-.modal-dialog .compras-grupo .modal-header.grupo-3,
+.compras-grupo .compras-grupo-titulo.grupo-3,
 .compras-grupo .progress-radial .overlay.grupo-3 {
     background-color: #0fa7ff;
     background-image: none;
@@ -2024,7 +2047,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-VEGETALES,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-4,
 .compras .panel-body .panel-default.grupo-4>.panel-heading,
-.modal-dialog .compras-grupo .modal-header.grupo-4,
+.compras-grupo .compras-grupo-titulo.grupo-4,
 .compras-grupo .progress-radial .overlay.grupo-4 {
     background-color: #7bd462;
     background-image: none;
@@ -2033,7 +2056,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-GRASAS,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-5,
 .compras .panel-body .panel-default.grupo-5>.panel-heading,
-.modal-dialog .compras-grupo .modal-header.grupo-5,
+.compras-grupo .compras-grupo-titulo.grupo-5,
 .compras-grupo .progress-radial .overlay.grupo-5 {
     background-color: #ff037a;
     background-image: none;
@@ -2042,7 +2065,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-AZUCAR,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-6,
 .compras .panel-body .panel-default.grupo-6>.panel-heading,
-.modal-dialog .compras-grupo .modal-header.grupo-6,
+.compras-grupo .compras-grupo-titulo.grupo-6,
 .compras-grupo .progress-radial .overlay.grupo-6 {
     background-color: #d360fe;
     background-image: none;
@@ -2051,7 +2074,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CONDIMENTOS,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-9,
 .compras .panel-body .panel-default.grupo-9>.panel-heading,
-.modal-dialog .compras-grupo .modal-header.grupo-9,
+.compras-grupo .compras-grupo-titulo.grupo-9,
 .compras-grupo .progress-radial .overlay.grupo-9 {
     background-color: #bd8330;
     background-image: none;
@@ -2060,7 +2083,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-NOGRUPO,
 .compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-0,
 .compras .panel-body .panel-default.grupo-0>.panel-heading0,
-.modal-dialog .compras-grupo .modal-header.grupo-0,
+.compras-grupo .compras-grupo-titulo.grupo-0,
 .compras-grupo .progress-radial .overlay.grupo-0 {
     background-color: #000000;
     background-image: none;

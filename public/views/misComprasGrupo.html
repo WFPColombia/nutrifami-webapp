@@ -1,0 +1,47 @@
+<div class="bs-loading-container" bs-loading-overlay>
+    <ng-include src="'views/template/header.tpl.html'"></ng-include>
+    <div class="container">
+        <div class='compras-grupo'>
+            <div class="compras-grupo-titulo grupo-{{data.grupo_id}}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1> <img src="img/icons/ico-compras-{{data.grupo_id}}.png" title="Icono grupo" />{{data.nombre}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel compras-grupo-ultimo-mes">
+                        <img src="img/icons/ico-medalla-dinero.png" class="center-block" alt="Medalla compra">
+                        <h2>Compras del último mes</h2>
+                        <div class="compras-resumen">
+                            <div ng-repeat="compra in data.compra" class="row">
+                                <div class="col-md-8 nombre-producto">{{compra.nombre}}</div>
+                                <div class="col-md-4 precio">$ {{compra.total}}</div>
+                            </div>
+                            <div class="totales">
+                                <div class="row">
+                                    <div class="col-md-8">Total</div>
+                                    <div class="col-md-4 precio">$ {{ data.totalCompra}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="panel ">
+                        <div class="compras-grupo-recomendacion">
+                            <img height="50px" src="img/icons/ico_canasta.png">
+                            <h2>Para una compra ideal<br><span>Podría comprar</span></h2>
+                            <p>{{data.feedback}}</p>
+                        </div>
+                        <div ng-repeat="producto in recomendados.productos" class="compras-grupo-nombre-recomendado">
+                            {{producto.nombre}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer ng-include=" 'views/template/footer.tpl.html' "></footer>
+    </div>
+</div>

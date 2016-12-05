@@ -13,11 +13,15 @@
             </div>
             <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
                 <ul class="nav navbar-nav">
-                    <li ng-class=" home ? 'active':''"><a ng-href="#/capacitacion">Capacitación <span class="sr-only">(current)</span></a></li>
-                    <li ng-class=" compras ? 'active':''"><a ng-href="#/mis-compras/intro">Mis Compras</a></li>
-                    <!--<li ng-class=" progreso ? 'active':''"><a ng-href="#/mi-progreso">Progreso</a></li>-->
-                    <!--<li ng-class=" tips ? 'active':''"><a ng-href="#/tips">Consejos Saludables</a></li>-->
-                    <!--<li ng-class=" juego ? 'active':''"><a ng-href="#/juego">Jugar</a></li>-->
+                    <li ng-class=" home ? 'active':''">
+                        <a ng-href="#/capacitacion" tooltip-placement="bottom" uib-tooltip="5 módulos para Aprender Jugando. Lea, escuche y seleccione las opciones de respuesta. Podrá evaluar sus conocimientos y recibir importantes consejos!">Aprende con Nutrifami <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li ng-class=" compras ? 'active':''">
+                        <a ng-href="#/mis-compras/intro" tooltip-placement="bottom" uib-tooltip="Si es beneficiario de Bonos del Programa Mundial de Alimentos - PMA, Nutrifami analiza sus compras y le brinda consejos para una dieta balanceada y nutritiva.">Mis Compras</a>
+                    </li>
+                    <li ng-class=" progreso ? 'active':''"><a ng-href="#/mi-progreso" tooltip-placement="bottom" uib-tooltip="Aquí puede ver cuánto ha avanzado con Nutrifami y descargar los diplomas obtenidos en cada módulo.">Progreso</a></li>
+                    <li ng-class=" tips ? 'active':''"><a ng-href="#/tips" tooltip-placement="bottom" uib-tooltip="En esta sección encontrará consejos y recomendaciones sobre nutrición, alimentación y hábitos saludables.">Consejos Saludables</a></li>
+                    <li ng-class=" juego ? 'active':''"><a ng-href="#/juego" tooltip-placement="bottom" uib-tooltip="Divertido juego para que ponga a prueba todas sus habilidades, para elegir adecuadamente los alimentos para su hogar.">Nutricompra</a></li>
                     <li ng-class=" sobre ? 'active':''"><a ng-href="#/sobre-nutrifami">Sobre Nutrifami</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
