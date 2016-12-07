@@ -59,6 +59,10 @@ h6 {
     }
 }
 
+.landing {
+    background-color: #ffffff;
+}
+
 .landing header .logo {
     float: left;
 }
@@ -183,12 +187,73 @@ h6 {
     margin-bottom: 40px;
 }
 
-.landing .contenido-slider h3 {
-    font-size: 14pt;
+.landing .carousel {
+    position: relative;
 }
 
-.landing .contenido-slider p {
+.landing .carousel-inner {
+    height: 400px;
+}
+
+.landing .carousel-control.left,
+.landing .carousel-control.right {
+    background-image: none;
+}
+
+.landing .carousel-control:hover,
+.landing .carousel-control:focus {
+    background-image: none;
+}
+
+.landing .carousel-control .icon-prev,
+.landing .carousel-control .icon-next,
+.landing .carousel-control .fa-angle-left,
+.landing .carousel-control .fa-angle-right {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+}
+
+.landing .carousel-control .icon-prev,
+.landing .carousel-control .fa-angle-left {
+    left: 50%;
+}
+
+.landing .carousel-control .icon-next,
+.landing .carousel-control .fa-angle-right {
+    right: 50%;
+}
+
+.landing .carousel-control {
+    font-size: 50pt;
+    color: #000000;
+    opacity: .2;
+    filter: alpha(opacity=20);
+}
+
+.landing .carousel-caption {
+    position: initial;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    color: #4d4d4d;
+    padding: 0px 40px;
+    text-align: center;
+    text-shadow: none;
+}
+
+.landing .carousel-caption h3 {
+    font-size: 14pt;
+    color: #4d4d4d;
+    margin-bottom: 20px;
+}
+
+.landing .carousel-caption p {
     font-size: 10pt;
+    color: #4d4d4d;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .landing footer {
@@ -670,8 +735,22 @@ header .navbar-default .navbar-toggle .icon-bar {
     background-color: #fff;
 }
 
+header .navbar-default .tooltip-inner {
+    color: #09df78;
+    background-color: #ffffff;
+    border: solid 1px #dcdcdc;
+}
+
 header .navbar-default .tooltip {
-    /*background-color: red;*/
+    font-size: 10pt;
+}
+
+header .navbar-default .tooltip.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-bottom-color: #dcdcdc;
+    border-width: 0 5px 5px;
 }
 
 
