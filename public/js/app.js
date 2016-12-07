@@ -113,9 +113,9 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'views/tipsModulo.html'
     });
 
-    $routeProvider.when('/juego', {
-        controller: 'JuegoController',
-        templateUrl: 'views/juego.html'
+    $routeProvider.when('/nutricompra', {
+        controller: 'nutricompraController',
+        templateUrl: 'views/nutricompra.html'
     })
 
 
