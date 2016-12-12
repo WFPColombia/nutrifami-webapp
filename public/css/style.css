@@ -1102,30 +1102,53 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
 
 /* UNIDADES */
 
-.unidad .panel-header .unidad-sonido {
-    background-color: #d200ff;
-    width: 64px;
-    height: 64px;
+.unidad .panel-header .ayuda {
     position: absolute;
     top: -5px;
     right: 35px;
-    border-radius: 32px;
-    font-size: 27pt;
-    text-align: center;
-    padding-top: 12px;
-    font-weight: normal;
-    padding-left: 3px;
-    -webkit-box-shadow: 0px 0px 50px 0px rgba(210, 0, 255, 0.6);
-    -moz-box-shadow: 0px 0px 50px 0px rgba(210, 0, 255, 0.6);
-    box-shadow: 0px 0px 50px 0px rgba(210, 0, 255, 0.6);
+    z-index: 100;
 }
 
-.unidad .panel-header .unidad-sonido a {
+.unidad .panel-header .ayuda .icono {
+    border-radius: 50%;
+    cursor: pointer;
+    float: left;
+    font-size: 27pt;
+    font-weight: normal;
+    height: 64px;
+    margin-left: 20px;
+    text-align: center;
+    width: 64px;
+}
+
+.unidad .panel-header .ayuda .sonido {
+    background-color: #09df78;
+    padding-top: 14px;
+}
+
+.unidad .panel-header .ayuda .sonido.apagado {
+    background-color: #ebe9e9;
+}
+
+.unidad .panel-header .ayuda .tips {
+    background-color: #ffe300;
+    padding-top: 16px;
+}
+
+.unidad .panel-header .ayuda a:hover .sonido {
+    background-color: #0eb866;
+}
+
+.unidad .panel-header .ayuda a:hover .tips {
+    background-color: #d5c621;
+}
+
+.unidad .panel-header .ayuda a {
     color: #ffffff;
     text-decoration: none;
 }
 
-.unidad .panel-header .unidad-sonido a:focus {
+.unidad .panel-header .ayuda a:focus {
     outline: none;
 }
 
@@ -1312,7 +1335,15 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
     transform: translate(-50%, -50%);
 }
 
-.unidad .panel-body .pareja-con-imagen p {
+.unidad .panel-body .selected.opcion-con-imagen img,
+.unidad .panel-body .selected.pareja-con-imagen img {
+    -webkit-filter: saturate(400%);
+    /* Chrome, Safari, Opera */
+    filter: saturate(400%);
+}
+
+.unidad .panel-body .pareja-con-imagen p,
+.unidad .panel-body .opcion-con-imagen p {
     position: absolute;
     color: #ffffff;
     bottom: 10px;
@@ -1322,14 +1353,28 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
     padding: 10px 0;
 }
 
-.unidad .panel-body .opcion-con-imagen p {
-    position: absolute;
-    color: #ffffff;
-    top: 10px;
-    width: 100%;
-    text-align: center;
+.unidad .panel-body .selected.pareja-con-imagen p,
+.unidad .panel-body .selected.opcion-con-imagen p {
+    background-color: rgba(9, 223, 120, 0.5);
+}
+
+.unidad .panel-body .pareja-mal.pareja-con-imagen p,
+.unidad .panel-body .pareja-mal.opcion-con-imagen p {
+    -moz-animation-name: pareja-mal-p-animation;
+    -webkit-animation-name: pareja-mal-p-animation;
+    animation-name: pareja-mal-p-animation;
+    -moz-animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 0;
+}
+
+@keyframes pareja-mal-p-animation {
+    0% {}
+    25% {
+        background-color: rgba(255, 18, 68, 0.5);
+    }
+    100% {}
 }
 
 .unidad .panel-body .opcion.pareja-sin-imagen {
@@ -1411,7 +1456,8 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
     left: 0px;
 }
 
-.unidad .panel-body .selected .sticker .glyphicon {
+.unidad .panel-body .selected .sticker .glyphicon,
+.unidad .panel-body .match .sticker .glyphicon {
     background-color: #ffffff;
     width: 66px;
     height: 66px;
@@ -1422,7 +1468,8 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
     font-weight: normal;
 }
 
-.unidad .panel-body .selected .sticker .bien {
+.unidad .panel-body .selected .sticker .bien,
+.unidad .panel-body .match .sticker .bien {
     color: #09df78;
 }
 
@@ -1547,19 +1594,23 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
 }
 
 .unidad-parejas .pareja-mal {
-    /*animation-name: pareja-mal-animation;
-    animation-duration: 2s;*/
-    background-color: #ff1244 !important;
-    color: #ffffff !important;
-    border-color: #ff1244 !important;
+    -moz-animation-name: pareja-mal-animation;
+    -webkit-animation-name: pareja-mal-animation;
+    animation-name: pareja-mal-animation;
+    -moz-animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    background-color: #ffffff !important;
+    border-color: #dcdcdc !important;
+    color: #2f3e47;
 }
 
 @keyframes pareja-mal-animation {
     0% {}
     25% {
-        background-color: #ff1244 !important;
-        color: #ffffff !important;
-        border-color: #ff1244 !important;
+        background-color: #ff1244;
+        border-color: #ff1244;
+        color: #ffffff;
     }
     100% {}
 }
@@ -1567,7 +1618,6 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
 .unidad-parejas .opciones .match .btn-default,
 .unidad-parejas .opcion-link .match {
     -webkit-filter: opacity(30%);
-    /* Chrome, Safari, Opera */
     filter: opacity(30%);
 }
 

@@ -11,6 +11,9 @@
             <div class="caption" ng-hide=" info.texto == ''">
                 <div ng-bind-html="info.texto | format | trust"></div>
             </div>
+            <div class="sticker" ng-show="info.evaluacion">
+                <span class="glyphicon glyphicon-ok bien center-block" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 </div>

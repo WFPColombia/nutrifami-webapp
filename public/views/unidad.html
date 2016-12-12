@@ -6,8 +6,9 @@
                 <div class="panel-header">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="unidad-sonido">
-                                <a href ng-click='verTips()'><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                            <div class="ayuda">
+                                <a href ng-click='verConsejoSaludable()'><span tooltip-placement="bottom" uib-tooltip="Ver un consejo saludable" class="icono tips fa fa-lightbulb-o" aria-hidden="true"></span></a>
+                                <a href ng-click="toogleNarrador()"><span tooltip-placement="bottom" uib-tooltip="{{usuarioActivo.narrador? 'Silenciar Narrador':'Activar Narrador'}}" class="icono sonido glyphicon" ng-class="usuarioActivo.narrador ? 'glyphicon-volume-up':'glyphicon-volume-off apagado'" aria-hidden="true"></span></a>
                             </div>
                         </div>
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-11">

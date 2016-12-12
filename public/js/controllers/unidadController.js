@@ -194,11 +194,13 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
                         $scope.unidad.opciones[pareja2Pos].pareja = 'pareja-' + pareja2Orden;
                         $scope.unidad.opciones[pareja2Pos].selected = false;
                         $scope.unidad.opciones[pareja2Pos].match = true;
+                        $scope.unidad.opciones[pareja2Pos].evaluacion = true;
 
                         /*Estilos para pareja anterior*/
                         $scope.unidad.opciones[pareja1Pos].pareja = 'pareja-' + pareja2Orden;
                         $scope.unidad.opciones[pareja1Pos].selected = false;
                         $scope.unidad.opciones[pareja1Pos].match = true;
+                        $scope.unidad.opciones[pareja1Pos].evaluacion = true;
 
                         parejasContador = 0;
                         pareja1Pos = 0;
@@ -353,7 +355,7 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
         $scope.botonCalificar = false;
     };
 
-    $scope.verTips = function() {
+    $scope.verConsejoSaludable = function() {
         var data = {
             leccion: $routeParams.leccion,
             narrador: $scope.usuarioActivo.narrador
@@ -372,10 +374,15 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
             }
         });
 
-        tipsModal.result.then(function(narrador) {
-            $scope.usuarioActivo.narrador = narrador;
-        });
+
     };
+
+    $scope.toogleNarrador = function() {
+
+        $scope.usuarioActivo.narrador = !$scope.usuarioActivo.narrador;
+        UsuarioService.setUsuarioActivo($scope.usuarioActivo, function(response) {});
+
+    }
 
     /**
      * Shuffles array in place.

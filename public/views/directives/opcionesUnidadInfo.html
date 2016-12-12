@@ -7,7 +7,7 @@
             <div class="caption">
                 <img data-ng-src="{{info.media.url}}" alt="{{ info.titulo}}" ng-hide="{{info.media.nombre == ''}}" />
                 <div ng-bind-html="info.texto | format | trust"></div>
-                <div class="boton">
+                <div class="boton" ng-show="info.media.nombre == ''">
                     <span class="btn btn-default center-block" role="button">Seleccionar</span>
                 </div>
                 <div class="sticker" ng-show="info.evaluacion">

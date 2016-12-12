@@ -2,9 +2,6 @@
     <a class="modulo-link" href ng-click="!info.disponible || irAlModulo()">
         <div class="modulo" ng-class="info.avance.finalizado ? 'terminado' : (info.disponible ? 'actual':'')">
             <img ng-src="{{info.imagen.url}}">
-            <div class="cargando">
-                <img ng-src="../img/preloader_nutri_30px.gif" alt="Cargando..." ng-show="cargando">
-            </div>
             <div class="caption">
                 <h3>{{ info.titulo.texto}}</h3>
                 <h4>{{ info.avance.leccionesFinalizadas}} / {{ totalLecciones()}}</h4>
