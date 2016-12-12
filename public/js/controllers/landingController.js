@@ -37,10 +37,8 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
     });
 
     $scope.login = function() {
-        console.log("Click");
         bsLoadingOverlayService.start();
         AuthenticationService.Login($scope.username, 'no-pass', function(response) {
-            console.log(response);
             if (response.success) {
                 AuthenticationService.SetCredentials($scope.username, $scope.password, response.message);
                 $location.path('/capacitacion');
@@ -60,8 +58,6 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
     };
 
     $scope.modalRegistro = function() {
-        console.log("Abrir Registro");
-
         var registroModal = $uibModal.open({
             animation: true,
             templateUrl: 'views/modals/registro.modal.html',

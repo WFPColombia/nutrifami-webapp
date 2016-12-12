@@ -1,4 +1,4 @@
-nutrifamiApp.factory('UsuarioService', function () {
+nutrifamiApp.factory('UsuarioService', function() {
     var service = {};
 
     /**
@@ -8,7 +8,7 @@ nutrifamiApp.factory('UsuarioService', function () {
      * UsuarioService.getUsuarioActivo()
      *  
      */
-    service.getUsuarioActivo = function () {
+    service.getUsuarioActivo = function() {
         return JSON.parse(localStorage.getItem('usuarioActivo'));
     };
 
@@ -21,12 +21,12 @@ nutrifamiApp.factory('UsuarioService', function () {
      * UsuarioService.setUsuarioActivo(usuario, function(response)){}
      * 
      */
-    service.setUsuarioActivo = function (usuario, callback) {
+    service.setUsuarioActivo = function(usuario, callback) {
         localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
         delete usuario["sesionId"];
         delete usuario["isLogin"];
         delete usuario["token"];
-        nutrifami.editarUsuarioActivo(usuario, function (response) {
+        nutrifami.editarUsuarioActivo(usuario, function(response) {
             callback(response);
         });
 
@@ -39,8 +39,34 @@ nutrifamiApp.factory('UsuarioService', function () {
      * UsuarioService.getUsuarioAvance()
      * 
      */
-    service.getUsuarioAvance = function () {
-        return JSON.parse(localStorage.getItem('usuarioAvance'));
+    service.getUsuarioAvance = function() {
+
+
+
+        usuarioAvance = JSON.parse(localStorage.getItem('usuarioAvance'));
+        if (typeof usuarioAvance.totalUnidades == 'undefined') {
+            usuarioAvance.totalUnidades = Object.keys(nutrifami.training.cap_lecciones).length;
+            localStorage.setItem("usuarioAvance", JSON.stringify(usuarioAvance));
+        }
+
+
+        usuarioAvance.medallas = 0;
+        usuarioAvance.nivel = 0;
+        usuarioAvance.leccion = 0;
+        usuarioAvance.puntos = 0;
+        usuarioAvance.porcentaje = 0;
+
+        for (var i in usuarioAvance[3]) {
+            usuarioAvance.medallas = usuarioAvance.medallas + Object.keys(usuarioAvance[3][i]).length;
+            usuarioAvance.nivel = usuarioAvance.nivel + 1;
+            usuarioAvance.leccion = Object.keys(usuarioAvance[3][i]).length;
+        }
+
+        usuarioAvance.puntos = usuarioAvance.medallas * 100;
+
+        usuarioAvance.porcentaje = parseInt((100 / usuarioAvance.totalUnidades) * usuarioAvance.medallas);
+
+        return usuarioAvance;
     };
 
     /**
@@ -53,34 +79,51 @@ nutrifamiApp.factory('UsuarioService', function () {
      * UsuarioService.setUsuarioAvance(usuarioAvance, data, function(response)){}
      * 
      */
-    service.setUsuarioAvance = function (usuarioAvance, data, callback) {
-        callback = callback || function () {
-        };
+    service.setUsuarioAvance = function(usuarioAvance, data, callback) {
+        callback = callback || function() {};
 
-        nutrifami.avance.addAvance(data, function (response) {
+        nutrifami.avance.addAvance(data, function(response) {
             if (response.success) {
                 localStorage.setItem("usuarioAvance", JSON.stringify(usuarioAvance));
                 callback(response);
             }
         });
     };
-    
-    
-    service.getUsuarioFamiliaAvance = function(){
+
+
+    service.getUsuarioFamiliaAvance = function() {
         return JSON.parse(localStorage.getItem('usuarioFamiliaAvance'));
     };
-    
+
     /* 
      * 
      */
-    service.getUsuarioFamilia = function(){
-        return JSON.parse(localStorage.getItem('usuarioFamilia'));
+    service.getUsuarioFamilia = function() {
+
+        var usuarioFamilia = JSON.parse(localStorage.getItem('usuarioFamilia'));
+        var avanceFamilia = this.getUsuarioFamiliaAvance();
+
+        for (var i in usuarioFamilia) {
+            if (typeof avanceFamilia[usuarioFamilia[i]['FAM_PER_ID']] == 'undefined') {
+                usuarioFamilia[i]['medallas'] = 0;
+
+            } else {
+                usuarioFamilia[i]['medallas'] = 0;
+                for (var j in avanceFamilia[usuarioFamilia[i]['FAM_PER_ID']][3]) {
+                    usuarioFamilia[i]['medallas'] = usuarioFamilia[i]['medallas'] + Object.keys(avanceFamilia[usuarioFamilia[i]['FAM_PER_ID']][3][j]).length;
+                }
+
+
+            }
+        }
+
+        return usuarioFamilia;
     };
-    
+
     /* 
      * 
      */
-    service.setUsuarioFamilia = function(usuarioFamilia){
+    service.setUsuarioFamilia = function(usuarioFamilia) {
         localStorage.setItem("usuarioFamilia", JSON.stringify(usuarioFamilia));
     };
 

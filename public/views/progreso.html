@@ -21,7 +21,7 @@
                                             <img width="46" src="img/badgets/icons/ico_1.png" />
                                         </div>
                                         <div class="col-md-9">
-                                            <p> {{puntos}} puntos de Experiencia
+                                            <p> {{usuarioAvance.puntos}} puntos de Experiencia
                                                 <!--<button class="icon ion-volume-high"></button>-->
                                             </p>
                                         </div>
@@ -30,8 +30,8 @@
                                 <div class="progreso-porcentaje">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="progress-radial progress-{{porcentaje}}">
-                                                <div class="overlay">{{porcentaje}}% <span>Aprendido</span></div>
+                                            <div class="progress-radial progress-{{usuarioAvance.porcentaje}}">
+                                                <div class="overlay">{{usuarioAvance.porcentaje}}% <span>Aprendido</span></div>
                                             </div>
                                         </div>
                                     </div>
@@ -39,16 +39,16 @@
                                 <div class="progreso-resumen">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <img src="img/icons/ico-progreso-nivel.png" /> Nivel
-                                            <br><span>{{nivel}}</span>
+                                            <img src="img/icons/ico-progreso-nivel.png" /> Nivel Actual
+                                            <br><span>{{usuarioAvance.nivel}}</span>
                                         </div>
                                         <div class="col-md-4">
-                                            <img src="img/icons/ico-progreso-leccion.png" /> Lección
-                                            <br><span>{{leccion}}</span>
+                                            <img src="img/icons/ico-progreso-leccion.png" /> Lección Actual
+                                            <br><span>{{usuarioAvance.leccion}}</span>
                                         </div>
                                         <div class="col-md-4">
-                                            <img src="img/icons/ico-progreso-medallas.png" /> Medallas
-                                            <br><span>{{medallas}}</span>
+                                            <img src="img/icons/ico-progreso-medallas.png" /> Medallas Ganadas
+                                            <br><span>{{usuarioAvance.medallas}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                             <p>{{familiar.FAM_PER_NOMBRE}} {{familiar.FAM_PER_APELLIDO}} </p>
                                         </div>
                                         <div class="col-md-3 medallas">
-                                            <img width="30" src="img/badgets/icons/ico_1.png" alt="" /> 0
+                                            <img width="30" src="img/badgets/icons/ico_1.png" alt="" /> {{familiar.medallas}}
                                             <br><span>Medallas</span>
                                         </div>
                                         <!--<button class="icon ion-volume-high sonido"></button>-->
