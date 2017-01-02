@@ -30,10 +30,4 @@ nutrifamiApp.controller('ProgresoController', function($scope, $uibModal, Usuari
 
         });
     }
-
-    $scope.descargarDiploma = function(index) {
-        console.log("Ver Diploma" + usuarioAvance.diplomas[index]);
-    }
-
-
 });

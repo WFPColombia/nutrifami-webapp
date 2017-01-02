@@ -12,7 +12,7 @@
 
         <!-- Le styles -->
         <?php
-        $version = '1.0.10';
+        $version = '1.0.12';
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                 ->prependStylesheet($this->basePath('css/circle.css?'.$version))
                 ->prependStylesheet($this->basePath('css/style.css?'.$version))
@@ -70,6 +70,9 @@
             ->prependFile($this->basePath('js/controllers/perfilController.js?'.$version))
             ->prependFile($this->basePath('js/controllers/capacitacionController.js?'.$version))
             ->prependFile($this->basePath('js/app.js?'.$version))
+            ->prependFile($this->basePath('lib/pdfmake/build/vfs_fonts.js?'.$version))
+            ->prependFile($this->basePath('lib/pdfmake/build/pdfmake.js?'.$version))
+            ->prependFile($this->basePath('lib/html2canvas/build/html2canvas.js?'.$version))
             ->prependFile($this->basePath('lib/angular-socialshare/dist/angular-socialshare.min.js?'.$version))
             ->prependFile($this->basePath('lib/js-md5/src/md5.js?'.$version))
             ->prependFile($this->basePath('lib/angular-loading-overlay/dist/angular-loading-overlay.js?'.$version))

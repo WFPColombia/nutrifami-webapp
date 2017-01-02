@@ -1111,7 +1111,11 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .modal.diploma .modal-dialog .modal-content .modal-body {
-    padding-top: 25px;
+    padding: 0px;
+}
+
+div#imprimirDiploma {
+    padding: 25px;
 }
 
 .modal-body .diploma .rollo-arriba,
@@ -1181,6 +1185,7 @@ header .navbar-default .navbar-toggle .icon-bar {
 .modal.diploma .modal-footer {
     margin: 0px;
     padding: 0px;
+    text-align: center;
 }
 
 .modal.diploma .btn-default {
@@ -2216,19 +2221,21 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .compras-grupo .compras-grupo-recomendacion {
-    padding: 30px 60px;
+    padding: 0px 60px 30px 60px;
 }
 
 .compras-grupo .compras-grupo-recomendacion img {
-    float: left;
-    margin-right: 15px;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .compras-grupo .compras-grupo-recomendacion h2 {
     color: #2f3e47;
     font-family: 'Muli-Light', sans-serif;
     font-size: 14pt;
-    margin-top: 10px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+    text-align: center;
 }
 
 .compras-grupo .compras-grupo-recomendacion h2 span {
@@ -2537,7 +2544,6 @@ header .navbar-default .navbar-toggle .icon-bar {
 }
 
 .progreso .mis-diplomas .diplomas .imprimir-diploma a:hover,
-.progreso .mis-diplomas .diplomas .imprimir-diploma a:active,
 .progreso .mis-diplomas .diplomas .imprimir-diploma a:focus {
     text-decoration: none;
     outline: none;

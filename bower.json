@@ -34,6 +34,8 @@
     "angular-animate": "^1.5.7",
     "angular-loading-overlay": "^1.1.1",
     "js-md5": "md5#^0.4.1",
-    "angular-socialshare": "angularjs-socialshare#^2.3.3"
+    "angular-socialshare": "angularjs-socialshare#^2.3.3",
+    "html2canvas": "^0.4.1",
+    "pdfmake": "^0.1.23"
   }
 }
