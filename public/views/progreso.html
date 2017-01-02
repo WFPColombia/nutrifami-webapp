@@ -53,6 +53,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="mis-diplomas">
+                                <h2 class="text-center">Mis Diplomas</h2>
+                                <div ng-repeat="diploma in usuarioAvance.diplomas">
+                                    <div class="diplomas">
+                                        <div class="row">
+                                            <div class="col-md-8 titulo-diploma">
+                                                <p>Modulo: {{diploma}}</p>
+                                            </div>
+                                            <div class="col-md-4 imprimir-diploma">
+                                                <a href ng-click="verDiploma($index)" tooltip-placement="bottom" uib-tooltip="Ver diploma ganado"><i class="glyphicon glyphicon-file" aria-hidden="true"></i></a>
+                                                <!--<a href ng-click="descargarDiploma($index)" tooltip-placement="bottom" uib-tooltip="Descargar diploma ganado"><i class="glyphicon glyphicon-download-alt" aria-hidden="true"></i></a>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <h2 class="text-center">Mi Familia</h2>

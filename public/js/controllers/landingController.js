@@ -41,8 +41,11 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
         AuthenticationService.Login($scope.username, 'no-pass', function(response) {
             if (response.success) {
                 AuthenticationService.SetCredentials($scope.username, $scope.password, response.message);
-                $location.path('/capacitacion');
-                bsLoadingOverlayService.stop();
+                nutrifami.training.initClient('', function() {
+                    $location.path('/capacitacion');
+                    bsLoadingOverlayService.stop();
+                });
+
 
             } else {
                 $scope.error = response.message;

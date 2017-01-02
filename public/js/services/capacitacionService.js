@@ -1,8 +1,24 @@
 nutrifamiApp.factory('CapacitacionService', function(UsuarioService) {
     var service = {};
 
+    service.initClient = function() {
+
+
+        var data = JSON.parse(localStorage.getItem('capacitacion'));
+
+        nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
+        nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
+        nutrifami.training.cap_modulos = data['serv_modulos'];
+        nutrifami.training.cap_lecciones = data['serv_lecciones'];
+        nutrifami.training.cap_unidadesinformacion = data['serv_unidades'];
+        nutrifami.training.cap_unidadestips = data["serv_tips"];
+
+    }
+
 
     service.getModulosActivos = function(capacitacion) {
+
+        this.initClient();
 
         var modulos = []
         mids = nutrifami.training.getModulosId(capacitacion);
@@ -55,8 +71,13 @@ nutrifamiApp.factory('CapacitacionService', function(UsuarioService) {
 
     };
 
-    service.getLeccionesActivas = function(modulo) {
+    service.getModulo = function(modulo) {
+        this.initClient();
+        return nutrifami.training.getModulo(modulo);
+    }
 
+    service.getLeccionesActivas = function(modulo) {
+        this.initClient();
         var lecciones = []
         lids = nutrifami.training.getLeccionesId(modulo);
         for (var lid in lids) {
@@ -73,6 +94,7 @@ nutrifamiApp.factory('CapacitacionService', function(UsuarioService) {
     };
 
     service.getUnidadesActivas = function(leccion) {
+        this.initClient();
         var uids = nutrifami.training.getUnidadesId(leccion);
         var temp = [];
         for (var i in uids) {
@@ -85,6 +107,7 @@ nutrifamiApp.factory('CapacitacionService', function(UsuarioService) {
     };
 
     service.getUnidad = function(leccion, rp_unidad) {
+        this.initClient();
         unidades = this.getUnidadesActivas(leccion);
         return unidades[rp_unidad - 1];
     };

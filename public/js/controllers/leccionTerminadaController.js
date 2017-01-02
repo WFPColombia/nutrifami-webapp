@@ -49,10 +49,6 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $location
         }
 
 
-
-        console.log(diploma);
-
-
     } catch (err) {
         $location.path('/capacitacion');
     }

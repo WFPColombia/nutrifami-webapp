@@ -1,6 +1,20 @@
 nutrifamiApp.factory('UsuarioService', function() {
     var service = {};
 
+    service.initClient = function() {
+        //Se recarga toda la información en caso de que actualicen la pantalla con f5 o algo así
+
+        var data = JSON.parse(localStorage.getItem('capacitacion'));
+
+        nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
+        nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
+        nutrifami.training.cap_modulos = data['serv_modulos'];
+        nutrifami.training.cap_lecciones = data['serv_lecciones'];
+        nutrifami.training.cap_unidadesinformacion = data['serv_unidades'];
+        nutrifami.training.cap_unidadestips = data["serv_tips"];
+
+    }
+
     /**
      * 
      * @returns {Array|Object}
@@ -40,8 +54,7 @@ nutrifamiApp.factory('UsuarioService', function() {
      * 
      */
     service.getUsuarioAvance = function() {
-
-
+        this.initClient();
 
         usuarioAvance = JSON.parse(localStorage.getItem('usuarioAvance'));
         if (typeof usuarioAvance.totalUnidades == 'undefined') {
@@ -55,16 +68,29 @@ nutrifamiApp.factory('UsuarioService', function() {
         usuarioAvance.leccion = 0;
         usuarioAvance.puntos = 0;
         usuarioAvance.porcentaje = 0;
+        usuarioAvance.diplomas = [];
+        var modulo = {};
 
         for (var i in usuarioAvance[3]) {
             usuarioAvance.medallas = usuarioAvance.medallas + Object.keys(usuarioAvance[3][i]).length;
             usuarioAvance.nivel = usuarioAvance.nivel + 1;
             usuarioAvance.leccion = Object.keys(usuarioAvance[3][i]).length;
+
+            modulo = nutrifami.training.getModulo(i);
+
+            if (Object.keys(usuarioAvance[3][i]).length == modulo.lecciones.length) {
+                usuarioAvance.diplomas.push(modulo.titulo.texto);
+            }
+
         }
 
         usuarioAvance.puntos = usuarioAvance.medallas * 100;
 
         usuarioAvance.porcentaje = parseInt((100 / usuarioAvance.totalUnidades) * usuarioAvance.medallas);
+
+
+
+
 
         return usuarioAvance;
     };
@@ -126,6 +152,9 @@ nutrifamiApp.factory('UsuarioService', function() {
     service.setUsuarioFamilia = function(usuarioFamilia) {
         localStorage.setItem("usuarioFamilia", JSON.stringify(usuarioFamilia));
     };
+
+
+
 
 
     return service;

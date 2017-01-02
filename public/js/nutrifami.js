@@ -281,6 +281,8 @@ var nutrifami = {
             } else {
                 var ran = Math.floor((Math.random() * 100) + 1);
                 $.getJSON("js/capacitacion.JSON?" + ran, function(data) {
+                    console.log(data);
+                    localStorage.setItem("capacitacion", JSON.stringify(data));
                     nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
                     nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
                     nutrifami.training.cap_modulos = data['serv_modulos'];

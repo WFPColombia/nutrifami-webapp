@@ -19,7 +19,7 @@ nutrifamiApp.run(function($rootScope, $location, $cookieStore, bsLoadingOverlayS
     });
 
     nutrifami.getSessionId();
-    nutrifami.training.initClient();
+    //nutrifami.training.initClient(); // Ahora se carga cuando se hace login y se debe buscar la info guardada en el localstorage
 
     if ($rootScope.globals.currentUser) {
         //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line

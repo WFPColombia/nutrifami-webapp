@@ -735,17 +735,17 @@ header .navbar-default .navbar-toggle .icon-bar {
     background-color: #fff;
 }
 
-header .navbar-default .tooltip-inner {
+.tooltip-inner {
     color: #09df78;
     background-color: #ffffff;
     border: solid 1px #dcdcdc;
 }
 
-header .navbar-default .tooltip {
+.tooltip {
     font-size: 10pt;
 }
 
-header .navbar-default .tooltip.bottom .tooltip-arrow {
+.tooltip.bottom .tooltip-arrow {
     top: 0;
     left: 50%;
     margin-left: -5px;
@@ -2496,14 +2496,20 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
     top: 18px;
 }
 
-.progreso .progreso-familia {
+.progreso .mis-diplomas {
+    margin-top: 80px;
+}
+
+.progreso .progreso-familia,
+.progreso .mis-diplomas .diplomas {
     color: #2f3e47;
     border-bottom: 1px #cccccc solid;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.progreso .progreso-familia .miembro-familia {
+.progreso .progreso-familia .miembro-familia,
+.progreso .mis-diplomas .diplomas .titulo-diploma {
     font-size: 11pt;
     color: #2f3e47;
     margin-top: 14px;
@@ -2517,6 +2523,24 @@ header .navbar-default .tooltip.bottom .tooltip-arrow {
     font-size: 9pt;
     font-family: 'Raleway-Bold', sans-serif;
     text-transform: uppercase;
+}
+
+.progreso .mis-diplomas .diplomas .imprimir-diploma {
+    font-size: 16pt;
+    margin-top: 14px;
+    text-align: right;
+}
+
+.progreso .mis-diplomas .diplomas .imprimir-diploma a {
+    color: #ff5400;
+    cursor: pointer;
+}
+
+.progreso .mis-diplomas .diplomas .imprimir-diploma a:hover,
+.progreso .mis-diplomas .diplomas .imprimir-diploma a:active,
+.progreso .mis-diplomas .diplomas .imprimir-diploma a:focus {
+    text-decoration: none;
+    outline: none;
 }
 
 
