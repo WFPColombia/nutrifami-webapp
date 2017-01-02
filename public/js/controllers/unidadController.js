@@ -16,10 +16,14 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
     $scope.textoBoton = 'Calificar';
 
 
+
+
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
     $scope.estadoUnidad = 'espera';
 
     try {
+
+
         $scope.unidad = CapacitacionService.getUnidad($routeParams.leccion, $routeParams.unidad);
         $scope.unidad.numeroUnidad = $routeParams.unidad;
         $scope.unidad.totalUnidades = CapacitacionService.getUnidadesActivas($routeParams.leccion).length;
@@ -33,7 +37,6 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
             }
         }
 
-        console.log($scope.unidad);
 
         /* Validamos si la unidad actual es de parejas o de otra 
          * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
@@ -99,8 +102,6 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
         }
 
         $scope.unidad.feedback = [];
-
-        console.log($scope.unidad)
 
     } catch (err) {
         $location.path('/capacitacion');
@@ -317,25 +318,32 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
     $scope.irASiguienteUnidad = function() {
         $scope.siguienteUnidad = parseInt($routeParams.unidad) + 1;
         if ($scope.siguienteUnidad > $scope.unidad.totalUnidades) {
+            //Entra si las unidades ya se acabaron y guarda cambios
             var usuarioAvance = UsuarioService.getUsuarioAvance();
             if (typeof usuarioAvance['3'] === 'undefined') {
+                //Verifica si el usuario tiene algún avance en la capacitación.
+                //Si no tiene avance, crea los objetos en la capacitación y en el modulo
                 usuarioAvance['3'] = {};
                 usuarioAvance['3'][$routeParams.modulo] = {};
             }
             if (typeof usuarioAvance['3'][$routeParams.modulo] === 'undefined') {
+                //Verifica si no hay avance en el módulo y en caso de ser así lo crea.
                 usuarioAvance['3'][$routeParams.modulo] = {};
             }
-            usuarioAvance['3'][$routeParams.modulo][$routeParams.leccion] = "true";
 
-            var data = {
+            usuarioAvance['3'][$routeParams.modulo][$routeParams.leccion] = "true"; //Registra el avance en la lección
+
+
+            var data = { //Alista los datos para guardar avance en la base de datos
                 'per_id': $scope.usuarioActivo.id,
                 'cap_id': 3,
                 'mod_id': $routeParams.modulo,
                 'lec_id': $routeParams.leccion
             };
 
-            UsuarioService.setUsuarioAvance(usuarioAvance, data, function(response) {
+            UsuarioService.setUsuarioAvance(usuarioAvance, data, function(response) { //Registra el avance en la base de datos
                 if (response.success) {
+                    //Después de guardar, envía a la página de lección finalizada
                     $location.path('/m/' + $routeParams.modulo + "/" + $routeParams.leccion + "/" + $routeParams.unidad + "/leccion-terminada");
                 }
             });

@@ -12,7 +12,7 @@
 
         <!-- Le styles -->
         <?php
-        $version = '1.0.9';
+        $version = '1.0.10';
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                 ->prependStylesheet($this->basePath('css/circle.css?'.$version))
                 ->prependStylesheet($this->basePath('css/style.css?'.$version))
@@ -39,6 +39,7 @@
             ->prependFile($this->basePath('js/directives/goClick.drt.js?'.$version))
             ->prependFile($this->basePath('js/directives/leccionInfo.drt.js?'.$version))
             ->prependFile($this->basePath('js/directives/moduloInfo.drt.js?'.$version))
+            ->prependFile($this->basePath('js/modals/diploma.modal.js?'.$version))
             ->prependFile($this->basePath('js/modals/compras.modal.js?'.$version))
             ->prependFile($this->basePath('js/modals/tips.modal.js?'.$version))
             ->prependFile($this->basePath('js/modals/feedbackUnidad.modal.js?'.$version))

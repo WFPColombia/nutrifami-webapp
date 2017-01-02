@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('LeccionTerminadaController', function($scope, $location, $anchorScroll, $routeParams, bsLoadingOverlayService, ngAudio, UsuarioService) {
+nutrifamiApp.controller('LeccionTerminadaController', function($scope, $location, $anchorScroll, $routeParams, bsLoadingOverlayService, ngAudio, UsuarioService, $uibModal, CapacitacionService) {
     'use strict';
 
     $anchorScroll();
@@ -10,13 +10,15 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $location
     });
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
+    var diploma = false;
 
-    $scope.mensaje = "Ha finalizado la leccion";
+    usuarioAvance = JSON.parse(localStorage.getItem('usuarioAvance'));
 
     try {
 
         $scope.leccion = nutrifami.training.getLeccion($routeParams.leccion);
-        $scope.modulo = $routeParams.modulo;
+        $scope.modulo = nutrifami.training.getModulo($routeParams.modulo);
+        console.log($scope.modulo);
         $scope.audios = {
             'leccionCompletada': 'audios/muy-bien-leccion-completada.mp3',
             'audioPuntos': 'audios/' + $scope.leccion.finalizado.puntos + '-puntos-ganados.mp3',
@@ -39,6 +41,18 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $location
             });
         }
 
+        $scope.lecciones = CapacitacionService.getLeccionesActivas($routeParams.modulo);
+        $scope.usuarioAvance = UsuarioService.getUsuarioAvance();
+
+        if ($scope.lecciones.length == Object.keys($scope.usuarioAvance[3][$routeParams.modulo]).length) {
+            diploma = true;
+        }
+
+
+
+        console.log(diploma);
+
+
     } catch (err) {
         $location.path('/capacitacion');
     }
@@ -50,7 +64,40 @@ nutrifamiApp.controller('LeccionTerminadaController', function($scope, $location
 
 
     $scope.continuar = function() {
-        $location.path("/app/capacitacion/" + $stateParams.modulo);
+        if (diploma) {
+
+            var data = {
+                nombre: $scope.usuarioActivo.nombre,
+                apellido: $scope.usuarioActivo.apellido,
+                modulo: $scope.modulo.titulo.texto
+            };
+
+            var modalDiploma = $uibModal.open({
+                animation: true,
+                templateUrl: 'views/modals/diploma.modal.html',
+                controller: 'diplomaModalController',
+                keyboard: false,
+                size: 'lg',
+                backdrop: 'static',
+                windowClass: 'diploma',
+                resolve: {
+                    data: function() {
+                        return data;
+                    }
+                }
+
+            });
+
+            modalDiploma.result.then(function() {
+                $location.path('/capacitacion');
+            });
+
+
+        } else {
+            $location.path("/m/" + $routeParams.modulo);
+
+        }
+
     };
 
 });
