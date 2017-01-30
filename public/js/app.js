@@ -114,10 +114,19 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     });
 
     $routeProvider.when('/nutricompra', {
-        controller: 'nutricompraController',
-        templateUrl: 'views/nutricompra.html'
-    })
+        controller: 'nc_homeController',
+        templateUrl: 'views/nutricompra/nc_home.html'
+    });
 
+    $routeProvider.when('/nutricompra/como-jugar', {
+        controller: 'nc_comoJugarController',
+        templateUrl: 'views/nutricompra/nc_comoJugar.html'
+    });
+
+    $routeProvider.when('/nutricompra/jugar', {
+        controller: 'nc_jugarController',
+        templateUrl: 'views/nutricompra/nc_jugar.html'
+    })
 
 
     .otherwise({ redirectTo: '/capacitacion' });

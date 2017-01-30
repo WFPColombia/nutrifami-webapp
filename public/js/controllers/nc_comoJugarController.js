@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('nutricompraController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService) {
+nutrifamiApp.controller('nc_comoJugarController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService) {
     'use strict';
 
     $anchorScroll();
@@ -19,19 +19,6 @@ nutrifamiApp.controller('nutricompraController', function($scope, $anchorScroll,
 
     $scope.nutricompra = true;
 
-    var modalInstance = $uibModal.open({
-        animation: true,
-        templateUrl: 'views/modals/nutricompra.modal.html',
-        controller: 'negarAccesoComprasModalController',
-        keyboard: false,
-        size: 'lg',
-        backdrop: 'static',
-
-    });
-
-    modalInstance.result.then(function() {
-        $location.path('/capacitacion');
-    });
 
 
 });

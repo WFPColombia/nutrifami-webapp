@@ -2688,6 +2688,126 @@ div#imprimirDiploma {
 
 /* END - TIPS */
 
+
+/* Nutricompra*/
+
+.nutricompra .panel.intro {
+    background-color: #00c97e;
+}
+
+.nutricompra .intro h2 {
+    color: #ffffff;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 18pt;
+    text-align: center;
+}
+
+.nutricompra .intro h2 a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nutricompra .btn {
+    background-color: #fed625;
+    background-image: none;
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+    font-family: 'Raleway-Bold', sans-serif;
+    font-size: 14pt;
+    height: 60px;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 18px;
+    text-transform: uppercase;
+    width: 200px;
+}
+
+.nutricompra .como-jugar {
+    position: relative;
+}
+
+.nutricompra .btn-back {
+    left: 30px;
+    position: absolute;
+    top: 30px;
+    z-index: 10;
+}
+
+.nutricompra .como-jugar h2 {
+    color: #00c97e;
+    font-size: 23pt;
+    margin-top: 65px;
+    text-align: center;
+}
+
+.nutricompra .como-jugar h3 {
+    color: #2f3e47;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 15pt;
+    margin-top: 28px;
+    text-align: center;
+}
+
+.nutricompra .como-jugar h3 span {
+    color: #00c97e;
+}
+
+.nutricompra .como-jugar .paso {
+    height: 90px;
+    margin: 90px 40px;
+}
+
+.nutricompra .como-jugar .paso img {
+    float: left;
+    margin-right: 12px;
+}
+
+.nutricompra .como-jugar .paso.paso-2 img {
+    margin-top: 20px;
+}
+
+.nutricompra .como-jugar .paso p {
+    color: #2f3e47;
+    font-size: 9pt;
+    padding-top: 30px;
+}
+
+.nutricompra .jugar {
+    background-color: #00c97e;
+    position: relative;
+}
+
+.nutricompra .header {
+    padding: 8px;
+}
+
+.nutricompra .header .cantidad-productos {
+    background-color: #ffffff;
+    border-radius: 15px;
+    height: 35px;
+    width: 170px;
+}
+
+.nutricompra .header .cantidad-productos ul {
+    padding-left: 7px;
+}
+
+.nutricompra .header .cantidad-productos ul li {
+    float: left;
+    list-style: none;
+    margin-right: 2px;
+    margin-top: 5px;
+}
+
+.nutricompra .header .cantidad-productos ul li img {
+    width: 24px;
+}
+
+
+/* Final - Nutricompra*/
+
 footer {
     margin-top: 7px;
     margin-bottom: 45px;
