@@ -2692,7 +2692,10 @@ div#imprimirDiploma {
 /* Nutricompra*/
 
 .nutricompra .panel.intro {
-    background-color: #00c97e;
+    background-color: #00da81;
+    margin: 10px auto;
+    position: relative;
+    width: 920px;
 }
 
 .nutricompra .intro h2 {
@@ -2725,7 +2728,9 @@ div#imprimirDiploma {
 }
 
 .nutricompra .como-jugar {
+    margin: 10px auto;
     position: relative;
+    width: 920px;
 }
 
 .nutricompra .btn-back {
@@ -2775,23 +2780,32 @@ div#imprimirDiploma {
 }
 
 .nutricompra .jugar {
-    background-color: #00c97e;
+    background-color: #00da81;
+    margin: 10px auto;
     position: relative;
+    width: 920px;
 }
 
 .nutricompra .header {
     padding: 8px;
 }
 
+.nutricompra .header .panel-central {
+    width: 235px;
+    margin: 0 auto;
+}
+
 .nutricompra .header .cantidad-productos {
     background-color: #ffffff;
     border-radius: 15px;
+    float: left;
     height: 35px;
-    width: 170px;
+    margin-right: 27px;
 }
 
 .nutricompra .header .cantidad-productos ul {
     padding-left: 7px;
+    margin: 0px;
 }
 
 .nutricompra .header .cantidad-productos ul li {
@@ -2803,6 +2817,49 @@ div#imprimirDiploma {
 
 .nutricompra .header .cantidad-productos ul li img {
     width: 24px;
+}
+
+.nutricompra .header .carrito {
+    position: relative;
+}
+
+.nutricompra .header .carrito img {
+    margin-top: 7px;
+}
+
+.nutricompra .header .carrito .carrito-cantidad {
+    background-color: #ffffff;
+    border-radius: 6px;
+    color: #00c97e;
+    font-family: 'Muli', sans-serif;
+    font-size: 9px;
+    height: 16px;
+    padding-top: 3px;
+    position: absolute;
+    right: 0px;
+    text-align: center;
+    top: 0px;
+    width: 22px;
+}
+
+.nutricompra .vitrina {
+    background-color: #00c97e;
+    background-image: url('../img/nutricompra/bg_tienda_2.png');
+    height: 450px;
+    margin: 0 auto;
+    padding: 0px 14px;
+    width: 918px;
+}
+
+.nutricompra .selector {
+    float: left;
+    margin: 0 12px 10px 12px;
+}
+
+.nutricompra .producto {
+    height: 95px;
+    vertical-align: bottom;
+    display: table-cell;
 }
 
 

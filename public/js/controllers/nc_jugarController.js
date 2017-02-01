@@ -19,6 +19,50 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
     $scope.nutricompra = true;
 
+    var categorias = [
+        'azucares', 'carnes', 'cereal', 'frutas', 'grasas', 'inadecuados', 'leche'
+
+    ];
+
+    $scope.productos = [
+        'ico_azucares_1',
+        'ico_carnes_2',
+        'ico_leche_2',
+        'ico_leche_1',
+        'ico_azucares_1',
+        'ico_carnes_2',
+        'ico_leche_2',
+        'ico_leche_1',
+        'ico_azucares_1',
+        'ico_carnes_2',
+        'ico_leche_2',
+        'ico_leche_1',
+        'ico_azucares_1',
+        'ico_carnes_2',
+        'ico_leche_2',
+        'ico_leche_1',
+        'ico_azucares_1',
+        'ico_carnes_2',
+        'ico_leche_2',
+        'ico_leche_1',
+        'ico_azucares_1',
+        'ico_carnes_2',
+        'ico_leche_2',
+        'ico_leche_1',
+        'ico_azucares_1',
+        'ico_carnes_2',
+        'ico_leche_2',
+        'ico_leche_1',
+        'ico_azucares_1',
+        'ico_carnes_2',
+
+    ]
+
+
+
+
+
+
 
 
 });

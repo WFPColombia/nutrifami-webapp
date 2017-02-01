@@ -11,45 +11,30 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="cantidad-productos">
-                            <ul>
-                                <li><img src="img/nutricompra/icons/ico_cereales_gris.png"></li>
-                                <li><img src="img/nutricompra/icons/ico_frutas_gris.png"></li>
-                                <li><img src="img/nutricompra/icons/ico_carnes_gris.png"></li>
-                                <li><img src="img/nutricompra/icons/ico_lacteos_gris.png"></li>
-                                <li><img src="img/nutricompra/icons/ico_grasas_gris.png"></li>
-                                <li><img src="img/nutricompra/icons/ico_azucares_gris.png"></li>
-                            </ul>
+                        <div class="panel-central">
+                            <div class="cantidad-productos">
+                                <ul>
+                                    <li><img src="img/nutricompra/icons/ico_cereales_gris.png"></li>
+                                    <li><img src="img/nutricompra/icons/ico_frutas_gris.png"></li>
+                                    <li><img src="img/nutricompra/icons/ico_carnes_gris.png"></li>
+                                    <li><img src="img/nutricompra/icons/ico_lacteos_gris.png"></li>
+                                    <li><img src="img/nutricompra/icons/ico_grasas_gris.png"></li>
+                                    <li><img src="img/nutricompra/icons/ico_azucares_gris.png"></li>
+                                </ul>
+                            </div>
+                            <div class="carrito">
+                                <img src="img/nutricompra/ico_carrito.png">
+                                <div class="carrito-cantidad">0</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>¿Cómo Jugar?</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3>Debes agregar <span>15</span> productos <br>a su carrito de compras.</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="paso">
-                            <img src="img/nutricompra/nc-como-1.png">
-                            <p>Arrasta el producto que quieres comprar.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="paso paso-2">
-                            <img src="img/nutricompra/nc-como-2.png">
-                            <p>Aquí puedes ver el resumen de los productos que has agregado al carrito de compras.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="paso">
-                            <img src="img/nutricompra/nc-como-3.png">
-                            <p>Puedes sacar productos que no quieras arrastrando afuera del carrito de compras.</p>
+                <div class="vitrina">
+                    <div class="productos">
+                        <div class="selector" ng-repeat="producto in productos track by $index	">
+                            <div class="producto">
+                                <a href><img src="/img/nutricompra/icons/{{producto}}.png"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
