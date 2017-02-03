@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService) {
+nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService, NutrijuegoService) {
     'use strict';
 
     $anchorScroll();
@@ -24,41 +24,11 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
     ];
 
-    $scope.productos = [
-        'ico_azucares_1',
-        'ico_carnes_2',
-        'ico_leche_2',
-        'ico_leche_1',
-        'ico_azucares_1',
-        'ico_carnes_2',
-        'ico_leche_2',
-        'ico_leche_1',
-        'ico_azucares_1',
-        'ico_carnes_2',
-        'ico_leche_2',
-        'ico_leche_1',
-        'ico_azucares_1',
-        'ico_carnes_2',
-        'ico_leche_2',
-        'ico_leche_1',
-        'ico_azucares_1',
-        'ico_carnes_2',
-        'ico_leche_2',
-        'ico_leche_1',
-        'ico_azucares_1',
-        'ico_carnes_2',
-        'ico_leche_2',
-        'ico_leche_1',
-        'ico_azucares_1',
-        'ico_carnes_2',
-        'ico_leche_2',
-        'ico_leche_1',
-        'ico_azucares_1',
-        'ico_carnes_2',
+    $scope.productos = [];
 
-    ]
-
-
+    NutrijuegoService.getProductosVitrina(function(response) {
+        $scope.productos = response;
+    });
 
 
 

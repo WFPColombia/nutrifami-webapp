@@ -2851,6 +2851,12 @@ div#imprimirDiploma {
     width: 918px;
 }
 
+.nutricompra .selector.selected {}
+
+.nutricompra .selector.selected img {
+    max-height: 95px;
+}
+
 .nutricompra .selector {
     float: left;
     margin: 0 12px 10px 12px;
@@ -2860,6 +2866,12 @@ div#imprimirDiploma {
     height: 95px;
     vertical-align: bottom;
     display: table-cell;
+}
+
+.nutricompra .carrito {
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 105px);
 }
 
 

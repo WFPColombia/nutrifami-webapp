@@ -31,11 +31,16 @@
                 </div>
                 <div class="vitrina">
                     <div class="productos">
-                        <div class="selector" ng-repeat="producto in productos track by $index	">
-                            <div class="producto">
-                                <a href><img src="/img/nutricompra/icons/{{producto}}.png"></a>
+                        <div ng-repeat="producto in productos track by $index">
+                            <div class="selector" ng-class="sombra == 'sombra/' ? 'selected':''">
+                                <div class="producto">
+                                    <a href ng-mouseover="sombra = 'sombra/'" ng-mouseout="sombra = ''"><img src="/img/nutricompra/icons/{{producto}}.png" ng-src="/img/nutricompra/icons/{{sombra}}{{producto}}.png"></a>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="carrito">
+                        <img src="img/nutricompra/carrito.png">
                     </div>
                 </div>
             </div>
