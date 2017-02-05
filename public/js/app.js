@@ -126,6 +126,11 @@ nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/nutricompra/jugar', {
         controller: 'nc_jugarController',
         templateUrl: 'views/nutricompra/nc_jugar.html'
+    });
+
+    $routeProvider.when('/nutricompra/jugar/resumen', {
+        controller: 'nc_jugarResumenController',
+        templateUrl: 'views/nutricompra/nc_resumen.html'
     })
 
 

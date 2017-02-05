@@ -6,7 +6,7 @@
                 <div class="header row">
                     <div class="col-md-2">
                         <div class="btn-back-jugar">
-                            <a href="#/nutricompra">
+                            <a href="#/nutricompra/jugar">
                                 <img src="img/nutricompra/nc-btn-back-white.png"></a>
                         </div>
                     </div>
@@ -29,18 +29,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="vitrina">
-                    <div class="productos">
-                        <div ng-repeat="producto in productos track by $index">
-                            <div class="selector" ng-class="sombra == 'sombra/' ? 'selected':''">
-                                <div class="producto">
-                                    <a href ng-mouseover="sombra = 'sombra/'" ng-mouseout="sombra = ''"><img src="/img/nutricompra/icons/{{producto}}.png" ng-src="/img/nutricompra/icons/{{sombra}}{{producto}}.png"></a>
+                <div class="resumen">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Resumen de mi compras</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" ng-repeat="grupo in carrito track by $index">
+                            <div class="grupo">
+                                <div class="grupo-icono">
+                                    <img src="img/nutricompra/icons/ico_{{grupo.grupo}}.png" />
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="carro">
-                        <img src="img/nutricompra/carrito.png">
                     </div>
                 </div>
             </div>

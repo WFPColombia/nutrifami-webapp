@@ -2798,6 +2798,7 @@ div#imprimirDiploma {
 .nutricompra .header .cantidad-productos {
     background-color: #ffffff;
     border-radius: 15px;
+    cursor: pointer;
     float: left;
     height: 35px;
     margin-right: 27px;
@@ -2817,10 +2818,12 @@ div#imprimirDiploma {
 
 .nutricompra .header .cantidad-productos ul li img {
     width: 24px;
+    cursor: pointer;
 }
 
 .nutricompra .header .carrito {
     position: relative;
+    cursor: pointer;
 }
 
 .nutricompra .header .carrito img {
@@ -2851,7 +2854,9 @@ div#imprimirDiploma {
     width: 918px;
 }
 
-.nutricompra .selector.selected {}
+.nutricompra .selector.selected {
+    margin: 0 2px 10px 2px;
+}
 
 .nutricompra .selector.selected img {
     max-height: 95px;
@@ -2868,10 +2873,36 @@ div#imprimirDiploma {
     display: table-cell;
 }
 
-.nutricompra .carrito {
+.nutricompra .carro {
     position: absolute;
     bottom: 10px;
     left: calc(50% - 105px);
+}
+
+.nutricompra .resumen {
+    background-color: #ffffff;
+    height: 450px;
+    margin: 0 auto;
+    padding: 0px 14px;
+    width: 918px;
+}
+
+.nutricompra .resumen h3 {
+    color: #00c97e;
+    font-size: 14pt;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.nutricompra .resumen .grupo .grupo-icono {
+    display: inline-block;
+    border-right: 1px solid #e9e9e9;
+    width: 60px;
+}
+
+.nutricompra .resumen .grupo {
+    margin: 0 20px 30px 45px;
 }
 
 

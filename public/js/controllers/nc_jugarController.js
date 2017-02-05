@@ -31,6 +31,11 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
     });
 
 
+    $scope.verResumen = function() {
+        console.log("Ver Resumen");
+    }
+
+
 
 
 
