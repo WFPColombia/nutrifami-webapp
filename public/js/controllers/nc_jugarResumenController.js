@@ -28,39 +28,34 @@ nutrifamiApp.controller('nc_jugarResumenController', function($scope, $anchorScr
 
     $scope.carrito = [{
         'grupo': 'cereales',
-        'nombre': 'Cereales',
-        'productos': [],
-        'active': false,
+        'nombre': 'Cereales, raíces, tubérculos y plátanos.',
+        'alias': 'cereal',
+        'productos': ['5', '2'],
     }, {
         'grupo': 'grasas',
-        'nombre': 'Cereales',
+        'nombre': 'Grasas.',
         'productos': [],
-        'active': false,
     }, {
         'grupo': 'frutas',
-        'nombre': 'Cereales',
+        'nombre': 'Frutas y verduras.',
         'productos': [],
-        'active': false,
     }, {
         'grupo': 'azucares',
-        'nombre': 'Cereales',
+        'nombre': 'Azucar.',
         'productos': [],
-        'active': false,
     }, {
         'grupo': 'carnes',
-        'nombre': 'Cereales',
+        'nombre': 'Carnes, huevos y leguminosas secas.',
         'productos': [],
-        'active': false,
     }, {
         'grupo': 'inadecuados',
-        'nombre': 'Cereales',
+        'nombre': 'Inadecuados',
         'productos': [],
-        'active': false,
     }, {
         'grupo': 'lacteos',
-        'nombre': 'Cereales',
-        'productos': [],
-        'active': false,
+        'nombre': 'Leches y otros productos lacteos.',
+        'alias': 'leche',
+        'productos': [1, 2, 3, 4],
     }, ]
 
 
