@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('nc_jugarResumenController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService, NutrijuegoService) {
+nutrifamiApp.controller('nc_jugarResumenController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService, NutricompraService) {
     'use strict';
 
     $anchorScroll();

@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService, NutricompraService) {
+nutrifamiApp.controller('nc_jugarTerminarController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService, NutricompraService) {
     'use strict';
 
     $anchorScroll();
@@ -19,31 +19,16 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
     $scope.nutricompra = true;
 
-    var categorias = [
-        'azucares', 'carnes', 'cereal', 'frutas', 'grasas', 'inadecuados', 'leche'
-
-    ];
-
-    $scope.productos = [];
-
-    NutricompraService.getProductosVitrina(function(response) {
-        $scope.productos = response;
-    });
-
-
-    $scope.verResumen = function() {
-        $location.path('/nutricompra/jugar/resumen');
-
-    };
 
     $scope.salir = function() {
+
         var data = {
-            texto1: '¿Está seguro de salir?',
-            texto2: 'Si sale perderá todo el progreso del juego',
-            boton1: 'Continuar',
-            enlace1: '',
+            texto1: '¿Quiere jugar de Nuevo?',
+            texto2: 'Podrá seguir practicando para hacer una compra saludable',
+            boton1: 'Jugar',
+            enlace1: 'nutricompra',
             boton2: 'Salir',
-            enlace2: 'nutricompra'
+            enlace2: 'capacitacion'
         };
 
         var modalInstance = $uibModal.open({
@@ -64,10 +49,5 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
 
     };
-
-
-
-
-
 
 });

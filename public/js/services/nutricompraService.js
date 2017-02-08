@@ -1,4 +1,4 @@
-nutrifamiApp.factory('NutrijuegoService', ['$http', '$cookieStore', '$rootScope', '$timeout',
+nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$timeout',
     function() {
         var service = {};
 
@@ -60,7 +60,6 @@ nutrifamiApp.factory('NutrijuegoService', ['$http', '$cookieStore', '$rootScope'
             for (var i = 0; i < cantidadProductos; i++) {
                 var tipo = tipo_productos[Math.floor((Math.random() * 7))];
 
-                console.log(inventario[tipo]);
                 var numProducto = Math.floor((Math.random() * inventario[tipo]) + 1);;
                 productos.push('ico_' + tipo + '_' + numProducto);
             }

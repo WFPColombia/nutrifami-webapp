@@ -2974,6 +2974,85 @@ div#imprimirDiploma {
     border-right-color: #e5e5e5;
 }
 
+.nutricompra .jugar.terminar {
+    background-color: #ffffff;
+}
+
+.nutricompra .terminar .titulo {
+    background-image: url('../img/nutricompra/ico_cinta.png');
+    height: 76px;
+    margin: 0 auto;
+    text-align: center;
+    width: 308px;
+}
+
+.nutricompra .terminar .titulo h2 {
+    color: #ffffff;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 17pt;
+    margin-top: 0px;
+    padding-top: 15px;
+}
+
+.nutricompra .terminar h3 {
+    color: #2f3e47;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 19pt;
+    margin-bottom: 40px;
+    margin-top: 37px;
+    text-align: center;
+}
+
+.nutricompra .terminar .feedback {
+    color: #2f3e47;
+    font-family: 'Muli', sans-serif;
+    font-size: 12pt;
+    margin: 45px auto;
+    text-align: center;
+    width: 300px;
+}
+
+.nutricompra-salir .modal-dialog {
+    width: 330px;
+}
+
+.nutricompra-salir .modal-dialog .glyphicon {
+    color: #ffba23;
+    font-size: 90pt;
+}
+
+.nutricompra-salir .modal-dialog .modal-header,
+.nutricompra-salir .modal-dialog .modal-footer {
+    border: none;
+}
+
+.nutricompra-salir .modal-dialog .modal-body {
+    padding: 30px 20px;
+}
+
+.nutricompra-salir .modal-body p {
+    color: #2f3e47;
+    font-size: 18pt;
+    text-align: center;
+}
+
+.nutricompra-salir .modal-dialog .modal-footer {
+    margin: 0px;
+    padding: 15px;
+}
+
+.nutricompra-salir .modal-dialog .modal-footer .btn-default {
+    background-color: #00c97e;
+    margin: 0px 0px 10px 0px;
+    width: 100%;
+}
+
+.nutricompra-salir .modal-dialog .modal-footer .salir {
+    background-color: #ffffff;
+    box-shadow: none;
+    color: #00c97e;
+}
+
 
 /* Final - Nutricompra*/
 
