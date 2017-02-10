@@ -24,10 +24,14 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
     ];
 
-    $scope.productos = [];
+    $scope.productosVitrina = [];
 
-    NutricompraService.getProductosVitrina(function(response) {
-        $scope.productos = response;
+    NutricompraService.getProductos(function(response) {
+        $scope.productosVitrina = response.productosVitrina;
+        $scope.productosCarrito = response.productosCarrito;
+        $scope.cantidadProductosCarrito = response.cantidadProductosCarrito
+
+        console.log(response);
     });
 
 
@@ -35,6 +39,26 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
         $location.path('/nutricompra/jugar/resumen');
 
     };
+
+    $scope.seleccionarProductoAlCarrito = function(grupo, id_producto) {
+        NutricompraService.addProductoAlCarrito(grupo, id_producto, function(response) {
+            $scope.cantidadProductosCarrito++;
+
+            if ($scope.cantidadProductosCarrito == 15) {
+
+                $location.path('/nutricompra/jugar/terminar');
+
+
+            }
+            console.log("Producto agregado");
+
+        });
+
+    }
+
+
+
+
 
     $scope.salir = function() {
         var data = {

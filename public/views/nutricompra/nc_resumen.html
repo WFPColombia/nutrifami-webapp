@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6" ng-repeat="grupo in carrito track by $index">
+                        <div class="col-md-6" ng-repeat="grupo in productosCarrito track by $index">
                             <div class="grupo">
                                 <div class="grupo-icono" tooltip-placement="right" uib-tooltip="{{grupo.nombre}}">
                                     <img src="img/nutricompra/icons/ico_{{grupo.grupo}}.png" ng-show="grupo.productos.length > 1" />

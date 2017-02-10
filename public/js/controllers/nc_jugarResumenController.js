@@ -19,45 +19,12 @@ nutrifamiApp.controller('nc_jugarResumenController', function($scope, $anchorScr
 
     $scope.nutricompra = true;
 
-    var categorias = [
-        'azucares', 'carnes', 'cereal', 'frutas', 'grasas', 'inadecuados', 'leche'
+    NutricompraService.getProductos(function(response) {
+        $scope.productosVitrina = response.productosVitrina;
+        $scope.productosCarrito = response.productosCarrito;
 
-    ];
-
-    $scope.productos = [];
-
-    $scope.carrito = [{
-        'grupo': 'cereales',
-        'nombre': 'Cereales, raíces, tubérculos y plátanos.',
-        'alias': 'cereal',
-        'productos': ['5', '2'],
-    }, {
-        'grupo': 'grasas',
-        'nombre': 'Grasas.',
-        'productos': [],
-    }, {
-        'grupo': 'frutas',
-        'nombre': 'Frutas y verduras.',
-        'productos': [],
-    }, {
-        'grupo': 'azucares',
-        'nombre': 'Azucar.',
-        'productos': [],
-    }, {
-        'grupo': 'carnes',
-        'nombre': 'Carnes, huevos y leguminosas secas.',
-        'productos': [],
-    }, {
-        'grupo': 'inadecuados',
-        'nombre': 'Inadecuados',
-        'productos': [],
-    }, {
-        'grupo': 'lacteos',
-        'nombre': 'Leches y otros productos lacteos.',
-        'alias': 'leche',
-        'productos': [1, 2, 3, 4],
-    }, ]
-
+        console.log($scope.productosCarrito);
+    });
 
 
 });

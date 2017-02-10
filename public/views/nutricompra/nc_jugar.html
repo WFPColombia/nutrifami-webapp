@@ -24,17 +24,17 @@
                             </div>
                             <div class="carrito" ng-click="verResumen()">
                                 <img src="img/nutricompra/ico_carrito.png">
-                                <div class="carrito-cantidad">0</div>
+                                <div class="carrito-cantidad">{{cantidadProductosCarrito}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="vitrina">
                     <div class="productos">
-                        <div ng-repeat="producto in productos track by $index">
+                        <div ng-repeat="producto in productosVitrina track by $index">
                             <div class="selector" ng-class="sombra == 'sombra/' ? 'selected':''">
                                 <div class="producto">
-                                    <a href ng-mouseover="sombra = 'sombra/'" ng-mouseout="sombra = ''"><img src="/img/nutricompra/icons/{{producto}}.png" ng-src="/img/nutricompra/icons/{{sombra}}{{producto}}.png"></a>
+                                    <a href ng-click="seleccionarProductoAlCarrito(producto.grupo, producto.id_producto)" ng-mouseover="sombra = 'sombra/'" ng-mouseout="sombra = ''"><img src="/img/nutricompra/icons/{{producto.imagen}}.png" ng-src="/img/nutricompra/icons/{{sombra}}{{producto.imagen}}.png"></a>
                                 </div>
                             </div>
                         </div>
