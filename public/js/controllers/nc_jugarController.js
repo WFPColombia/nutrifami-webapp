@@ -36,8 +36,6 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
     $scope.agregarProductoAlCarrito = function(grupo, id_producto, index) {
         NutricompraService.addProductoAlCarrito(grupo, id_producto, index, function(response) {
-
-            console.log(index);
             actualizarProductos();
             if ($scope.cantidadProductosCarrito == 15) {
                 $location.path('/nutricompra/jugar/terminar');
@@ -85,7 +83,7 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
             $scope.productosCarrito = response.productosCarrito;
             $scope.cantidadProductosCarrito = response.cantidadProductosCarrito
 
-            console.log($scope.productosVitrina);
+            console.log($scope.productosCarrito);
         });
     }
 

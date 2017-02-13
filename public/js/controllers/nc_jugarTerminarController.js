@@ -6,7 +6,7 @@ nutrifamiApp.controller('nc_jugarTerminarController', function($scope, $anchorSc
 
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
-
+    $scope.feedbacks = {}
 
     /* Overloading*/
     bsLoadingOverlayService.start();
@@ -16,6 +16,12 @@ nutrifamiApp.controller('nc_jugarTerminarController', function($scope, $anchorSc
          * cuando el contenido se demore mucho en cargar se puede quitar el timeout*/
         bsLoadingOverlayService.stop();
     });
+
+    NutricompraService.getFeedback(function(response) {
+
+        $scope.feedbacks = response;
+    });
+
 
     $scope.nutricompra = true;
 

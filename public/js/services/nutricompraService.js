@@ -22,40 +22,70 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
             'leche': 4
         };
 
+        var feedbacks = [
+            'Incluya productos lácteos en su alimentación diaria para fortalecer sus músculos, huesos y dientes. ',
+            'La leche y los derivados lácteos aportan proteína y calcio que el cuerpo necesita; consúmalos diariamente. ',
+            'Los cereales, raíces, tubérculos y plátanos dan energía para realizar las actividades diarias. ',
+            'Recuerda que una alimentación saludable, debe incluir alimentos de todos los grupos. ',
+            'Incluya y varíe alimentos ricos en proteínas como: las carnes, leguminosas y huevo. Estas ayudan a la formación y reparación de los músculos. ',
+            'Las carnes, leguminosas y huevos contienen hierro y proteínas, que contribuyen para tener una alimentación saludable.',
+            'Las frutas y verduras son indispensables para el cuerpo. Aportan vitaminas, minerales y fibra.',
+            'Incluya en su alimentación mínimo cinco porciones de frutas y verduras al día. Prefiera las frutas enteras.',
+            'Mantenga una alimentación saludable, utilizando aceite vegetal en cantidad moderada. ',
+            'Las grasas vegetales ayudan a que los alimentos absorban y retengan los sabores. Consúmalas en cantidad moderada. ',
+            'El azúcar moreno, miel o panela  aportan energía y muy pocos nutrientes. Consúmalos en pequeñas cantidades. ',
+            'Consumir alimentos saludables y nutritivos, le ayudan a estar vigoroso  y saludable. ',
+            'Los alimentos aportan los nutrientes necesarios para el adecuado funcionamiento del organismo. ',
+        ];
+
         var productosCarrito = [{
             'grupo': 'cereales',
             'nombre': 'Cereales, raíces, tubérculos y plátanos.',
             'alias': 'cereal',
+            'porcentaje_recomendado': 27,
+            'porcentaje_agregado': 0,
             'productos': [],
         }, {
             'grupo': 'grasas',
             'nombre': 'Grasas.',
             'alias': 'grasas',
+            'porcentaje_recomendado': 2,
+            'porcentaje_agregado': 0,
             'productos': [],
         }, {
             'grupo': 'frutas',
             'nombre': 'Frutas y verduras.',
             'alias': 'frutas',
+            'porcentaje_recomendado': 27,
+            'porcentaje_agregado': 0,
             'productos': [],
         }, {
             'grupo': 'azucares',
             'nombre': 'Azucar.',
             'alias': 'azucares',
+            'porcentaje_recomendado': 2,
+            'porcentaje_agregado': 0,
             'productos': [],
         }, {
             'grupo': 'carnes',
             'nombre': 'Carnes, huevos y leguminosas secas.',
             'alias': 'carnes',
+            'porcentaje_recomendado': 19,
+            'porcentaje_agregado': 0,
             'productos': [],
         }, {
             'grupo': 'inadecuados',
             'nombre': 'Inadecuados',
             'alias': 'inadecuados',
+            'porcentaje_recomendado': 0,
+            'porcentaje_agregado': 0,
             'productos': [],
         }, {
             'grupo': 'lacteos',
             'nombre': 'Leches y otros productos lacteos.',
             'alias': 'leche',
+            'porcentaje_recomendado': 23,
+            'porcentaje_agregado': 0,
             'productos': [],
         }, ]
 
@@ -114,6 +144,11 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
                         tempCantidad++;
                         tempProductosVitrina[index].seleccionado = true;
 
+
+                        var temPorcentaje_agregado = (100 / 15) * tempProductosCarrito[a].productos.length;
+                        tempProductosCarrito[a].porcentaje_agregado = temPorcentaje_agregado;
+
+
                     }
                 }
 
@@ -156,6 +191,10 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
                         tempProductosCarrito[a].productos.splice(index, 1);
                         tempProductosVitrina[tempIndiceVitrina].seleccionado = false;
                         tempCantidad--;
+
+                        var temPorcentaje_agregado = (100 / 15) * tempProductosCarrito[a].productos.length;
+                        tempProductosCarrito[a].porcentaje_agregado = temPorcentaje_agregado;
+
                     }
                 }
 
@@ -170,6 +209,52 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
                 localStorage.setItem("nutricompra", JSON.stringify(nutricompra));
 
                 callback();
+            });
+        };
+
+        /**
+         * 
+         * @param {type} callback
+         * @returns {undefined}
+         * NutricompraService.getFeedback((response){});
+         */
+        service.getFeedback = function(callback) {
+
+            this.getProductos(function(response) {
+
+                var alt = Math.floor((Math.random() * feedbacks.length));
+
+                var feedback = {
+                    'bandera': 'Regular',
+                    'texto1': 'ha sido una compra poco saludable',
+                    'feedback': feedbacks[alt]
+                }
+
+                var indiceFallo = 0;
+
+                var tempProductosCarrito = response.productosCarrito;
+                for (a in tempProductosCarrito) {
+
+                    indiceFallo = indiceFallo + (Math.abs(tempProductosCarrito[a].porcentaje_recomendado - tempProductosCarrito[a].porcentaje_agregado));
+                }
+
+                //Convenciones Indice de Falle
+                // entre 0 y 40 -> Excelente compra
+                // 41 y 70 -> Buena compra
+                // mayor a 70 -> Compra Regular
+
+                if (indiceFallo <= 40) {
+                    feedback['bandera'] = 'Felicitaciones';
+                    feedback['texto1'] = 'ha sido una compra muy saludable';
+                } else if (indiceFallo <= 70) {
+                    feedback['bandera'] = 'Bien';
+                    feedback['texto1'] = 'ha sido una compra saludable';
+                }
+
+
+
+
+                callback(feedback);
             });
         };
 

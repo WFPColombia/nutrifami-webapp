@@ -34,8 +34,17 @@ nutrifamiApp.controller('nc_jugarResumenController', function($scope, $anchorScr
             $scope.productosVitrina = response.productosVitrina;
             $scope.productosCarrito = response.productosCarrito;
             $scope.cantidadProductosCarrito = response.cantidadProductosCarrito
+
+            console.log($scope.productosCarrito);
         });
+
+        NutricompraService.getFeedback(function(response) {
+
+            //console.log(response);
+        });
+
     }
+
 
 
 });

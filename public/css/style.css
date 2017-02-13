@@ -3006,9 +3006,9 @@ div#imprimirDiploma {
     color: #2f3e47;
     font-family: 'Muli-Light', sans-serif;
     font-size: 19pt;
-    margin-bottom: 40px;
-    margin-top: 37px;
+    margin: 37px auto 40px auto;
     text-align: center;
+    width: 50%;
 }
 
 .nutricompra .terminar .feedback {
