@@ -2854,23 +2854,30 @@ div#imprimirDiploma {
     width: 918px;
 }
 
-.nutricompra .selector.selected {
-    margin: 0 2px 10px 2px;
-}
-
-.nutricompra .selector.selected img {
-    max-height: 95px;
+.nutricompra .selector.seleccionado {
+    visibility: hidden;
 }
 
 .nutricompra .selector {
     float: left;
-    margin: 0 12px 10px 12px;
+    margin-bottom: 10px;
+    width: 89px;
 }
 
 .nutricompra .producto {
-    height: 95px;
-    vertical-align: bottom;
     display: table-cell;
+    height: 95px;
+    position: relative;
+    vertical-align: bottom;
+    width: inherit;
+}
+
+.nutricompra .producto img {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .nutricompra .carro {
@@ -2938,6 +2945,7 @@ div#imprimirDiploma {
 
 .nutricompra .resumen .grupo .grupo-productos .producto img {
     height: 50px;
+    position: initial;
 }
 
 .nutricompra .resumen .grupo .grupo-productos .producto .cerrar {

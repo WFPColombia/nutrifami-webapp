@@ -26,13 +26,7 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
     $scope.productosVitrina = [];
 
-    NutricompraService.getProductos(function(response) {
-        $scope.productosVitrina = response.productosVitrina;
-        $scope.productosCarrito = response.productosCarrito;
-        $scope.cantidadProductosCarrito = response.cantidadProductosCarrito
-
-        console.log(response);
-    });
+    actualizarProductos();
 
 
     $scope.verResumen = function() {
@@ -40,18 +34,14 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
     };
 
-    $scope.seleccionarProductoAlCarrito = function(grupo, id_producto) {
-        NutricompraService.addProductoAlCarrito(grupo, id_producto, function(response) {
-            $scope.cantidadProductosCarrito++;
+    $scope.agregarProductoAlCarrito = function(grupo, id_producto, index) {
+        NutricompraService.addProductoAlCarrito(grupo, id_producto, index, function(response) {
 
+            console.log(index);
+            actualizarProductos();
             if ($scope.cantidadProductosCarrito == 15) {
-
                 $location.path('/nutricompra/jugar/terminar');
-
-
             }
-            console.log("Producto agregado");
-
         });
 
     }
@@ -88,6 +78,16 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
 
     };
+
+    function actualizarProductos() {
+        NutricompraService.getProductos(function(response) {
+            $scope.productosVitrina = response.productosVitrina;
+            $scope.productosCarrito = response.productosCarrito;
+            $scope.cantidadProductosCarrito = response.cantidadProductosCarrito
+
+            console.log($scope.productosVitrina);
+        });
+    }
 
 
 

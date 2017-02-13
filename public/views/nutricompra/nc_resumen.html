@@ -14,17 +14,15 @@
                         <div class="panel-central">
                             <div class="cantidad-productos">
                                 <ul>
-                                    <li><img src="img/nutricompra/icons/ico_cereales_gris.png"></li>
-                                    <li><img src="img/nutricompra/icons/ico_frutas_gris.png"></li>
-                                    <li><img src="img/nutricompra/icons/ico_carnes_gris.png"></li>
-                                    <li><img src="img/nutricompra/icons/ico_lacteos_gris.png"></li>
-                                    <li><img src="img/nutricompra/icons/ico_grasas_gris.png"></li>
-                                    <li><img src="img/nutricompra/icons/ico_azucares_gris.png"></li>
+                                    <li ng-repeat="grupo in productosCarrito track by $index" ng-hide="grupo.grupo == 'inadecuados'">
+                                        <img src="img/nutricompra/icons/ico_{{grupo.grupo}}_gris.png" ng-hide="grupo.productos.length > 0">
+                                        <img src="img/nutricompra/icons/ico_{{grupo.grupo}}.png" ng-show="grupo.productos.length > 0">
+                                    </li>
                                 </ul>
                             </div>
                             <div class="carrito" ng-click="verResumen()">
                                 <img src="img/nutricompra/ico_carrito.png">
-                                <div class="carrito-cantidad">0</div>
+                                <div class="carrito-cantidad">{{cantidadProductosCarrito}}</div>
                             </div>
                         </div>
                     </div>
@@ -39,14 +37,14 @@
                         <div class="col-md-6" ng-repeat="grupo in productosCarrito track by $index">
                             <div class="grupo">
                                 <div class="grupo-icono" tooltip-placement="right" uib-tooltip="{{grupo.nombre}}">
-                                    <img src="img/nutricompra/icons/ico_{{grupo.grupo}}.png" ng-show="grupo.productos.length > 1" />
-                                    <img src="img/nutricompra/icons/ico_{{grupo.grupo}}_gris.png" ng-hide="grupo.productos.length > 1" />
-                                    <div class="grupo-cantidad" ng-show="grupo.productos.length > 1">{{grupo.productos.length}}</div>
+                                    <img src="img/nutricompra/icons/ico_{{grupo.grupo}}.png" ng-show="grupo.productos.length > 0" />
+                                    <img src="img/nutricompra/icons/ico_{{grupo.grupo}}_gris.png" ng-hide="grupo.productos.length > 0" />
+                                    <div class="grupo-cantidad" ng-show="grupo.productos.length > 0">{{grupo.productos.length}}</div>
                                 </div>
                                 <div class="grupo-productos">
                                     <div class="producto" ng-repeat="producto in grupo.productos track by $index">
-                                        <img src="img/nutricompra/icons/ico_{{grupo.alias}}_{{producto}}.png" />
-                                        <div class="cerrar" ng-click="quitarProducto()">X</div>
+                                        <img src="img/nutricompra/icons/ico_{{grupo.alias}}_{{producto.id_producto}}.png" />
+                                        <div class="cerrar" ng-click="quitarProducto(grupo.alias, $index)">X</div>
                                     </div>
                                 </div>
                             </div>

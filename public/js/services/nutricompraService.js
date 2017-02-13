@@ -75,7 +75,6 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
 
 
             if (nutricompra === null) {
-                console.log("No Existe");
                 var nutricompra = {
                     productosVitrina: obtenerProductosVitrina(),
                     productosCarrito: productosCarrito,
@@ -86,7 +85,6 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
                 localStorage.setItem("nutricompra", JSON.stringify(nutricompra));
                 callback(nutricompra);
             } else {
-                console.log("Existe");
                 callback(nutricompra);
             }
         };
@@ -95,23 +93,71 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
          * 
          * @param {type} callback
          * @returns {undefined}
-         * NutricompraService.addProductoAlCarrito(grupo, id_producto, function (response){});
+         * NutricompraService.addProductoAlCarrito(grupo, id_producto, index, function (response){});
          */
-        service.addProductoAlCarrito = function(grupo, id_producto, callback) {
+        service.addProductoAlCarrito = function(grupo, id_producto, index, callback) {
 
             this.getProductos(function(response) {
-                var tempProductosCarrito = response.productosCarrito;
-                var tempCantidad = response.cantidadProductosCarrito;
 
+
+                var tempProductosCarrito = response.productosCarrito;
+                var tempProductosVitrina = response.productosVitrina;
+                var tempCantidad = response.cantidadProductosCarrito;
                 for (a in tempProductosCarrito) {
                     if (tempProductosCarrito[a].alias == grupo) {
-                        tempProductosCarrito[a].productos.push(id_producto)
+                        tempProducto = {
+                            id_producto: id_producto,
+                            index: index
+                        }
+
+                        tempProductosCarrito[a].productos.push(tempProducto)
                         tempCantidad++;
+                        tempProductosVitrina[index].seleccionado = true;
+
                     }
                 }
 
 
 
+
+                var nutricompra = {
+                    productosVitrina: tempProductosVitrina,
+                    productosCarrito: tempProductosCarrito,
+                    cantidadProductosCarrito: tempCantidad
+                }
+
+
+
+                localStorage.setItem("nutricompra", JSON.stringify(nutricompra));
+
+                callback();
+            });
+        };
+
+        /**
+         * 
+         * @param {type} callback
+         * @returns {undefined}
+         * NutricompraService.removerProductoAlCarrito(grupo, index, function (response){});
+         */
+        service.removerProductoAlCarrito = function(grupo, index, callback) {
+
+            this.getProductos(function(response) {
+                var tempProductosCarrito = response.productosCarrito;
+                var tempProductosVitrina = response.productosVitrina;
+                var tempCantidad = response.cantidadProductosCarrito;
+
+                for (a in tempProductosCarrito) {
+                    if (tempProductosCarrito[a].alias == grupo) {
+
+                        var tempIndiceVitrina = tempProductosCarrito[a].productos[index].index;
+
+                        console.log(tempIndiceVitrina);
+                        tempProductosCarrito[a].productos.splice(index, 1);
+                        tempProductosVitrina[tempIndiceVitrina].seleccionado = false;
+                        tempCantidad--;
+                    }
+                }
 
                 var nutricompra = {
                     productosVitrina: response.productosVitrina,
@@ -135,7 +181,6 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
          * NutricompraService.clearProductos(function (response){});
          */
         service.clearProductos = function(callback) {
-            console.log("Eliminar información del juego");
             localStorage.removeItem("nutricompra");
             callback();
 
@@ -154,7 +199,8 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
                 var producto = {
                     'grupo': grupo,
                     'id_producto': numProducto,
-                    'imagen': 'ico_' + grupo + '_' + numProducto
+                    'imagen': 'ico_' + grupo + '_' + numProducto,
+                    'seleccionado': false
                 }
 
                 productos.push(producto);

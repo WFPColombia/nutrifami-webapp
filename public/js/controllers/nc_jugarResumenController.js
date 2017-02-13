@@ -19,12 +19,23 @@ nutrifamiApp.controller('nc_jugarResumenController', function($scope, $anchorScr
 
     $scope.nutricompra = true;
 
-    NutricompraService.getProductos(function(response) {
-        $scope.productosVitrina = response.productosVitrina;
-        $scope.productosCarrito = response.productosCarrito;
+    actualizarProductos();
 
-        console.log($scope.productosCarrito);
-    });
+    $scope.quitarProducto = function(grupo, index) {
+
+        NutricompraService.removerProductoAlCarrito(grupo, index, function(response) {
+            actualizarProductos();
+        });
+
+    }
+
+    function actualizarProductos() {
+        NutricompraService.getProductos(function(response) {
+            $scope.productosVitrina = response.productosVitrina;
+            $scope.productosCarrito = response.productosCarrito;
+            $scope.cantidadProductosCarrito = response.cantidadProductosCarrito
+        });
+    }
 
 
 });
