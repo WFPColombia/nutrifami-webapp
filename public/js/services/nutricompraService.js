@@ -137,7 +137,9 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
                     if (tempProductosCarrito[a].alias == grupo) {
                         tempProducto = {
                             id_producto: id_producto,
-                            index: index
+                            index: index,
+                            left: randomPosition(44, 110) + 'px',
+                            top: (randomPosition(0, 10) - 20) + 'px'
                         }
 
                         tempProductosCarrito[a].productos.push(tempProducto)
@@ -151,9 +153,6 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
 
                     }
                 }
-
-
-
 
                 var nutricompra = {
                     productosVitrina: tempProductosVitrina,
@@ -176,7 +175,6 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
          * NutricompraService.removerProductoAlCarrito(grupo, index, function (response){});
          */
         service.removerProductoAlCarrito = function(grupo, index, callback) {
-
             this.getProductos(function(response) {
                 var tempProductosCarrito = response.productosCarrito;
                 var tempProductosVitrina = response.productosVitrina;
@@ -274,7 +272,8 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
 
         function obtenerProductosVitrina() {
             var productos = [];
-            var cantidadProductos = 30;
+            var cantidadProductos = 90;
+            var pagina = 1;
 
             for (var i = 0; i < cantidadProductos; i++) {
                 var grupo = grupos[Math.floor((Math.random() * 7))];
@@ -285,14 +284,32 @@ nutrifamiApp.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope
                     'grupo': grupo,
                     'id_producto': numProducto,
                     'imagen': 'ico_' + grupo + '_' + numProducto,
-                    'seleccionado': false
+                    'seleccionado': false,
+                    'pagina': pagina
                 }
 
                 productos.push(producto);
+
+                if ((i + 1) % 30 == 0) {
+                    pagina++;
+                }
+
+
             }
 
             return (productos)
         }
+
+        function randomPosition(min, max) {
+            var pos = Math.floor((Math.random() * max) + min);
+
+            if (pos > max) {
+                pos = max
+
+            }
+
+            return pos;
+        };
 
         return service;
     }

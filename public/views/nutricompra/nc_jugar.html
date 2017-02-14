@@ -30,7 +30,7 @@
                 <div class="vitrina">
                     <div class="productos">
                         <div ng-repeat="producto in productosVitrina track by $index">
-                            <div class="selector" ng-class="producto.seleccionado ? 'seleccionado':''">
+                            <div class="selector" ng-class="producto.seleccionado ? 'seleccionado':''" ng-hide="producto.pagina != pagina">
                                 <div class="producto">
                                     <a href ng-click="agregarProductoAlCarrito(producto.grupo, producto.id_producto, $index)" ng-mouseover="sombra = 'sombra/'" ng-mouseout="sombra = ''"><img src="/img/nutricompra/icons/{{producto.imagen}}.png" ng-src="/img/nutricompra/icons/{{sombra}}{{producto.imagen}}.png"></a>
                                 </div>
@@ -38,7 +38,16 @@
                         </div>
                     </div>
                     <div class="carro">
-                        <img src="img/nutricompra/carrito.png">
+                        <div ng-repeat="grupo in productosCarrito track by $index">
+                            <div class="producto-carrito" style="left:{{producto.left}}; top:{{producto.top}}" ng-repeat="producto in grupo.productos track by $index">
+                                <img src="img/nutricompra/icons/ico_{{grupo.alias}}_{{producto.id_producto}}.png" />
+                            </div>
+                        </div>
+                        <img class="img-carro" src="img/nutricompra/carrito.png">
+                    </div>
+                    <div class="pagina-anterior" ng-click="paginaAnterior()" ng-hide="pagina==1">
+                    </div>
+                    <div class="pagina-siguiente" ng-click="paginaSiguiente()" ng-hide="pagina==3">
                     </div>
                 </div>
             </div>

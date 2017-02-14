@@ -2882,8 +2882,43 @@ div#imprimirDiploma {
 
 .nutricompra .carro {
     position: absolute;
-    bottom: 10px;
+    bottom: 0px;
     left: calc(50% - 105px);
+}
+
+.nutricompra .carro .producto-carrito {
+    float: left;
+    left: 50px;
+    position: absolute;
+    top: 0px;
+    z-index: 20;
+    filter: grayscale(30%);
+    -webkit-filter: grayscale(30%);
+}
+
+.nutricompra .carro .img-carro {
+    position: relative;
+    z-index: 30;
+}
+
+.nutricompra .pagina-siguiente,
+.nutricompra .pagina-anterior {
+    background-image: url('../img/nutricompra/bnt_next.png');
+    bottom: 55px;
+    cursor: pointer;
+    height: 63px;
+    position: absolute;
+    right: 100px;
+    width: 63px;
+}
+
+.nutricompra .pagina-anterior {
+    left: 100px;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .nutricompra .resumen {

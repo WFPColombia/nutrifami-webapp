@@ -6,7 +6,7 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
-
+    $scope.pagina = 1;
 
     /* Overloading*/
     bsLoadingOverlayService.start();
@@ -44,9 +44,13 @@ nutrifamiApp.controller('nc_jugarController', function($scope, $anchorScroll, $l
 
     }
 
+    $scope.paginaSiguiente = function() {
+        $scope.pagina++;
+    }
 
-
-
+    $scope.paginaAnterior = function() {
+        $scope.pagina--;
+    }
 
     $scope.salir = function() {
         var data = {
