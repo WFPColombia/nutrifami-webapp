@@ -25,7 +25,7 @@ class CapLeccionElementoTable extends AbstractTableGateway
     
     
     public function getIdListByLeccion ($lid = 0, $key = 'lec_ele_orden') {
-        $resultSet = $this->select((function (Select $select) {
+        $resultSet = $this->select(function (Select $select) {
              $select->where(array('lec_id' => $lid));
              $select->order('lec_ele_orden');
         });
