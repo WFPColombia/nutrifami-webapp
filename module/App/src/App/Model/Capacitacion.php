@@ -220,8 +220,9 @@ class Capacitacion
             $elementosObj = new CapLeccionElementoTable();
             $elementos = $elementosObj->getIdListByLeccion($leccion['lec_id']);       
             $aElementos = Array();
-            foreach ( $elementos AS $elemento ) { print_r($elemento); 
-                $orderU = substr('0'.$elemento['order'], -2).substr('0'.$elemento['father'], -2);
+            foreach ( $elementos AS $elemento ) { 
+                //$orderU = substr('0'.$elemento['order'], -2).substr('0'.$elemento['father'], -2);
+                $orderU = $elemento['order'];
                 $aElementos[$orderU] = $elemento['id'];
             }
             foreach ( $aElementos AS $elemento ){ 
