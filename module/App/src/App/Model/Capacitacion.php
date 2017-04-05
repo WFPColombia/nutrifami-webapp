@@ -225,8 +225,7 @@ class Capacitacion
                 $orderU = $elemento['order'];
                 $aElementos[$orderU] = $elemento['id'];
             }
-            print_r($aElementos);
-            foreach ( $aElementos AS $elemento ){ 
+            foreach ( $aElementos AS $k => $elemento ){ 
                  $data['unidades'][] = $elemento;
                  if ($getUnidades) {
                      $unidadesId[$elemento] = $elemento;
