@@ -246,7 +246,7 @@ h6 {
 .landing .carousel-caption h3 {
     font-size: 14pt;
     color: #4d4d4d;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 }
 
 .landing .carousel-caption p {
@@ -2018,13 +2018,14 @@ div#imprimirDiploma {
 }
 
 .compras .panel .panel-body h3 {
-    padding: 0px;
     color: #2f3e47;
-    font-size: 20px;
+    cursor: pointer;
     font-family: 'Muli-Light', sans-serif;
-    text-align: center;
+    font-size: 20px;
     margin-top: 0px;
     margin-bottom: 30px;
+    padding: 0px;
+    text-align: center;
 }
 
 .compras .panel .panel-body p {
@@ -2037,6 +2038,7 @@ div#imprimirDiploma {
 
 .compras .compras-descripcion p {
     color: #2f3e47;
+    cursor: pointer;
     font-family: 'Muli', sans-serif;
     font-size: 16pt;
     margin-top: 0px;
@@ -2625,7 +2627,6 @@ div#imprimirDiploma {
 .tips .panel .panel-body .tip-texto .compartir span {
     font-size: 13px;
     margin-right: 10px;
-    color: #ff5400;
 }
 
 .tips .panel .panel-body .tip-sonido {

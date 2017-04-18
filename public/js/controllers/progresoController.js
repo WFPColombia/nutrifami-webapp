@@ -1,4 +1,4 @@
-nutrifamiApp.controller('ProgresoController', function($scope, $uibModal, UsuarioService) {
+nutrifamiApp.controller('ProgresoController', function($scope, $uibModal, UsuarioService, ngAudio) {
     'use strict';
 
     $scope.progreso = true;
@@ -6,6 +6,8 @@ nutrifamiApp.controller('ProgresoController', function($scope, $uibModal, Usuari
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
     $scope.usuarioAvance = UsuarioService.getUsuarioAvance();
     $scope.usuarioFamilia = UsuarioService.getUsuarioFamilia();
+
+    $scope.audio1 = ngAudio.load("audios/consejos-saludables-1.mp3");
 
     $scope.verDiploma = function(index) {
         var data = {
