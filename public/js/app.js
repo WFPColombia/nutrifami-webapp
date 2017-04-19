@@ -28,7 +28,7 @@ nutrifamiApp.run(function($rootScope, $location, $cookieStore, bsLoadingOverlayS
 
     $rootScope.$on('$locationChangeStart', function(event, next, current) {
         // redirect to login page if not logged in
-        if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+        if ($location.path() !== '/terminos-y-condiciones' && $location.path() !== '/login' && !$rootScope.globals.currentUser) {
             $location.path('/');
         }
     });
@@ -36,6 +36,12 @@ nutrifamiApp.run(function($rootScope, $location, $cookieStore, bsLoadingOverlayS
 
 nutrifamiApp.config(['$routeProvider', function($routeProvider) {
     'use strict';
+
+
+    $routeProvider.when('/terminos-y-condiciones', {
+        templateUrl: 'views/terminos.html',
+        hideMenus: true
+    });
 
     $routeProvider.when('/login', {
         controller: 'LoginController',
