@@ -17,8 +17,10 @@ nutrifamiApp.controller('registroModalController', function($scope, $uibModalIns
                         console.log("Entra")
                         AuthenticationService.SetCredentials($scope.usuarioNuevo.FAM_PER_DOCUMENTO, 'no-pass', response.message);
                         $uibModalInstance.dismiss('cancel');
-                        bsLoadingOverlayService.stop();
-                        $location.path('/capacitacion');
+                        nutrifami.training.initClient('', function() {
+                            $location.path('/capacitacion');
+                            bsLoadingOverlayService.stop();
+                        });
                     } else {
                         $scope.error = response.message;
                         bsLoadingOverlayService.stop();
