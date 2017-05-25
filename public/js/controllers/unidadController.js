@@ -261,13 +261,15 @@ nutrifamiApp.controller('UnidadController', function($scope, $rootScope, $locati
                     if (typeof $scope.unidad.opciones[i].feedback.audio !== 'undefined') {
                         $scope.unidad.opciones[i].feedback.audio.audio = ngAudio.load($scope.unidad.opciones[i].feedback.audio.url);
                     }
-                    tempFeedbackBien.push($scope.unidad.opciones[i].feedback);
+                    //tempFeedbackBien.push($scope.unidad.opciones[i].feedback);
+                    tempFeedbackBien[0] = ($scope.unidad.opciones[i].feedback);
                 } else {
                     /* Almacena la respuesta incorrecta */
                     if (typeof $scope.unidad.opciones[i].feedback.audio !== 'undefined') {
                         $scope.unidad.opciones[i].feedback.audio.audio = ngAudio.load($scope.unidad.opciones[i].feedback.audio.url);
                     }
-                    tempFeedbackMal.push($scope.unidad.opciones[i].feedback);
+                    //tempFeedbackMal.push($scope.unidad.opciones[i].feedback);
+                    tempFeedbackMal[0] = $scope.unidad.opciones[i].feedback;
                 }
             }
         }
