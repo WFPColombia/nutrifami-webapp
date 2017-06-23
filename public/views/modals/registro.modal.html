@@ -11,8 +11,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <div ng-show="form.nombre.$dirty && form.nombre.$error.required" class="help-block">* Debe escribir su nombre completo para hacer el registro</div>
-                    <input type="text" name="nombre" id="nombre" class="nombre" placeholder="Escriba su nombre completo" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_NOMBRE" required />
+                    <div ng-show="form.nombre.$dirty && form.nombre.$error.required" class="help-block">* Debe escribir su nombre y apellido para hacer el registro</div>
+                    <input type="text" name="nombre" id="nombre" class="nombre" placeholder="Escriba su nombre y apellido" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_NOMBRE" required />
                 </div>
             </div>
         </div>
@@ -21,6 +21,22 @@
                 <div class="form-group">
                     <div ng-show="form.documento.$dirty && form.documento.$error.required" class="help-block">* El documento es necesario para hacer el registro</div>
                     <input type="text" name="documento" id="documento" class="documento" placeholder="Escriba su número de documento" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_DOCUMENTO" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div ng-show="form.departamento.$dirty && form.departamento.$error.required" class="help-block">* El departamento es necesario para hacer el registro</div>
+                    <input type="text" name="departamento" id="departamento" class="departamento" placeholder="Escriba su número de departamento" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_DEPARTAMENTO" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div ng-show="form.ciudad.$dirty && form.ciudad.$error.required" class="help-block">* El ciudad es necesario para hacer el registro</div>
+                    <input type="text" name="ciudad" id="ciudad" class="ciudad" placeholder="Escriba su número de ciudad" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_CIUDAD" required />
                 </div>
             </div>
         </div>

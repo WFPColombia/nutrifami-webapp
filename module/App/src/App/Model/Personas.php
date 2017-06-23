@@ -136,6 +136,8 @@ class Personas {
         $data = array(
             'FAM_PER_DOCUMENTO' => $params['FAM_PER_DOCUMENTO'],
             'FAM_PER_NOMBRE' => $params['FAM_PER_NOMBRE'],
+            'FAM_PER_DEPARTAMENTO' => $params['FAM_PER_DEPARTAMENTO'],
+            'FAM_PER_CIUDAD' => $params['FAM_PER_CIUDAD'],
         );
 
 

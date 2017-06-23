@@ -6,6 +6,7 @@ nutrifamiApp.controller('registroModalController', function($scope, $uibModalIns
         usuarioNuevo = $scope.usuarioNuevo;
         usuarioNuevo.FAM_PER_JEFE = 0;
         $scope.error = "";
+        console.log(usuarioNuevo);
         bsLoadingOverlayService.start();
         PerfilService.agregarUsuario(usuarioNuevo, function(response) {
 
