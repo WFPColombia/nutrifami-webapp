@@ -735,6 +735,16 @@ header .navbar-default .navbar-toggle .icon-bar {
     background-color: #fff;
 }
 
+header .glyphicon {
+    background-color: #ffffff;
+    color: red;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
 .tooltip-inner {
     color: #09df78;
     background-color: #ffffff;

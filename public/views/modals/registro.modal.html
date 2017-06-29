@@ -28,15 +28,15 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <div ng-show="form.departamento.$dirty && form.departamento.$error.required" class="help-block">* El departamento es necesario para hacer el registro</div>
-                    <input type="text" name="departamento" id="departamento" class="departamento" placeholder="Escriba su número de departamento" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_DEPARTAMENTO" required />
+                    <input type="text" name="departamento" id="departamento" class="departamento" placeholder="Escriba su departamento" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_DEPARTAMENTO" required />
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <div ng-show="form.ciudad.$dirty && form.ciudad.$error.required" class="help-block">* El ciudad es necesario para hacer el registro</div>
-                    <input type="text" name="ciudad" id="ciudad" class="ciudad" placeholder="Escriba su número de ciudad" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_CIUDAD" required />
+                    <div ng-show="form.ciudad.$dirty && form.ciudad.$error.required" class="help-block">* La ciudad o municipio es necesario para hacer el registro</div>
+                    <input type="text" name="ciudad" id="ciudad" class="ciudad" placeholder="Escriba su ciudad o municio" autocomplete="off" ng-model="usuarioNuevo.FAM_PER_CIUDAD" required />
                 </div>
             </div>
         </div>
