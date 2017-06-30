@@ -10,6 +10,7 @@ nutrifamiApp.controller('EditarPerfilController', function($scope, $location, Pe
     });
 
     $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
+    //PerfilService.getLocation();
     $scope.usuarioActivo.generos = {
         availableOptions: [
             { id: 'F', name: 'Femenino' },

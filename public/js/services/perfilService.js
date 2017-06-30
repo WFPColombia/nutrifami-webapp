@@ -21,6 +21,14 @@ nutrifamiApp.factory('PerfilService', ['$http', '$cookieStore', '$rootScope', '$
             });
 
         };
+
+        service.getLocation = function(familiar, callback) {
+            nutrifami.getLocation(function(response) {
+                console.log(response);
+                callback(response);
+            });
+
+        };
         return service;
     }
 ]);

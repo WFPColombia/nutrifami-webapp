@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Model\Personas;
+use App\Model\Location;
 use App\Model\Capacitacion;
 use App\Model\Compras;
 use App\Model\PuntoVenta;
@@ -346,6 +347,20 @@ class ApiController extends AbstractActionController {
         $viewModel->setTerminal(true);
         return $viewModel;
         
+    }
+
+    public function getLocationAction(){
+        header('Access-Control-Allow-Origin: *');
+        $params = $this->params()->fromQuery();
+
+        $locationObj = new Location();
+        $data = $locationObj->getLocation();
+
+        echo json_encode($data);
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(true);
+        return $viewModel;
+
     }
 
 }
