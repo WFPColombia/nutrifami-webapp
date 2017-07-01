@@ -224,33 +224,6 @@ var nutrifami = {
 
 
     },
-
-    getLocation: function(data, callback) {
-        callback = callback || function() {};
-        var serv = base_url + "app/api/get-location";
-        response = {
-            success: false,
-            message: ''
-        };
-        $.ajax({
-            url: serv,
-            type: 'GET',
-            async: true,
-            data: data,
-            success: function(data) {
-                localStorage.setItem("location", data);
-                callback(data);
-            },
-            error: function() {
-
-                callback({});
-            }
-        });
-
-
-
-    },
-
     /*
      * nutrifami.subirUsuarioActivo(callback);
      */
@@ -268,7 +241,6 @@ var nutrifami = {
         callback = callback || function() {};
         return this.isloginFlag;
     },
-
     /*
      * Sub elemento training
      * 

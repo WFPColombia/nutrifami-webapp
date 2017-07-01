@@ -312,24 +312,33 @@ h6 {
 
 .registro .logo h1 {
     color: #4d4d4d;
-    font-family: 26pt;
-    margin-top: 80px;
-    margin-bottom: 70px;
+    font-size: 26pX;
+    margin-top: 40px;
+    margin-bottom: 35px;
 }
 
-.registro form .form-group input {
+.registro form .form-group input,
+.registro form .form-group select {
     background-color: #ffffff;
     color: #4d4d4d;
-    font-size: 15pt;
+    font-size: 16px;
     font-family: 'Muli-Light', sans-serif;
     width: 80%;
-    height: 65px;
+    height: 60px;
     border: 2px solid #00c97e;
     border-radius: 18px;
     box-shadow: none;
-    padding-bottom: 5px;
-    text-align: center;
+    padding-left: 25px;
     margin-left: 10%;
+}
+
+.registro form .form-group select:focus {
+    outline: 0;
+}
+
+.registro form .form-group select:disabled {
+    border-color: #4d4d4d;
+    cursor: not-allowed;
 }
 
 .registro form .form-group input::-webkit-input-placeholder {
@@ -361,11 +370,11 @@ h6 {
     font-family: 'Muli', sans-serif;
     font-weight: bold;
     background-color: #00c97e;
-    height: 70px;
+    height: 65px;
     width: 80%;
     border: none;
     border-radius: 30px;
-    font-size: 16zpt;
+    font-size: 16px;
     margin-top: 5px;
     color: #ffffff;
     margin-left: 10%;

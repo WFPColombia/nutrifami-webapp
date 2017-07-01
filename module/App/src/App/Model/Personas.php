@@ -138,6 +138,7 @@ class Personas {
             'FAM_PER_NOMBRE' => $params['FAM_PER_NOMBRE'],
             'FAM_PER_DEPARTAMENTO' => $params['FAM_PER_DEPARTAMENTO'],
             'FAM_PER_MUNICIPIO' => $params['FAM_PER_CIUDAD'],
+            'FAM_PER_PAIS' => $params['FAM_PER_PAIS'],
         );
 
 

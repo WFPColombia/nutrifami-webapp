@@ -1,14 +1,42 @@
-nutrifamiApp.controller('registroModalController', function($scope, $uibModalInstance, $location, bsLoadingOverlayService, PerfilService, AuthenticationService) {
+nutrifamiApp.controller('registroModalController', function($scope, $uibModalInstance, $filter, $location, bsLoadingOverlayService, PerfilService, AuthenticationService) {
 
     var usuarioNuevo = {};
+
+    PerfilService.getLocation(function(response) {
+        $scope.paises = response.paises;
+        $scope.departamentos = response.estados;
+        $scope.ciudades = response.ciudades;
+        console.log($scope.ciudades);
+    });
 
     $scope.registro = function() {
         usuarioNuevo = $scope.usuarioNuevo;
         usuarioNuevo.FAM_PER_JEFE = 0;
         $scope.error = "";
+
+        for (pais in $scope.paises) {
+            if ($scope.paises[pais].id == usuarioNuevo.FAM_PER_PAIS) {
+                usuarioNuevo.FAM_PER_PAIS = $scope.paises[pais].name;
+            }
+        }
+
+
+        for (departamento in $scope.departamentos) {
+            if ($scope.departamentos[departamento].id == usuarioNuevo.FAM_PER_DEPARTAMENTO) {
+                usuarioNuevo.FAM_PER_DEPARTAMENTO = $scope.departamentos[departamento].name;
+            }
+        }
+
+        for (ciudad in $scope.ciudades) {
+            if ($scope.ciudades[ciudad].id == usuarioNuevo.FAM_PER_CIUDAD) {
+                usuarioNuevo.FAM_PER_CIUDAD = $scope.ciudades[ciudad].name;
+            }
+        }
+
         console.log(usuarioNuevo);
         bsLoadingOverlayService.start();
-        PerfilService.agregarUsuario(usuarioNuevo, function(response) {
+
+        /*PerfilService.agregarUsuario(usuarioNuevo, function(response) {
 
             if (response.success) {
                 bsLoadingOverlayService.stop();
@@ -31,10 +59,21 @@ nutrifamiApp.controller('registroModalController', function($scope, $uibModalIns
                 $scope.error = response.message;
                 bsLoadingOverlayService.stop();
             }
-        });
+        });*/
     };
 
     $scope.cancel = function() {
         $uibModalInstance.dismiss('cancel');
     };
+
+    $scope.updateDropDownDepartamentos = function(pais) {
+        console.log(pais)
+        $scope.departamentos_filter = $filter('filter')($scope.departamentos, { country_id: pais });
+    }
+
+    $scope.updateDropDownCiudades = function(estado) {
+        console.log(estado);
+        $scope.ciudades_filter = $filter('filter')($scope.ciudades, { state_id: estado });
+        console.log($scope.ciudades_filter);
+    }
 });
