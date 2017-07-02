@@ -101,6 +101,15 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
+                                    <label for="pais">País</label>
+                                    <input type="text" class="form-control" id="pais" name="pais" placeholder="Escriba el país donde vive" ng-model="usuarioActivo.pais" ng-model-options="{ updateOn: 'blur' }">
+                                    <!--<span class="messages" ng-show="userForm.$submitted || userForm.pais.$touched">
+                                        <span ng-show="userForm.pais.$error.required">El pais es obligatorio</span>
+                                    </span>-->
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
                                     <label for="departamento">Departamento</label>
                                     <input type="text" class="form-control" id="departamento" name="departamento" placeholder="Escriba el departamento donde vive" ng-model="usuarioActivo.departamento" ng-model-options="{ updateOn: 'blur' }">
                                     <!--<span class="messages" ng-show="userForm.$submitted || userForm.departamento.$touched">
