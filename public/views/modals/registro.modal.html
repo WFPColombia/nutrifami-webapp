@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <div ng-show="form.pais.$dirty && form.pais.$error.required" class="help-block">* El pais es necesario para hacer el registro</div>
+                    <div ng-show="form.pais.$dirty && form.pais.$error.required" class="help-block">* El país es necesario para hacer el registro</div>
                     <select name="pais" id="pais" ng-model="usuarioNuevo.FAM_PER_PAIS" ng-options="pais.id as pais.name for pais in paises track by pais.sortname" ng-change="updateDropDownDepartamentos(usuarioNuevo.FAM_PER_PAIS)">
                         <option value="">Seleccione su país</option>
                     </select>

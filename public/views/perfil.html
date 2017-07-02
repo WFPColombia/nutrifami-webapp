@@ -75,6 +75,13 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
+                                    <label>Pais
+                                    </label>
+                                    <p ng-class="usuarioActivo.pais == undefined ? 'sin-registro' : ''">{{ usuarioActivo.pais!=undefined ? usuarioActivo.pais: 'País no ingresado'}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
                                     <label>Departamento</label>
                                     <p ng-class="usuarioActivo.departamento == undefined ? 'sin-registro' : ''">{{ usuarioActivo.departamento!=undefined ? usuarioActivo.departamento: 'Departamento no ingresado'}}</p>
                                 </div>

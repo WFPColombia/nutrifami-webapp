@@ -50,6 +50,7 @@ class ApiController extends AbstractActionController {
             $personaInfo['birthdate'] = $data['FAM_PER_BIRTHDATE'];
             $personaInfo['genero'] = $data['FAM_PER_GENERO'];
             $personaInfo['etnia'] = $data['FAM_PER_ETNIA'];
+            $personaInfo['pais'] = $data['FAM_PER_PAIS'];
             $personaInfo['departamento'] = $data['FAM_PER_DEPARTAMENTO'];
             $personaInfo['municipio'] = $data['FAM_PER_MUNICIPIO'];
             $personaInfo['comunidad'] = $data['FAM_PER_COMUNIDAD'];

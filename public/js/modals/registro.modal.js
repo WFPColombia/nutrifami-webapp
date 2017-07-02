@@ -36,7 +36,7 @@ nutrifamiApp.controller('registroModalController', function($scope, $uibModalIns
         console.log(usuarioNuevo);
         bsLoadingOverlayService.start();
 
-        /*PerfilService.agregarUsuario(usuarioNuevo, function(response) {
+        PerfilService.agregarUsuario(usuarioNuevo, function(response) {
 
             if (response.success) {
                 bsLoadingOverlayService.stop();
@@ -59,7 +59,7 @@ nutrifamiApp.controller('registroModalController', function($scope, $uibModalIns
                 $scope.error = response.message;
                 bsLoadingOverlayService.stop();
             }
-        });*/
+        });
     };
 
     $scope.cancel = function() {

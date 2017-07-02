@@ -27,7 +27,7 @@ nutrifamiApp.factory('PerfilService', function($http, $rootScope, $cookieStore, 
 
         $http({
             method: 'GET',
-            url: 'http://nutrifami.org/app/api/get-location',
+            url: 'http://127.0.0.1:83/app/api/get-location',
 
         }).then(function successCallback(response) {
             callback(response.data);
