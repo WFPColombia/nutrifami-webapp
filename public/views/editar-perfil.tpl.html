@@ -102,7 +102,9 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="pais">País</label>
-                                    <input type="text" class="form-control" id="pais" name="pais" placeholder="Escriba el país donde vive" ng-model="usuarioActivo.pais" ng-model-options="{ updateOn: 'blur' }">
+                                    <select name="pais" id="pais" class="form-control" ng-disabled="!paises" ng-model="usuarioActivo.pais_id" ng-options="pais.id as pais.name for pais in paises track by pais.sortname" ng-change="updateDropDownDepartamentos(usuarioActivo.pais_id)">
+                                        <option disabled value="">Seleccione su país</option>
+                                    </select>
                                     <!--<span class="messages" ng-show="userForm.$submitted || userForm.pais.$touched">
                                         <span ng-show="userForm.pais.$error.required">El pais es obligatorio</span>
                                     </span>-->
@@ -111,7 +113,9 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="departamento">Departamento</label>
-                                    <input type="text" class="form-control" id="departamento" name="departamento" placeholder="Escriba el departamento donde vive" ng-model="usuarioActivo.departamento" ng-model-options="{ updateOn: 'blur' }">
+                                    <select name="departamento" id="departamento" class="form-control" ng-disabled="!usuarioActivo.pais_id" ng-model="usuarioActivo.departamento_id" ng-options="departamento.id as departamento.name for departamento in departamentos_filter track by departamento.name" ng-change="updateDropDownCiudades(usuarioActivo.departamento_id)">
+                                        <option disabled value="">Seleccione su departamento</option>
+                                    </select>
                                     <!--<span class="messages" ng-show="userForm.$submitted || userForm.departamento.$touched">
                                         <span ng-show="userForm.departamento.$error.required">El departamento es obligatorio</span>
                                     </span>-->
@@ -120,7 +124,9 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="municipio">Muncipio</label>
-                                    <input type="text" class="form-control" id="municipio" name="municipio" placeholder="Escriba el municipio donde vive" ng-model="usuarioActivo.municipio" ng-model-options="{ updateOn: 'blur' }">
+                                    <select name="municipio" id="municipio" class="form-control" ng-disabled="!usuarioActivo.departamento_id" ng-model="usuarioActivo.municipio_id" ng-options="ciudad.id as ciudad.name for ciudad in ciudades_filter track by ciudad.name">
+                                        <option disabled value="">Seleccione su ciudad o municipio</option>
+                                    </select>
                                     <!--<span class="messages" ng-show="userForm.$submitted || userForm.municipio.$touched">
                                         <span ng-show="userForm.municipio.$error.required">El municipio es obligatorio</span>
                                     </span>-->

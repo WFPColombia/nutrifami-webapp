@@ -25,7 +25,7 @@
                     <li ng-class=" sobre ? 'active':''"><a ng-href="#/sobre-nutrifami">Sobre Nutrifami</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a ng-href="#/perfil">{{ usuarioActivo.nombre | capitalize:true }} <i ng-show="usuarioActivo.municipio == ''" class="glyphicon glyphicon-exclamation-sign" tooltip-placement="bottom" uib-tooltip="Hay algunos campos de su perfil que faltan por completar. !Haga clic aquí para completar toda la información!"></i></a></li>
+                    <li><a ng-href="#/perfil">{{ usuarioActivo.nombre | capitalize:true }} <i ng-show="usuarioActivo.municipio == null || usuarioActivo.municipio == ''" class="glyphicon glyphicon-exclamation-sign" tooltip-placement="bottom" uib-tooltip="Hay algunos campos de su perfil que faltan por completar. !Haga clic aquí para completar toda la información!"></i></a></li>
                     <li><a ng-href="#/">Cerrar Sesión</a></li>
                 </ul>
             </div>
