@@ -1,5 +1,5 @@
 /*global angular*/
-nutrifamiApp.controller('LandingController', function($scope, $location, $anchorScroll, $uibModal, $window, $document, bsLoadingOverlayService, anchorSmoothScrollService, AuthenticationService) {
+nutrifamiApp.controller('LandingController', function($scope, $location, $anchorScroll, $uibModal, $window, $document, bsLoadingOverlayService, anchorSmoothScrollService, AuthenticationService, PerfilService) {
     'use strict';
 
     $anchorScroll();
@@ -7,12 +7,21 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
     /* Overloading*/
     bsLoadingOverlayService.start();
     /* Se apaga cuando el todo el contenido de la vista ha sido cargado*/
-    $scope.$on('$viewContentLoaded', function() {
-        bsLoadingOverlayService.stop();
-    });
+
 
     AuthenticationService.ClearCredentials();
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem("usuarioCapacitacion");
+    localStorage.removeItem("usuarioActivo");
+    localStorage.removeItem("usuarioAvance");
+    localStorage.removeItem("usuarioFamilia");
+    localStorage.removeItem("usuarioFamiliaAvance");
+    localStorage.removeItem("misCompras");
+
+    PerfilService.getLocation(function(response) {
+        console.log(response);
+        bsLoadingOverlayService.stop();
+    });
 
     $scope.scrolled = false;
 

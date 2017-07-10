@@ -23,18 +23,23 @@ nutrifamiApp.factory('PerfilService', function($http, $rootScope, $cookieStore, 
 
     service.getLocation = function(callback) {
         var callback = callback || function() {};
+        var location = JSON.parse(localStorage.getItem('location'));
 
+        if (location === null) {
+            $http({
+                method: 'GET',
+                url: 'http://nutrifami.org/app/api/get-location',
 
-        $http({
-            method: 'GET',
-            url: 'http://nutrifami.org/app/api/get-location',
-
-        }).then(function successCallback(response) {
-            callback(response.data);
-        }, function errorCallback(response) {
-            console.log(response);
-            callback(response);
-        });
+            }).then(function successCallback(response) {
+                location = response.data;
+                localStorage.setItem("location", JSON.stringify(location));
+                callback(location);
+            }, function errorCallback(response) {
+                callback(response.data);
+            });
+        } else {
+            callback(location);
+        }
 
     };
     return service;
