@@ -2,10 +2,13 @@ nutrifamiApp.controller('registroModalController', function($scope, $uibModalIns
 
     var usuarioNuevo = {};
 
+    bsLoadingOverlayService.start();
     PerfilService.getLocation(function(response) {
-        $scope.paises = response.paises;
-        $scope.departamentos = response.estados;
-        $scope.ciudades = response.ciudades;
+        console.log(response);
+        $scope.paises = response.countries;
+        $scope.departamentos = response.states;
+        $scope.ciudades = response.cities;
+        bsLoadingOverlayService.stop();
         console.log($scope.ciudades);
     });
 
@@ -68,12 +71,12 @@ nutrifamiApp.controller('registroModalController', function($scope, $uibModalIns
 
     $scope.updateDropDownDepartamentos = function(pais) {
         console.log(pais)
-        $scope.departamentos_filter = $filter('filter')($scope.departamentos, { country_id: pais });
+        $scope.departamentos_filter = $filter('filter')($scope.departamentos, { country_id: pais }, true);
     }
 
     $scope.updateDropDownCiudades = function(estado) {
         console.log(estado);
-        $scope.ciudades_filter = $filter('filter')($scope.ciudades, { state_id: estado });
+        $scope.ciudades_filter = $filter('filter')($scope.ciudades, { state_id: estado }, true);
         console.log($scope.ciudades_filter);
     }
 });

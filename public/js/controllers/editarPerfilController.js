@@ -36,43 +36,42 @@ nutrifamiApp.controller('EditarPerfilController', function($scope, $location, $f
 
     PerfilService.getLocation(function(response) {
 
-        $scope.paises = response.paises;
+        $scope.paises = response.countries;
 
-        $scope.departamentos = response.estados;
-        $scope.ciudades = response.ciudades;
+        $scope.departamentos = response.states;
+        $scope.ciudades = response.cities;
 
-        for (var pais in response.paises) {
-            if ($scope.usuarioActivo.pais == response.paises[pais].name) {
+        for (var pais in response.countries) {
+            if ($scope.usuarioActivo.pais == response.countries[pais].name) {
                 $scope.usuarioActivo.pais_id = {
-                    id: response.paises[pais].id,
-                    name: response.paises[pais].name,
-                    phonecode: response.paises[pais].phonecode,
-                    sortname: response.paises[pais].sortname,
+                    id: response.countries[pais].id,
+                    name: response.countries[pais].name,
+                    sortname: response.countries[pais].sortname,
                 }
 
             }
         }
 
-        for (var departamento in response.estados) {
-            if ($scope.usuarioActivo.departamento == response.estados[departamento].name) {
-                console.log(response.estados[departamento])
+        for (var departamento in response.states) {
+            if ($scope.usuarioActivo.departamento == response.states[departamento].name) {
+                console.log(response.states[departamento])
                 $scope.usuarioActivo.departamento_id = {
-                    id: response.estados[departamento].id,
-                    name: response.estados[departamento].name,
-                    country_id: response.estados[departamento].country_id,
+                    id: response.states[departamento].id,
+                    name: response.states[departamento].name,
+                    country_id: response.states[departamento].country_id,
                 };
                 $scope.departamentos_filter = [$scope.usuarioActivo.departamento_id];
 
             }
         }
 
-        for (var ciudad in response.ciudades) {
-            if ($scope.usuarioActivo.municipio == response.ciudades[ciudad].name) {
-                console.log(response.ciudades[ciudad]);
+        for (var ciudad in response.cities) {
+            if ($scope.usuarioActivo.municipio == response.cities[ciudad].name) {
+                console.log(response.cities[ciudad]);
                 $scope.usuarioActivo.municipio_id = {
-                    id: response.ciudades[ciudad].id,
-                    name: response.ciudades[ciudad].name,
-                    state_id: response.ciudades[ciudad].state_id,
+                    id: response.cities[ciudad].id,
+                    name: response.cities[ciudad].name,
+                    state_id: response.cities[ciudad].state_id,
                 };
                 $scope.ciudades_filter = [$scope.usuarioActivo.municipio_id];
             }
@@ -187,12 +186,12 @@ nutrifamiApp.controller('EditarPerfilController', function($scope, $location, $f
 
     $scope.updateDropDownDepartamentos = function(pais) {
         console.log(pais)
-        $scope.departamentos_filter = $filter('filter')($scope.departamentos, { country_id: pais });
+        $scope.departamentos_filter = $filter('filter')($scope.departamentos, { country_id: pais },true);
     }
 
     $scope.updateDropDownCiudades = function(estado) {
         console.log(estado);
-        $scope.ciudades_filter = $filter('filter')($scope.ciudades, { state_id: estado });
+        $scope.ciudades_filter = $filter('filter')($scope.ciudades, { state_id: estado },true);
         console.log($scope.ciudades_filter);
     }
 });

@@ -5,8 +5,7 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
     $anchorScroll();
 
     /* Overloading*/
-    bsLoadingOverlayService.start();
-    /* Se apaga cuando el todo el contenido de la vista ha sido cargado*/
+
 
 
     AuthenticationService.ClearCredentials();
@@ -18,10 +17,7 @@ nutrifamiApp.controller('LandingController', function($scope, $location, $anchor
     localStorage.removeItem("usuarioFamiliaAvance");
     localStorage.removeItem("misCompras");
 
-    PerfilService.getLocation(function(response) {
-        console.log(response);
-        bsLoadingOverlayService.stop();
-    });
+  
 
     $scope.scrolled = false;
 
