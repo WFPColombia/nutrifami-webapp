@@ -54,6 +54,7 @@ class Capacitacion
         $dataCapacitaciones = Array();
         $dataModulos = Array();
         $leccionesId = Array();
+        $leccionesZip = Array('audios'=>Array(), 'imagenes'=>Array());
         $dataLecciones = Array();
         $unidadesId = Array();
         $dataUnidadesinformacion = Array();
@@ -65,6 +66,9 @@ class Capacitacion
                                                 , 'descripcion'=> $capacitacion['cap_descripcion']
                                                 , 'fecha'=> $capacitacion['cap_fecha']
                                                 , 'activo'=> $capacitacion['cap_activo']
+                                                , 'zip'=>'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'.zip'
+                                                , 'zip_audios'=>'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/audios.zip'
+                                                , 'zip_imagenes'=>'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/images.zip'
                     );
             $tipoObj = new CapCapacitacionTipoTable();
             $tipo = $tipoObj->getTipo($capacitacion['cap_tip_id'], $capacitacion['cap_tip_alias']);
@@ -88,13 +92,20 @@ class Capacitacion
                 }
                 $moduloData['modulo']['completo'] = false;
                 $dataModulos[$elemento['id']] = $moduloData['modulo'];
+                $dataModulos[$elemento['id']]['zip_audios'] = 'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/audios/'.$elemento['id'].'.zip';
+                $dataModulos[$elemento['id']]['zip_imagenes'] = 'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/images/'.$elemento['id'].'.zip';
+                foreach ( $moduloData['leccionesId'] AS $lid ) {
+                    $leccionesZip['audios'][$lid] = 'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/audios/'.$elemento['id'].'/'.$lid.'.zip';
+                    $leccionesZip['imagenes'][$lid] = 'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/images/'.$elemento['id'].'/'.$lid.'.zip';
+                }
             }
         }
         
         foreach ( $leccionesId AS $lid ) {
             $leccionData = $this->getLeccion($lid, true, true);
             $dataLecciones[$lid] = $leccionData['leccion'];
-            $dataLecciones[$lid]['completo'] = false;
+            $dataLecciones[$lid]['zip_audios'] = $leccionesZip['audios'][$lid];
+            $dataLecciones[$lid]['zip_imagenes'] = $leccionesZip['imagenes'][$lid];
             if (count($unidadesId) > 0) {
                 $unidadesId = array_merge($unidadesId, $leccionData['unidadesId']);
             }else {
