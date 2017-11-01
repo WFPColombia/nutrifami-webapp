@@ -47,8 +47,16 @@ class Capacitacion
         $this->capacitacionTable = new CapCapacitacionTable();
     }
     
-    public function getAll($cid) {
-        $capacitaciones =  $this->capacitacionTable->getCapacitacion($cid); 
+    
+    public function getAll($cids) { 
+        $capacitaciones =  array();
+        foreach ($cids as $cid) {
+            $capacit =  $this->capacitacionTable->getCapacitacion($cid); 
+            foreach ($capacit AS $capac) {
+                $capacitaciones[] = $capac;
+            }
+        }
+        //$capacitaciones =  $this->capacitacionTable->getCapacitacion($cid); 
         $data = Array();
         $dataCapacitacionesId = Array();
         $dataCapacitaciones = Array();
