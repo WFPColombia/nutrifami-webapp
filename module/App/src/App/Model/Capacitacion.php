@@ -74,9 +74,9 @@ class Capacitacion
                                                 , 'descripcion'=> $capacitacion['cap_descripcion']
                                                 , 'fecha'=> $capacitacion['cap_fecha']
                                                 , 'activo'=> $capacitacion['cap_activo']
-                                                , 'zip'=>'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'.zip'
-                                                , 'zip_audios'=>'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/audios.zip'
-                                                , 'zip_imagenes'=>'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/images.zip'
+                                                , 'zip'=>''
+                                                , 'zip_audios'=>'https://s3.amazonaws.com/capacitaciones/training/audios/'.$capacitacion['cap_id'].'.zip'
+                                                , 'zip_imagenes'=>'https://s3.amazonaws.com/capacitaciones/training/images/'.$capacitacion['cap_id'].'.zip'
                     );
             $tipoObj = new CapCapacitacionTipoTable();
             $tipo = $tipoObj->getTipo($capacitacion['cap_tip_id'], $capacitacion['cap_tip_alias']);
@@ -100,11 +100,11 @@ class Capacitacion
                 }
                 $moduloData['modulo']['completo'] = false;
                 $dataModulos[$elemento['id']] = $moduloData['modulo'];
-                $dataModulos[$elemento['id']]['zip_audios'] = 'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/audios/'.$elemento['id'].'.zip';
-                $dataModulos[$elemento['id']]['zip_imagenes'] = 'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/images/'.$elemento['id'].'.zip';
+                $dataModulos[$elemento['id']]['zip_audios'] = 'https://s3.amazonaws.com/capacitaciones/training/audios/'.$capacitacion['cap_id'].'/'.$elemento['id'].'.zip';
+                $dataModulos[$elemento['id']]['zip_imagenes'] = 'https://s3.amazonaws.com/capacitaciones/training/images/'.$capacitacion['cap_id'].'/'.$elemento['id'].'.zip';
                 foreach ( $moduloData['leccionesId'] AS $lid ) {
-                    $leccionesZip['audios'][$lid] = 'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/audios/'.$elemento['id'].'/'.$lid.'.zip';
-                    $leccionesZip['imagenes'][$lid] = 'https://s3.amazonaws.com/capacitaciones/training/'.$capacitacion['cap_id'].'/images/'.$elemento['id'].'/'.$lid.'.zip';
+                    $leccionesZip['audios'][$lid] = 'https://s3.amazonaws.com/capacitaciones/training/audios/'.$capacitacion['cap_id'].'/'.$elemento['id'].'/'.$lid.'.zip';
+                    $leccionesZip['imagenes'][$lid] = 'https://s3.amazonaws.com/capacitaciones/training/images/'.$capacitacion['cap_id'].'/'.$elemento['id'].'/'.$lid.'.zip';
                 }
             }
         }
