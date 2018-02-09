@@ -6,7 +6,7 @@ dependencies = ['Authentication', 'ngRoute', 'ngCookies', 'ngAudio', 'bsLoadingO
 
 // declare modules
 angular.module('Authentication', []);
-
+console.log('local');
 var nutrifamiApp = angular.module('NutrifamiWeb', dependencies);
 
 
