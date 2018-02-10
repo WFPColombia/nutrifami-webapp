@@ -1,23 +1,23 @@
 Nutrifami
 =======================
 
-Aplicación Web responsive para nutrifami.
-
-Una vez descargados los archivos se debe configurar el servidor virtual.
+Responsive website for Nutrifami - nutrifami.org
 
 Installation
 ----------------------------------
 
 1. Install NodeJs
-2. In the root of the project run 
-        npm install
 3. Install bower:
         npm install -g bower
 4. Install dependencies:
         bower install
-5. Run server:
-        gulp
+5. Run with apache or xampp:
 
+Technologies
+-------------------
+1. Zf2
+2. AngularJs
+3. Bootstrap 
 
 VirtualHost Example: 
 --------------
@@ -34,5 +34,7 @@ VirtualHost Example:
         ErrorLog "/private/var/log/apache2/nutrifami-error_log"
         CustomLog "/private/var/log/apache2/nutrifami-access_log" common
     </VirtualHost>
+
+
 
 

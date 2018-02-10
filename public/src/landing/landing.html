@@ -1,0 +1,120 @@
+<div class="landing">
+    <header ng-class="scrolled == true ? 'scrolled' : ''">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-2 col-xs-3 text-center">
+                    <img class="logo-img" src="../img/logo-landing.png" ng-click="gotoElement('top')" alt="Logo Nutrifami" />
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-9 ">
+                    <a href="http://app.nutrifami.org" class="btn btn-primary" role="button">Ingresar</a>
+                    <a href ng-click="gotoElement('acceder')" class="como-funciona">¿Cómo funciona?</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="hero" id="top">
+        <div id="login"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="descripcion">
+                        <h1>¡Aprenda Jugando sobre nutrición,<br>alimentación y hábitos saludables!</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/7kDPgVWxATE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="acceder"></div>
+        <div class="acceder">
+            <div class="row">
+                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h4>¿Cómo funciona?</h4>
+                    <h2>Acceder a Nutrifami es muy fácil.</h2>
+                    <p>Puede acceder desde su casa o en cualquier lugar.
+                        <br>Desde su computador ingrese a www.nutrifami.org</p>
+                    <img src="../img/landing-acceso.png" class="img-responsive center-block" alt="Acceso a Nutrifami" />
+                    <p>En su celular o tableta, descargue Nutrifami
+                        <br>en la tienda de aplicaciones Google Play Store.</p>
+                    <a href="https://play.google.com/store/apps/details?id=org.nutrifami.mobile" target="_blank" title="Descargar Nutrifami de la Play Store"><img src="../img/landing-play-store.png" class="img-responsive center-block" alt="Play Store" /></a>
+                </div>
+                <ul class="navegador">
+                    <li><a href ng-click="gotoElement('acceder')" class="active">&bull;</a></li>
+                    <li><a href ng-click="gotoElement('mi-perfil')">&bull;</a></li>
+                    <li><a href ng-click="gotoElement('aprende')">&bull;</a></li>
+                </ul>
+            </div>
+            <div id="mi-perfil"></div>
+        </div>
+        <div class="mi-perfil">
+            <div class="row">
+                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h4>¿Cómo funciona?</h4>
+                    <h2>Mi Perfil</h2>
+                    <p>Entre a Mi Perfil, complete sus datos y los de su familia.
+                        <br>¡Ya está listo para Aprender Jugando!</p>
+                    <img src="../img/landing-mi-perfil.png" class="img-responsive center-block" alt="Aprende jugando" />
+                </div>
+                <ul class="navegador">
+                    <li><a href ng-click="gotoElement('acceder')">&bull;</a></li>
+                    <li><a href ng-click="gotoElement('mi-perfil')" class="active">&bull;</a></li>
+                    <li><a href ng-click="gotoElement('aprende')">&bull;</a></li>
+                </ul>
+            </div>
+            <div id="aprende"></div>
+        </div>
+        <div class="aprende">
+            <div class="row">
+                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h4>¿Cómo funciona?</h4>
+                    <h2>¡Aprender con Nutrifami es muy divertido! </h2>
+                    <p>Haga un recorrido por las 5 secciones de Nutrifami:</p>
+                    <div uib-carousel active="0" interval="100000" no-wrap="false">
+                        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" class="contenido-slider">
+                            <img ng-src="{{slide.imagen}}" class="img-responsive center-block">
+                            <div class="carousel-caption">
+                                <h3>{{slide.titulo}}</h3>
+                                <p>{{slide.texto}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navegador">
+                    <li><a href ng-click="gotoElement('acceder')">&bull;</a></li>
+                    <li><a href ng-click="gotoElement('mi-perfil')">&bull;</a></li>
+                    <li><a href ng-click="gotoElement('aprende')" class="active">&bull;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h2>¡Comenzar a Aprender!</h2>
+                    <a href="http://app.nutrifami.org" class="btn btn-primary" role="button">Ingresar</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 wfp-ia-logo">
+                    <img src="img/WFP_IA_Logo_blanco.png" class="img-responsive center-block"  alt="Logo WFP - Logo Hambre cero" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 wfp-ia-logo">
+                    <div class="logo">
+                        <img src="../img/logo-landing-footer.png" class="img-responsive center-block" alt="Logo Nutrifami" />
+                        <span>&copy; 2018 Nutrifami</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
