@@ -12,6 +12,8 @@ namespace App\Model;
 
 use App\Model\Tables\CapCapacitacionTable;
 use App\Model\Tables\CapCapacitacionTipoTable;
+use App\Model\Tables\CapIdiomaTable;
+use App\Model\Tables\CapStatusTable;
 use App\Model\Tables\CapCapacitacionElementoTable;
 use App\Model\Tables\CapModuloTable;
 use App\Model\Tables\CapModuloElementoTable;
@@ -48,7 +50,10 @@ class Capacitacion
     }
     
     
-    public function getAll($cids) { 
+    public function getAll() { 
+        $cids = array();
+        $cids = $this->capacitacionTable->getCapacitacionesIds(); 
+        //print_r($cids); die;
         $capacitaciones =  array();
         foreach ($cids as $cid) {
             $capacit =  $this->capacitacionTable->getCapacitacion($cid); 
@@ -85,6 +90,18 @@ class Capacitacion
                         'alias'=> $tipo['cap_tip_alias'],
                         'nombre'=> $tipo['cap_tip_nombre'],
                         'descripcion'=> $tipo['cap_tip_descripcion']
+                    );
+            $idiomaObj = new CapIdiomaTable();
+            $idioma = $idiomaObj->getIdioma($capacitacion['cap_idioma']);
+            $dataCapacitaciones[$capacitacion['cap_id']]['idioma'] = Array(
+                        'id'=> $idioma['idi_abreviatura'],
+                        'nombre'=> $idioma['idi_nombre']
+                    );
+            $statusObj = new CapStatusTable();
+            $status = $statusObj->getStatus($capacitacion['cap_status']);
+            $dataCapacitaciones[$capacitacion['cap_id']]['status'] = Array(
+                        'id'=> $status['sta_id'],
+                        'nombre'=> $status['sta_nombre']
                     );
             $elementosObj = new CapCapacitacionElementoTable;
             $elementos = $elementosObj->getIdListByCapacitacion($capacitacion['cap_id']);
