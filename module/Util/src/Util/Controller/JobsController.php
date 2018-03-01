@@ -25,14 +25,22 @@ class JobsController extends AbstractActionController
     
     public function updateCapacitacionJsonAction()
     {
-        $capacitacion = new Capacitacion();
+        $capacitacion = new Capacitacion(); 
         $data = $capacitacion->getAll();
+        //$data = $capacitacion->getAll(15);
+        
+        //print_r($data); die;
         
         $jsonFile = getcwd().'/public/js/capacitacion.JSON'; 
         
         file_put_contents($jsonFile, $data);
         
         //echo $data;
+        
+        $versionCapacitacion = Array();
+        $versionCapacitacion['Capacitacion'] = Array('Archivo'=>'capacitacion.JSON', 'ID'=>date('YmdHis'));
+        $versionFile = getcwd().'/public/js/version.JSON'; 
+        file_put_contents($versionFile, json_encode($versionCapacitacion));
         
         $viewModel = new ViewModel();
         $viewModel->setTerminal(true);

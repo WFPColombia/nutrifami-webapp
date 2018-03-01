@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Model\Personas;
+use App\Model\Location;
 use App\Model\Capacitacion;
 use App\Model\Compras;
 use App\Model\PuntoVenta;
@@ -49,6 +50,7 @@ class ApiController extends AbstractActionController {
             $personaInfo['birthdate'] = $data['FAM_PER_BIRTHDATE'];
             $personaInfo['genero'] = $data['FAM_PER_GENERO'];
             $personaInfo['etnia'] = $data['FAM_PER_ETNIA'];
+            $personaInfo['pais'] = $data['FAM_PER_PAIS'];
             $personaInfo['departamento'] = $data['FAM_PER_DEPARTAMENTO'];
             $personaInfo['municipio'] = $data['FAM_PER_MUNICIPIO'];
             $personaInfo['comunidad'] = $data['FAM_PER_COMUNIDAD'];
@@ -97,7 +99,7 @@ class ApiController extends AbstractActionController {
     }
 
     public function agregarFamiliarAction() {
-ini_set('memory_limit', '-1');
+        ini_set('memory_limit', '-1');
         header('Access-Control-Allow-Origin: *');
         $params = $this->params()->fromQuery();
 
@@ -107,6 +109,22 @@ ini_set('memory_limit', '-1');
         /* Prepara la respusta -> Debe retornar  $response['response'] = 1 si la adición se hizo con éxito
          * y $response['response'] = 0; si hubo algún error 
          */
+        $response = array();
+        $response['response'] = $data;
+
+        echo json_encode($response);
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(true);
+        return $viewModel;
+    }
+
+    public function agregarUsuarioAction() {
+        ini_set('memory_limit', '-1');
+        header('Access-Control-Allow-Origin: *');
+        $params = $this->params()->fromQuery();
+
+        $personasObj = new Personas();
+        $data = $personasObj->addPersona($params);
         $response = array();
         $response['response'] = $data;
 
@@ -290,7 +308,12 @@ ini_set('memory_limit', '-1');
     
     
     public function getConsolidadoComprasAction() {
-        header('Access-Control-Allow-Origin: *');
+	header('Content-Type: application/json');
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Credentials: true");
+	header("Access-Control-Max-Age: 1000");
+	header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
+	header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS, DELETE");
 
         $params = $this->params()->fromQuery();
         if (isset($params['did'])) {
@@ -312,8 +335,12 @@ ini_set('memory_limit', '-1');
     
     
     public function getProductosPuntoventaAction(){
-        header('Access-Control-Allow-Origin: *');
-
+	header('Content-Type: application/json');
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Credentials: true");
+	header("Access-Control-Max-Age: 1000");
+	header("Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Cache-Control, Pragma, Authorization, Accept, Accept-Encoding");
+	header("Access-Control-Allow-Methods: PUT, POST, GET, OPTIONS, DELETE");
         $params = $this->params()->fromQuery();
         if (isset($params['pid'])) {
             $pid = $params['pid'];
@@ -330,6 +357,20 @@ ini_set('memory_limit', '-1');
         $viewModel->setTerminal(true);
         return $viewModel;
         
+    }
+
+    public function getLocationAction(){
+        header('Access-Control-Allow-Origin: *');
+        $params = $this->params()->fromQuery();
+
+        $locationObj = new Location();
+        $data = $locationObj->getLocation();
+
+        echo json_encode($data);
+        $viewModel = new ViewModel();
+        $viewModel->setTerminal(true);
+        return $viewModel;
+
     }
 
 }

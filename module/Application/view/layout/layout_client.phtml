@@ -12,64 +12,56 @@
 
         <!-- Le styles -->
         <?php
+        $version = '2.0.0';
+
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                ->prependStylesheet($this->basePath('css/circle.css'))
-                ->prependStylesheet($this->basePath('css/style.css'))
-                ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+                ->prependStylesheet($this->basePath('css/style.css?' . $version))
+                ->prependStylesheet($this->basePath('css/font-awesome.min.css?' . $version))
+                ->prependStylesheet($this->basePath('lib/bootstrap/dist/css/bootstrap.css?' . $version))
+                ->prependStylesheet($this->basePath('lib/angular-bootstrap/ui-bootstrap-csp.css?' . $version))
         ?>
+
         <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 
     </head>
 
-    <body ng-app="NutrifamiWeb">
-
-    <ng-view>
+    <body ng-app="nfweb">
+    <ui-view>
         <?php echo $this->content; ?>
-    </ng-view>
-    <div id="audioS3"></div>
-    <div id="imagenS3"></div>
+    </ui-view>
     <!-- Scripts -->
     <?php
     echo $this->headScript()
-            ->prependFile($this->basePath('js/nutrifami.js'))
             ->prependFile($this->basePath() . 'https://sdk.amazonaws.com/js/aws-sdk-2.3.15.min.js')
-            ->prependFile($this->basePath('js/directives/goClick.drt.js'))
-            ->prependFile($this->basePath('js/directives/leccionInfo.drt.js'))
-            ->prependFile($this->basePath('js/directives/moduloInfo.drt.js'))
-            ->prependFile($this->basePath('js/modals/login.modal.js'))
-            ->prependFile($this->basePath('js/services/comprasService.js'))
-            ->prependFile($this->basePath('js/services/anchorSmootScrollService.js'))
-            ->prependFile($this->basePath('js/services/AuthenticationService.js'))
-            ->prependFile($this->basePath('js/services/perfilService.js'))
-            ->prependFile($this->basePath('js/services/usuarioService.js'))
-            ->prependFile($this->basePath('js/controllers/tipsModulosController.js'))
-            ->prependFile($this->basePath('js/controllers/tipsController.js'))
-            ->prependFile($this->basePath('js/controllers/progresoController.js'))
-            ->prependFile($this->basePath('js/controllers/comprasController.js'))
-            ->prependFile($this->basePath('js/controllers/sobreController.js'))
-            ->prependFile($this->basePath('js/controllers/landingController.js'))
-            ->prependFile($this->basePath('js/controllers/template/headerController.js'))
-            ->prependFile($this->basePath('js/controllers/leccionTerminadaController.js'))
-            ->prependFile($this->basePath('js/controllers/unidadController.js'))
-            ->prependFile($this->basePath('js/controllers/moduloController.js'))
-            ->prependFile($this->basePath('js/controllers/loginController.js'))
-            ->prependFile($this->basePath('js/controllers/editarPerfilController.js'))
-            ->prependFile($this->basePath('js/controllers/perfilController.js'))
-            ->prependFile($this->basePath('js/controllers/capacitacionController.js'))
-            ->prependFile($this->basePath('js/app.js'))
-            ->prependFile($this->basePath('lib/js-md5/src/md5.js'))
-            ->prependFile($this->basePath('lib/angular-loading-overlay/dist/angular-loading-overlay.js'))
-            ->prependFile($this->basePath('lib/angular-bootstrap/ui-bootstrap-tpls.min.js'))
-            ->prependFile($this->basePath('lib/angular-bootstrap/ui-bootstrap.min.js'))
-            ->prependFile($this->basePath('lib/jquery/dist/jquery.min.js'))
-            ->prependFile($this->basePath('lib/angular-animate/angular-animate.min.js'))
-            ->prependFile($this->basePath('lib/angular-audio/app/angular.audio.js'))
-            ->prependFile($this->basePath('lib/angular-cookies/angular-cookies.js'))
-            ->prependFile($this->basePath('lib/angular-route/angular-route.js'))
-            ->prependFile($this->basePath('lib/angular/angular.js'))
-            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9'))
-            ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9'));
+            ->prependFile($this->basePath('lib/bootstrap/dist/js/bootstrap.min.js?' . $version))
+            ->prependFile($this->basePath('services/anchorSmootScrollService.js?' . $version))
+            ->prependFile($this->basePath('src/landing/landing.js?' . $version))
+            ->prependFile($this->basePath('js/app.js?' . $version))
+            ->prependFile($this->basePath('lib/jquery/dist/jquery.js?' . $version))
+            ->prependFile($this->basePath('lib/angular-bootstrap/ui-bootstrap-tpls.js?' . $version))
+            ->prependFile($this->basePath('lib/angular-bootstrap/ui-bootstrap.js?' . $version))
+            ->prependFile($this->basePath('lib/angular-touch/angular-touch.js?' . $version))
+            ->prependFile($this->basePath('lib/angular-animate/angular-animate.js?' . $version))
+            ->prependFile($this->basePath('lib/angular-ui-router/release/angular-ui-router.js?' . $version))
+            ->prependFile($this->basePath('lib/angular/angular.js?' . $version))
     ?>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-88108666-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>

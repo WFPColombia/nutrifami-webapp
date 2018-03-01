@@ -60,6 +60,7 @@ class FamPersonasTable extends AbstractTableGateway {
             'FAM_PER_EDAD' => $params['edad'],
             'FAM_PER_GENERO' => $params['genero'],
             'FAM_PER_ETNIA' => $params['etnia'],
+            'FAM_PER_PAIS' => $params['pais'],
             'FAM_PER_DEPARTAMENTO' => $params['departamento'],
             'FAM_PER_MUNICIPIO' => $params['municipio'],
             'FAM_PER_COMUNIDAD' => $params['comunidad'],
@@ -77,8 +78,8 @@ class FamPersonasTable extends AbstractTableGateway {
         );
 
         $dataPersona = array(
-            'FAM_PER_DOCUMENTO' => $params['login_documento'],
-            'FAM_PER_CODIGO' => $params['login_codigo']
+            'FAM_PER_DOCUMENTO' => $params['login_documento']
+            /*'FAM_PER_CODIGO' => $params['login_codigo']*/
         );
         
         if ($this->getPersona($dataPersona)) {

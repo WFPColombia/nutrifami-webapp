@@ -44,8 +44,18 @@ class CapCapacitacionTable extends AbstractTableGateway
         }
     }
     
-    public function getCapacitacionesIds ($key = 'cap_ele_orden') {
-        
+    public function getCapacitacionesIds () {
+        $where = array('cap_activo' => 1);
+        $resultSet = $this->select($where);
+        if ($resultRow = $resultSet->toArray()){ 
+            $data = Array();
+            foreach ( $resultRow as $r ) {
+                $data[] = $r['cap_id'];
+            }
+            return $data;
+        }else {
+            return array();
+        }
     }
     
     public function getAll () {

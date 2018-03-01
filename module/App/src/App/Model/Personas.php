@@ -42,8 +42,8 @@ class Personas {
          * Generar y comparar token
          */
         $data = array(
-            'FAM_PER_DOCUMENTO' => $cedula,
-            'FAM_PER_CODIGO' => $codigo
+            'FAM_PER_DOCUMENTO' => $cedula
+            //'FAM_PER_CODIGO' => $codigo
         );
         return $this->personaTable->getPersona($data);
     }
@@ -106,6 +106,50 @@ class Personas {
             $response = array(
                 'success' => true,
                 'message' => 'El familiar fue agregado con éxito'
+            );
+            return $response;
+        }
+
+        /* Si algo falla en el if anterior, enviamos mensaje de error */
+        $response = array(
+            'success' => false,
+            'message' => 'Error! - Los datos no fueron guardados'
+        );
+        return $response;
+    }
+
+    public function addPersona($params) {
+        
+        $dataDoc = array(
+            'FAM_PER_DOCUMENTO' => $params['FAM_PER_DOCUMENTO']
+        );
+
+        /* Validamos si el usuario ya existe, retornamos 0 para que el frontend muestre el mensaje */
+        if ($this->personaTable->getPersona($dataDoc) != false) {
+            $response = array(
+                'success' => false,
+                'message' => 'Error! - El documento ya existe'
+            );
+            return $response;
+        }
+
+        $data = array(
+            'FAM_PER_DOCUMENTO' => $params['FAM_PER_DOCUMENTO'],
+            'FAM_PER_NOMBRE' => $params['FAM_PER_NOMBRE'],
+            'FAM_PER_DEPARTAMENTO' => $params['FAM_PER_DEPARTAMENTO'],
+            'FAM_PER_MUNICIPIO' => $params['FAM_PER_CIUDAD'],
+            'FAM_PER_PAIS' => $params['FAM_PER_PAIS'],
+        );
+
+
+        /* Insertarmos el usuario en la base de datos y enviamos respuesta. */
+        if ($this->personaTable->insertPersona($data) == 1) {
+
+            
+
+            $response = array(
+                'success' => true,
+                'message' => 'El usuario fue agregado con éxito'
             );
             return $response;
         }
