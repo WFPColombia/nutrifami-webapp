@@ -9,9 +9,9 @@ use Zend\Db\Sql\Select;
 use Zend\Debug\Debug;
 use Zend\Db\Sql\Expression;
 
-class CapCapacitacionTable extends AbstractTableGateway
+class TipLeccionElementoTable extends AbstractTableGateway
 {
-    protected $table = 'cap_capacitacion';
+    protected $table = 'tip_leccion_tips';
     
     public function __construct()
     {
@@ -24,42 +24,18 @@ class CapCapacitacionTable extends AbstractTableGateway
     }
     
     
-    public function fetchAll()
-    {
-    	return $resultSet->toArray();
-    }
-    
-    
-    public function getCapacitacion($cid = 0){
-        $where = array('cap_id' => $cid);
-        if ( $cid > 0 ) {
-            $resultSet = $this->select($where);
-        }else {
-            $resultSet = $this->select();
-        }
-        if ($resultRow = $resultSet->toArray()){
-        	return $resultRow;
-        }else {
-        	return array();
-        }
-    }
-    
-    public function getCapacitacionesIds () {
-        $where = array('cap_activo' => 1);
+    public function getIdListByLeccion ($lid = 0, $key = 'lec_tip_orden') {
+        $where = array('lec_id' => $lid);
         $resultSet = $this->select($where);
         if ($resultRow = $resultSet->toArray()){ 
             $data = Array();
             foreach ( $resultRow as $r ) {
-                $data[] = $r['cap_id'];
+                $data[] = array('id'=>$r['tip_id'], 'fecha'=>$r['lect_tip_fecha'], 'order'=>$r[$key]);
             }
             return $data;
         }else {
             return array();
         }
-    }
-    
-    public function getAll () {
-        
     }
     
     

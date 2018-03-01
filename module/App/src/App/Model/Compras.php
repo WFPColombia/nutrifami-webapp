@@ -51,13 +51,13 @@ class Compras
             if ( !isset($data['redencion'][$c['ANIO']]) ) { $data['redencion'][$c['ANIO']] = array(); }            
             if ( !isset($data['redencion'][$c['ANIO']][$c['MES']]) ) { $data['redencion'][$c['ANIO']][$c['MES']] = array(); } 
             if ( !isset($data['redencion'][$c['ANIO']][$c['MES']]['grupo']) ) { $data['redencion'][$c['ANIO']][$c['MES']]['grupo'] = array(); } 
-            if ( !isset($data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']]) ) { $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']] = array(); } 
-            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']]['nombre'] = $c['GRUPO'];
-            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']]['alias'] = $c['GRUPO_ALIAS'];
-            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']]['grupo_id'] = $c['GRUPO_ID'];
-            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']]['porcentaje_recomendado'] = $c['PORCENTAJE_RECOMENDADO'];
-            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']]['porcentaje_compra'] = $c['PORCETAJE_COMPRA'];
-            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']]['compra'] = Array();
+            if ( !isset($data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']]) ) { $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']] = array(); } 
+            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']]['nombre'] = $c['GRUPO'];
+            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']]['alias'] = $c['GRUPO_ALIAS'];
+            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']]['grupo_id'] = $c['GRUPO_ID'];
+            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']]['porcentaje_recomendado'] = $c['PORCENTAJE_RECOMENDADO'];
+            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']]['porcentaje_compra'] = $c['PORCETAJE_COMPRA'];
+            $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']]['compra'] = Array();
             $compra = $this->comprasTable->getComprasFamilia($c['USUARIO_CEDULA'], $c['GRUPO_ID'], $c['ANIO'], $c['MES']);
             $i = 0;
             foreach ( $compra as $prod ) {
@@ -71,7 +71,7 @@ class Compras
                 $p['cantidad'] = $prod['com_cantidad'];
                 $p['total'] = $prod['com_valor_total'];
                 $p['fecha'] = $prod['com_fecha'];
-                $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ALIAS']]['compra'][$i] = $p;
+                $data['redencion'][$c['ANIO']][$c['MES']]['grupo'][$c['GRUPO_ID']]['compra'][$i] = $p;
                 $i++;
             }
         }
