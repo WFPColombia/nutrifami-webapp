@@ -5,9 +5,12 @@
                 <div class="col-md-2 col-sm-2 col-xs-3 text-center">
                     <img class="logo-img" src="../img/logo-landing.png" ng-click="gotoElement('top')" alt="Logo Nutrifami" />
                 </div>
-                <div class="col-md-10 col-sm-10 col-xs-9 ">
-                    <a href="http://app.nutrifami.org" class="btn btn-primary" role="button">Ingresar</a>
-                    <a href ng-click="gotoElement('acceder')" class="como-funciona">¿Cómo funciona?</a>
+                <div class="col-md-10 col-sm-10 col-xs-9">
+                    <ul class="menu-rigth">
+                        <li><language-drt></language-drt></li>
+                        <li><a href ng-click="gotoElement('acceder')" class="como-funciona">{{'¿Cómo funciona?' | translate }}</a></li>
+                        <li><a href="http://app.nutrifami.org" class="btn btn-primary" role="button">{{'INGRESAR' | translate }}</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -16,9 +19,9 @@
         <div id="login"></div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-8 col-lg-offset-2">
                     <div class="descripcion">
-                        <h1>¡Aprenda Jugando sobre nutrición,<br>alimentación y hábitos saludables!</h1>
+                        <h1>{{'¡Aprenda Jugando sobre nutrición, alimentación y hábitos saludables!' | translate }}</h1>
                     </div>
                 </div>
             </div>
@@ -35,15 +38,19 @@
         <div id="acceder"></div>
         <div class="acceder">
             <div class="row">
-                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
-                    <h4>¿Cómo funciona?</h4>
-                    <h2>Acceder a Nutrifami es muy fácil.</h2>
-                    <p>Puede acceder desde su casa o en cualquier lugar.
-                        <br>Desde su computador ingrese a www.nutrifami.org</p>
+                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-lg-8 col-lg-offset-2">
+                    <h4>{{'¿Cómo funciona?' | translate }}</h4>
+                    <h2>{{'Acceder a Nutrifami es muy fácil' | translate }}</h2>
+                    <p>{{'Puede acceder desde su casa o en cualquier lugar. Desde su computador ingrese a www.nutrifami.org' | translate }}</p>
                     <img src="../img/landing-acceso.png" class="img-responsive center-block" alt="Acceso a Nutrifami" />
-                    <p>En su celular o tableta, descargue Nutrifami
-                        <br>en la tienda de aplicaciones Google Play Store.</p>
-                    <a href="https://play.google.com/store/apps/details?id=org.nutrifami.mobile" target="_blank" title="Descargar Nutrifami de la Play Store"><img src="../img/landing-play-store.png" class="img-responsive center-block" alt="Play Store" /></a>
+                    <p>{{'En su celular o tableta, descargue Nutrifami en la tienda de aplicaciones Google Play Store, Apple Store o Windows Store' | translate }}</p>
+                    <a href="https://play.google.com/store/apps/details?id=org.nutrifami.mobile" target="_blank" title="Descargar Nutrifami de la Play Store">
+                        <img src="../img/stores/google-play-badge-{{lang}}.png" alt="Play Store" height="80"/>
+                    </a>
+                    <a href="https://itunes.apple.com/mx/app/nutrifami/id1241016094?mt=8" target="_blank" title="Descargar Nutrifami de la Play Store">
+                        <img src="../img/stores/apple-store-badge-{{lang}}.png" alt="App Store" height="57"/>
+                    </a>
+                    <a href="https://www.microsoft.com/store/productId/9NZV85358PRN?ocid=badge"><img class="microsoft" src="https://assets.windowsphone.com/85864462-9c82-451e-9355-a3d5f874397a/English_get-it-from-MS_InvariantCulture_Default.png" alt="Get it from Microsoft" /></a>
                 </div>
                 <ul class="navegador">
                     <li><a href ng-click="gotoElement('acceder')" class="active">&bull;</a></li>
@@ -55,11 +62,10 @@
         </div>
         <div class="mi-perfil">
             <div class="row">
-                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
-                    <h4>¿Cómo funciona?</h4>
-                    <h2>Mi Perfil</h2>
-                    <p>Entre a Mi Perfil, complete sus datos y los de su familia.
-                        <br>¡Ya está listo para Aprender Jugando!</p>
+                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-lg-8 col-lg-offset-2">
+                    <h4>{{'¿Cómo funciona?' | translate }}</h4>
+                    <h2>{{'Mi Perfil' | translate }}</h2>
+                    <p>{{'Entre a Mi Perfil, complete sus datos y los de su familia. ¡Ya está listo para Aprender Jugando!' | translate }}</p>
                     <img src="../img/landing-mi-perfil.png" class="img-responsive center-block" alt="Aprende jugando" />
                 </div>
                 <ul class="navegador">
@@ -72,16 +78,16 @@
         </div>
         <div class="aprende">
             <div class="row">
-                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
-                    <h4>¿Cómo funciona?</h4>
-                    <h2>¡Aprender con Nutrifami es muy divertido! </h2>
-                    <p>Haga un recorrido por las 5 secciones de Nutrifami:</p>
+                <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-lg-8 col-lg-offset-2">
+                    <h4>{{'¿Cómo funciona?' | translate }}</h4>
+                    <h2>{{'¡Aprender con Nutrifami es muy divertido!' | translate }}</h2>
+                    <p>{{'Haga un recorrido por las 5 secciones de Nutrifami:' | translate }}</p>
                     <div uib-carousel active="0" interval="100000" no-wrap="false">
                         <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" class="contenido-slider">
                             <img ng-src="{{slide.imagen}}" class="img-responsive center-block">
                             <div class="carousel-caption">
-                                <h3>{{slide.titulo}}</h3>
-                                <p>{{slide.texto}}</p>
+                                <h3>{{slide.titulo | translate }}</h3>
+                                <p>{{slide.texto | translate}}</p>
                             </div>
                         </div>
                     </div>
@@ -98,8 +104,8 @@
         <div class="container">
             <div class="row">
                 <div class=" col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
-                    <h2>¡Comenzar a Aprender!</h2>
-                    <a href="http://app.nutrifami.org" class="btn btn-primary" role="button">Ingresar</a>
+                    <h2>{{'¡Comenzar a Aprender!' | translate }}</h2>
+                    <a href="http://app.nutrifami.org" class="btn btn-primary" role="button">{{'INGRESAR' | translate }}</a>
                 </div>
             </div>
             <div class="row">

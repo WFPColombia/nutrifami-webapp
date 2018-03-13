@@ -1,5 +1,5 @@
 /*global angular*/
-nf2.controller('LandingCtrl', function($scope, $location, $anchorScroll, $window, $document, anchorSmoothScrollService) {
+nf2.controller('LandingCtrl', function($scope, $rootScope, $location, $anchorScroll, $window, $document, anchorSmoothScrollService) {
     $anchorScroll();
 
     $scope.scrolled = false;
@@ -32,12 +32,12 @@ nf2.controller('LandingCtrl', function($scope, $location, $anchorScroll, $window
     $scope.slides = [{
         imagen: '../img/landing-slider-1-aprendre.png',
         titulo: 'Aprenda con Nutrifami',
-        texto: '5 módulos para Aprender Jugando. Lea, escuche y seleccione las opciones de respuesta. Podrá evaluar sus conocimientos y recibir importantes consejos.',
+        texto: '5 módulos para Aprender Jugando. Lea, escuche y seleccione las opciones de respuesta. Podrá evaluar sus conocimientos y recibir importantes consejos!',
         id: 0
 
     }, {
         imagen: '../img/landing-slider-2-mi-progreso.png',
-        titulo: 'Mi Progreso',
+        titulo: 'Mi progreso',
         texto: 'Aquí puede ver cuánto ha avanzado con Nutrifami y descargar los diplomas obtenidos en cada módulo.',
         id: 1
 
@@ -55,8 +55,8 @@ nf2.controller('LandingCtrl', function($scope, $location, $anchorScroll, $window
 
     }, {
         imagen: '../img/landing-slider-5-juego.png',
-        titulo: 'NutriCompra',
-        texto: 'Divertido juego para que ponga a prueba todas sus habilidades, para elegir adecuadamente los alimentos para el hogar.',
+        titulo: 'Nutricompra',
+        texto: 'Divertido juego para que ponga a prueba todas sus habilidades, para elegir adecuadamente los alimentos para su hogar.',
         id: 4
 
     }];
