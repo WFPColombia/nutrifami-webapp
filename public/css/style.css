@@ -52,8 +52,6 @@ h6 {
 }
 
 .landing header .como-funciona {
-    float: right;
-    margin-right: 50px;
     color: #ffffff;
     line-height: 45px;
     text-decoration: none;
@@ -105,7 +103,6 @@ h6 {
     background-image: none;
     font-size: 13pt;
     color: #00c97e;
-    float: right;
 }
 
 .landing .hero {
@@ -327,3 +324,47 @@ h6 {
     color: #2f3e47;
 }
 
+
+/* Language */
+
+.language .btn-language{
+    border-radius: 5px;
+    font-size: 10pt;
+    height: 40px;
+    margin-bottom: 0;
+    padding: 10px;
+    letter-spacing: 0;
+    background-color: inherit;
+    color: white;
+    text-transform: none;
+}
+
+.language a {
+    cursor: pointer;
+}
+
+.language.fixed{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+/* End Language */
+
+.menu-rigth {
+    text-align: right;
+}
+
+.menu-rigth li{
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.microsoft {
+    height: 54px;
+    margin-left: 10px;
+}
+
+ol.carousel-indicators {
+    display: none;
+}

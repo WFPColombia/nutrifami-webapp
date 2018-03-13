@@ -1,0 +1,11 @@
+<div class="language {{position}}">
+    <div class="dropdown">
+        <button class="btn btn-language dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <!--<img src="/img/flags/{{lang}}.svg" width="20px"/>--> {{ 'Idioma' | translate}}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+            <li ng-repeat="l in languages" ng-hide="lang == l.id"><a ng-click="changeLanguage(l.id)"><!--<img src="/img/flags/{{l.id}}.svg" width="20px"/>--> {{l.name| translate}}</a></li>
+        </ul>
+    </div>
+</div>
