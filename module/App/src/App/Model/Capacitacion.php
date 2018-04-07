@@ -14,6 +14,7 @@ use App\Model\Tables\CapCapacitacionTable;
 use App\Model\Tables\CapCapacitacionTipoTable;
 use App\Model\Tables\CapIdiomaTable;
 use App\Model\Tables\CapStatusTable;
+use App\Model\Tables\CapUpdatingTable;
 use App\Model\Tables\CapCapacitacionElementoTable;
 use App\Model\Tables\CapModuloTable;
 use App\Model\Tables\CapModuloElementoTable;
@@ -170,6 +171,10 @@ class Capacitacion
         $file .= ' }';
         
         
+        $updating = new CapUpdatingTable();
+        $updating_status = array("cap_updating_status" = 0);
+        $updating->insert($updating_status);
+
         
         return $file;
     }
