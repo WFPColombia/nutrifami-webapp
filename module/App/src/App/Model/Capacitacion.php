@@ -172,7 +172,7 @@ class Capacitacion
         
         
         $updating = new CapUpdatingTable();
-        $updating_status = array("cap_updating_status" = 0);
+        $updating_status = array("cap_updating_status" => 0);
         $updating->insert($updating_status);
 
         
